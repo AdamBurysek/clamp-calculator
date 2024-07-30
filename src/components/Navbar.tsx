@@ -20,7 +20,7 @@ const Navbar = () => {
         <Link to="/" aria-label="Clamp Calculator">
           <ClampCalculatorIcon />
         </Link>
-        <div className="flex w-full max-w-80 justify-between mr-20">
+        <div className="flex w-full max-w-80 justify-between mr-20 font-medium">
           {navLinks.map((link) => (
             <Link
               key={link.name}
