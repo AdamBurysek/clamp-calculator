@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ClampCalculatorIcon } from "./Icons";
 import ThemeSwitcher from "./ThemeSwitcher/ThemeSwitcher";
 
@@ -16,16 +17,18 @@ const Navbar = () => {
   return (
     <div className="position-fixed h-16 flex justify-center bg-c-grey-one">
       <div className="flex w-full max-w-content justify-between items-center px-8">
-        <ClampCalculatorIcon />
+        <Link to="/">
+          <ClampCalculatorIcon />
+        </Link>
         <div className="flex w-full max-w-80 justify-between mr-24">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.target}
+              to={link.target}
               className="hover:text-c-primary"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
         <ThemeSwitcher />
