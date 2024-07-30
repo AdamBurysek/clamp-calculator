@@ -7,7 +7,7 @@ type NavLinks = {
 };
 
 export const navLinks: NavLinks[] = [
-  { name: "Calculator", target: "calculator" },
+  { name: "Calculator", target: "/" },
   { name: "How it Works", target: "how-it-works" },
   { name: "About", target: "about" },
 ];
