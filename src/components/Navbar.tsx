@@ -1,3 +1,6 @@
+import { ClampCalculatorIcon } from "./Icons";
+import ThemeSwitcher from "./ThemeSwitcher/ThemeSwitcher";
+
 type NavLinks = {
   name: string;
   target: string;
@@ -12,9 +15,9 @@ export const navLinks: NavLinks[] = [
 const Navbar = () => {
   return (
     <div className="position-fixed h-16 flex justify-center bg-c-grey-one">
-      <div className="flex w-full max-w-content justify-between items-center">
-        <p>Clamp Calculator</p>
-        <div className="flex w-full max-w-80 justify-between ">
+      <div className="flex w-full max-w-content justify-between items-center px-8">
+        <ClampCalculatorIcon />
+        <div className="flex w-full max-w-80 justify-between mr-24">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -25,7 +28,7 @@ const Navbar = () => {
             </a>
           ))}
         </div>
-        <p>Theme Switcher</p>
+        <ThemeSwitcher />
       </div>
     </div>
   );
