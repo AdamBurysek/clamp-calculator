@@ -6,6 +6,12 @@ export default {
   ],
   theme: {
     extend: {
+      spacing: {
+        'content': '1120px',
+      },
+      height: {
+        'navbar': '64px',
+      },
       colors: {
         'c-background': 'var(--color-background)',
         'c-text': 'var(--color-text)',
