@@ -17,7 +17,7 @@ const Navbar = () => {
   return (
     <div className="position-fixed h-16 flex justify-center bg-c-grey-one">
       <div className="flex w-full max-w-content justify-between items-center px-8">
-        <Link to="/">
+        <Link to="/" aria-label="Clamp Calculator">
           <ClampCalculatorIcon />
         </Link>
         <div className="flex w-full max-w-80 justify-between mr-20">
