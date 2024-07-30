@@ -10,7 +10,7 @@ import Calculator from "./pages/Calculator.tsx";
 const Layout = () => (
   <>
     <Navbar />
-    <main className="pt-16">
+    <main className="flex justify-center pt-16">
       <Outlet />
     </main>
   </>

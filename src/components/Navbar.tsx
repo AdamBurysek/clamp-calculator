@@ -32,11 +32,11 @@ const Navbar = () => {
         }
       )}
     >
-      <div className="flex w-full max-w-content justify-between items-center px-8">
+      <nav className="flex w-full max-w-content justify-between items-center px-8">
         <Link to="/" aria-label="Clamp Calculator">
           <ClampCalculatorIcon />
         </Link>
-        <nav className="flex w-full max-w-80 justify-between mr-20 font-medium">
+        <div className="flex w-full max-w-80 justify-between mr-20 font-medium">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -47,9 +47,9 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-        </nav>
+        </div>
         <ThemeSwitcher />
-      </div>
+      </nav>
       <HamburgerButton onClick={handleHamburgerClick} menuOpened={menuOpened} />
     </header>
   );

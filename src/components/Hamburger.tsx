@@ -1,9 +1,9 @@
 import { cn } from "../utils/classNames";
 
-type Props = {
+interface Props {
   onClick: () => void;
   menuOpened: boolean;
-};
+}
 
 const HamburgerButton = ({ onClick, menuOpened }: Props) => (
   <button
