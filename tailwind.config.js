@@ -51,6 +51,9 @@ export default {
           'sans-serif',
         ],
       },
+      transitionProperty: {
+        'max-height': 'max-height',
+      }
     },
   },
   plugins: [],

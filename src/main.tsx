@@ -10,7 +10,9 @@ import Calculator from "./pages/Calculator.tsx";
 const Layout = () => (
   <>
     <Navbar />
-    <Outlet />
+    <main className="pt-16">
+      <Outlet />
+    </main>
   </>
 );
 
