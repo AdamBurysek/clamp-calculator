@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
 import styles from "./ThemeSwitcher.module.css";
+import { getCookie, setCookie } from "../../utils/cookies";
 
 TODO: "Make this with tailwind";
 
@@ -61,15 +62,6 @@ const System = () => (
   </svg>
 );
 
-const getCookie = (name: string) => {
-  if (typeof window !== "undefined") {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts[1].split(";")[0];
-  }
-  return null;
-};
-
 const ThemeSwitcher = () => {
   const [theme, setTheme] = useState<string | null>(null);
   // Fixing problem with floating slider when pages is changed
@@ -90,12 +82,7 @@ const ThemeSwitcher = () => {
     if (theme) {
       document.body.dataset.theme = theme;
 
-      // Update cookie to persist theme selection
-      const days = 0.5;
-      const date = new Date();
-      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-      const expires = date.toUTCString();
-      document.cookie = `theme=${theme};expires=${expires};path=/`;
+      setCookie("theme", theme, 0.5);
     }
   }, [theme]);
 
