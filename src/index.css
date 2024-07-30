@@ -21,6 +21,11 @@
     --color-grey-eight: #505158;
     --color-grey-nine: #3d3d43;
     --color-grey-ten: #292a2e;
+
+    /* 320px / 1440px */
+    --fs-heading1: clamp(1.375rem, 1.0713rem + 1.5186vw, 2.438rem);
+    --fs-heading2: clamp(1.25rem, 1.0534rem + 0.9829vw, 1.938rem);
+    --fs-heading3: clamp(1.188rem, 1.0811rem + 0.5343vw, 1.562rem);
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -98,6 +103,20 @@
   div,
   span {
     @apply font-sans text-c-text;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-bold tracking-tighter;
+  }
+  h1 {
+    @apply text-heading1;
+  }
+  h2 {
+    @apply text-heading2;
+  }
+  h3 {
+    @apply text-heading3;
   }
 }
 
