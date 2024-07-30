@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 import "./index.css";
 import Navbar from "./components/Navbar.tsx";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 import About from "./pages/About.tsx";
 import HowItWorks from "./pages/HowItWorks.tsx";
+import Calculator from "./pages/Calculator.tsx";
 
 const Layout = () => (
   <>
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <App />,
+        element: <Calculator />,
       },
       {
         path: "/how-it-works",
