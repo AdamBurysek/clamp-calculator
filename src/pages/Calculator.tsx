@@ -11,6 +11,14 @@ const Calculator = () => {
         <div className="flex flex-col items-center bg-c-secondary rounded-2xl ">
           <h2 className="pt-2">Calculator Settings</h2>
           <RemControls />
+          <div className="flex gap-8 p-4 ">
+            <div className="w-96 h-36 bg-c-secondary border border-c-background rounded-2xl drop-shadow-box">
+              <h3>Target Values</h3>
+            </div>
+            <div className="w-96 h-36 bg-c-secondary border border-c-background rounded-2xl drop-shadow-box">
+              <h3>Viewport Range</h3>
+            </div>
+          </div>
         </div>
       </div>
     </GlobalStateProvider>

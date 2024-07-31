@@ -30,7 +30,7 @@ export default {
       },
       dropShadow: {
         'hover': '0 0 4px var(--color-grey-two)',
-
+        'box': '0 0 11px var(--color-primary)',
       },
       fontSize: {
         'heading1': 'clamp(1.375rem, 1.0713rem + 1.5186vw, 2.438rem)',
