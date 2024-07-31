@@ -6,7 +6,7 @@ interface Props {
 const StepButton = ({ type, onClick }: Props) => {
   return (
     <button
-      className="w-12 h-12 pb-1 bg-c-primary rounded-full text-c-background text-2xl font-bold flex items-center justify-center"
+      className="w-12 h-12 pb-1 bg-c-primary rounded-full text-c-background text-xl font-bold flex items-center justify-center"
       onClick={onClick}
       data-type={type}
     >
