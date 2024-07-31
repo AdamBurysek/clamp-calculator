@@ -1,5 +1,6 @@
 {
   "name": "clamp-calculator",
+  "homepage": "https://adamplanet.cz/cc/",
   "private": true,
   "version": "0.0.0",
   "type": "module",

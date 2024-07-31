@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ClampCalculatorIcon } from "./Icons";
 import ThemeSwitcher from "./ThemeSwitcher/ThemeSwitcher";
-import HamburgerButton from "./Hamburger";
+import HamburgerButton from "./common/HamburgerButton";
 import { useState } from "react";
 import { cn } from "../utils/classNames";
 
