@@ -29,7 +29,7 @@ export default {
         'c-grey-ten': 'var(--color-grey-ten)',
       },
       dropShadow: {
-        'custom': '0 0 4px var(--color-grey-two)',
+        'hover': '0 0 4px var(--color-grey-two)',
 
       },
       fontSize: {
