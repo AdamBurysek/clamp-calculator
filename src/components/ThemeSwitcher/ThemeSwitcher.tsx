@@ -81,7 +81,6 @@ const ThemeSwitcher = () => {
   useEffect(() => {
     if (theme) {
       document.body.dataset.theme = theme;
-
       setCookie("theme", theme, 0.5);
     }
   }, [theme]);
