@@ -9,9 +9,6 @@ export default {
       spacing: {
         'content': '1120px',
       },
-      height: {
-        'navbar': '64px',
-      },
       colors: {
         'c-background': 'var(--color-background)',
         'c-text': 'var(--color-text)',
@@ -30,6 +27,10 @@ export default {
         'c-grey-eight': 'var(--color-grey-eight)',
         'c-grey-nine': 'var(--color-grey-nine)',
         'c-grey-ten': 'var(--color-grey-ten)',
+      },
+      dropShadow: {
+        'custom': '0 0 4px var(--color-grey-two)',
+
       },
       fontSize: {
         'heading1': 'clamp(1.375rem, 1.0713rem + 1.5186vw, 2.438rem)',
@@ -53,7 +54,8 @@ export default {
       },
       transitionProperty: {
         'max-height': 'max-height',
-      }
+        'filter': 'filter',
+      },
     },
   },
   plugins: [],
