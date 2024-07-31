@@ -28,27 +28,30 @@ const Navbar = () => {
       className={cn(
         "fixed z-50 w-full max-h-16 h-screen flex justify-center bg-c-grey-one duration-15 transition-[max-height] duration-1000",
         {
-          "position-absolute max-h-screen bg-c-grey-two": menuOpened,
+          "position-absolute max-h-screen bg-c-grey-two md:max-h-16 md:bg-c-grey-one":
+            menuOpened,
         }
       )}
     >
-      <nav className="flex w-full max-w-content justify-between items-center px-8">
-        <Link to="/" aria-label="Clamp Calculator">
+      <nav className="flex w-full max-w-content justify-between px-8 pt-4 overflow-hidden max-md:flex-col max-md:items-center">
+        <Link to="/" aria-label="Clamp Calculator" className="pt-1 max-md:pb-8">
           <ClampCalculatorIcon />
         </Link>
-        <div className="flex w-full max-w-80 justify-between mr-20 font-medium">
+        <div className="flex w-full max-w-80 justify-between mr-20 font-medium  max-md:flex-col max-md:gap-10 max-md:items-center max-md:mr-0 max-md:pt-6">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               to={link.target}
               onClick={() => setMenuOpened(false)}
-              className="hover:text-c-primary"
+              className="pt-1 hover:text-c-primary max-md:text-3xl"
             >
               {link.name}
             </Link>
           ))}
         </div>
-        <ThemeSwitcher />
+        <span className="max-md:pt-16">
+          <ThemeSwitcher />
+        </span>
       </nav>
       <HamburgerButton onClick={handleHamburgerClick} menuOpened={menuOpened} />
     </header>
