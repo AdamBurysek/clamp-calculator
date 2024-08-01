@@ -1,6 +1,12 @@
 import ToggleUnitButton from "./ToggleUnitButton";
 
-const InputControlWindow = () => {
+interface Props {
+  isUnitpx?: boolean;
+  minValue?: number;
+  maxValue?: number;
+}
+
+const InputControlWindow = ({ isUnitpx, minValue, maxValue }: Props) => {
   return (
     <div className="flex flex-col items-center gap-8 w-96 h-36 bg-c-secondary border border-c-background rounded-2xl drop-shadow-box">
       <div className="flex items-center gap-6 mt-2 h-12">
@@ -13,12 +19,13 @@ const InputControlWindow = () => {
           <span className="flex gap-2 px-2 items-center bg-c-primary text-c-background rounded-md">
             <input
               type="number"
+              value={minValue}
               aria-label="Min Target Value"
               className="w-14 text-center bg-c-primary text-c-background font-bold"
               min={1}
               max={1201}
             />
-            <p className="text-c-background font-bold">px</p>
+            <p className="text-c-background font-bold">{isUnitpx ? "px" : "rem"}</p>
           </span>
         </div>
         <div className="flex gap-2">
@@ -26,12 +33,13 @@ const InputControlWindow = () => {
           <span className="flex gap-2 px-2 items-center bg-c-primary text-c-background rounded-md">
             <input
               type="number"
+              value={maxValue}
               aria-label="Min Target Value"
               className="w-14 text-center bg-c-primary text-c-background font-bold"
               min={1}
               max={1201}
             />
-            <p className="text-c-background font-bold">px</p>
+            <p className="text-c-background font-bold">{isUnitpx ? "px" : "rem"}</p>
           </span>
         </div>
       </div>
