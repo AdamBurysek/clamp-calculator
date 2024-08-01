@@ -1,16 +1,5 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  ReactNode,
-  useEffect,
-} from "react";
-import {
-  booleanToString,
-  getCookie,
-  setCookie,
-  stringToBoolean,
-} from "../utils/cookies";
+import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import { booleanToString, getCookie, setCookie, stringToBoolean } from "../utils/cookies";
 
 interface GlobalStateProps {
   remBase: number;
@@ -19,11 +8,17 @@ interface GlobalStateProps {
   setIsTargetUnitsPx: React.Dispatch<React.SetStateAction<boolean>>;
   isWindowUnitsPx: boolean;
   setIsWindowUnitsPx: React.Dispatch<React.SetStateAction<boolean>>;
+  minTargetValue: number;
+  setMinTargetValue: React.Dispatch<React.SetStateAction<number>>;
+  maxTargetValue: number;
+  setMaxTargetValue: React.Dispatch<React.SetStateAction<number>>;
+  minWindowValue: number;
+  setMinWindowValue: React.Dispatch<React.SetStateAction<number>>;
+  maxWindowValue: number;
+  setMaxWindowValue: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const GlobalStateContext = createContext<GlobalStateProps | undefined>(
-  undefined
-);
+const GlobalStateContext = createContext<GlobalStateProps | undefined>(undefined);
 
 export const useGlobalState = () => {
   const context = useContext(GlobalStateContext);
@@ -35,13 +30,21 @@ export const useGlobalState = () => {
 
 export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const initialRemBase = parseInt(getCookie("remBase") || "16", 10);
-  const [remBase, setRemBase] = useState<number>(initialRemBase);
   const initialTargetUnits = stringToBoolean(getCookie("targetUnits")) || true;
-  const [isTargetUnitsPx, setIsTargetUnitsPx] =
-    useState<boolean>(initialTargetUnits);
   const initialWindowtUnits = stringToBoolean(getCookie("windowUnits")) || true;
-  const [isWindowUnitsPx, setIsWindowUnitsPx] =
-    useState<boolean>(initialWindowtUnits);
+  const initialMinTargetValue = parseInt(getCookie("minTargetValue") || "16", 10);
+  const initialMaxTargetValue = parseInt(getCookie("maxTargetValue") || "24", 10);
+  const initialMinWindowValue = parseInt(getCookie("minWindowValue") || "400", 10);
+  const initialMaxWindowValue = parseInt(getCookie("maxWindowValue") || "1024", 10);
+
+  const [remBase, setRemBase] = useState<number>(initialRemBase);
+  const [isTargetUnitsPx, setIsTargetUnitsPx] = useState<boolean>(initialTargetUnits);
+  const [isWindowUnitsPx, setIsWindowUnitsPx] = useState<boolean>(initialWindowtUnits);
+
+  const [minTargetValue, setMinTargetValue] = useState<number>(initialMinTargetValue);
+  const [maxTargetValue, setMaxTargetValue] = useState<number>(initialMaxTargetValue);
+  const [minWindowValue, setMinWindowValue] = useState<number>(initialMinWindowValue);
+  const [maxWindowValue, setMaxWindowValue] = useState<number>(initialMaxWindowValue);
 
   useEffect(() => {
     setCookie("remBase", remBase.toString(), 30);
@@ -55,6 +58,22 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     setCookie("windowUnits", booleanToString(isWindowUnitsPx), 30);
   }, [isWindowUnitsPx]);
 
+  useEffect(() => {
+    setCookie("minTargetValue", minTargetValue.toString(), 30);
+  }, [minTargetValue]);
+
+  useEffect(() => {
+    setCookie("maxTargetValue", maxTargetValue.toString(), 30);
+  }, [maxTargetValue]);
+
+  useEffect(() => {
+    setCookie("minWindowValue", minWindowValue.toString(), 30);
+  }, [minWindowValue]);
+
+  useEffect(() => {
+    setCookie("maxWindowValue", maxWindowValue.toString(), 30);
+  }, [maxWindowValue]);
+
   return (
     <GlobalStateContext.Provider
       value={{
@@ -64,6 +83,14 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         setIsTargetUnitsPx,
         isWindowUnitsPx,
         setIsWindowUnitsPx,
+        minTargetValue,
+        setMinTargetValue,
+        maxTargetValue,
+        setMaxTargetValue,
+        minWindowValue,
+        setMinWindowValue,
+        maxWindowValue,
+        setMaxWindowValue,
       }}
     >
       {children}
