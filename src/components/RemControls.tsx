@@ -38,7 +38,7 @@ const RemControls: React.FC = () => {
   return (
     <div className="flex gap-4 my-4">
       <StepButton type="decrement" onClick={changeRemBase} />
-      <div className="bg-c-primary rounded-2xl hover:drop-shadow-hover transition-[filter] duration-300 ease-out hover:ease-in">
+      <div className="bg-c-primary rounded-2xl">
         <p className="pt-2 px-6 text-c-background text-xl font-bold ">
           1 rem =
           <input
