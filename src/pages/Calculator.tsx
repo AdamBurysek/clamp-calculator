@@ -1,5 +1,6 @@
 import { GlobalStateProvider } from "../context/GlobalStateContext";
 import RemControls from "../components/RemControls";
+import ToggleUnitButton from "../components/common/ToggleUnitButton";
 
 const Calculator = () => {
   return (
@@ -12,8 +13,11 @@ const Calculator = () => {
           <h2 className="pt-2">Calculator Settings</h2>
           <RemControls />
           <div className="flex gap-8 p-4 ">
-            <div className="w-96 h-36 bg-c-secondary border border-c-background rounded-2xl drop-shadow-box">
-              <h3>Target Values</h3>
+            <div className="flex gap-8 w-96 h-36 bg-c-secondary border border-c-background rounded-2xl drop-shadow-box">
+              <div className="flex gap-4 mt-2 h-12">
+                <h3>Target Values</h3>
+                <ToggleUnitButton />
+              </div>
             </div>
             <div className="w-96 h-36 bg-c-secondary border border-c-background rounded-2xl drop-shadow-box">
               <h3>Viewport Range</h3>
