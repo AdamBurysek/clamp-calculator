@@ -31,7 +31,7 @@ export const useGlobalState = () => {
 export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const initialRemBase = parseInt(getCookie("remBase") || "16", 10);
   const initialTargetUnits = stringToBoolean(getCookie("targetUnits")) || true;
-  const initialWindowtUnits = stringToBoolean(getCookie("windowUnits")) || true;
+  const initialWindowUnits = stringToBoolean(getCookie("windowUnits")) || true;
   const initialMinTargetValue = parseInt(getCookie("minTargetValue") || "16", 10);
   const initialMaxTargetValue = parseInt(getCookie("maxTargetValue") || "24", 10);
   const initialMinWindowValue = parseInt(getCookie("minWindowValue") || "400", 10);
@@ -39,7 +39,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
 
   const [remBase, setRemBase] = useState<number>(initialRemBase);
   const [isTargetUnitsPx, setIsTargetUnitsPx] = useState<boolean>(initialTargetUnits);
-  const [isWindowUnitsPx, setIsWindowUnitsPx] = useState<boolean>(initialWindowtUnits);
+  const [isWindowUnitsPx, setIsWindowUnitsPx] = useState<boolean>(initialWindowUnits);
 
   const [minTargetValue, setMinTargetValue] = useState<number>(initialMinTargetValue);
   const [maxTargetValue, setMaxTargetValue] = useState<number>(initialMaxTargetValue);
