@@ -13,9 +13,9 @@ const Calculator = () => {
           <h2 className="pt-2">Calculator Settings</h2>
           <RemControls />
           <div className="flex gap-8 p-4 ">
-            <div className="flex gap-8 w-96 h-36 bg-c-secondary border border-c-background rounded-2xl drop-shadow-box">
-              <div className="flex gap-4 mt-2 h-12">
-                <h3>Target Values</h3>
+            <div className="flex justify-center gap-8 w-96 h-36 bg-c-secondary border border-c-background rounded-2xl drop-shadow-box">
+              <div className="flex items-center gap-6 mt-2 h-12">
+                <h3 className="pb-1">Target Values</h3>
                 <ToggleUnitButton />
               </div>
             </div>
