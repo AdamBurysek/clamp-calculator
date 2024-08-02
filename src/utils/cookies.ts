@@ -1,8 +1,4 @@
-export const setCookie = (
-  name: string,
-  value: string = "",
-  days: number = 7
-): void => {
+export const setCookie = (name: string, value: string = "", days: number = 7): void => {
   const date = new Date();
   date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
   const expires = date.toUTCString();
@@ -21,6 +17,7 @@ export const getCookie = (name: string): string | null => {
 // Functions for handling boolean values in cookies
 
 export const stringToBoolean = (value: string | null): boolean => {
+  if (value === null) return true;
   return value === "true";
 };
 

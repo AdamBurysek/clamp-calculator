@@ -15,13 +15,17 @@ const InputControls = () => {
         isUnitpx={isTargetUnitsPx}
         setUnitpx={setIsTargetUnitsPx}
         minValue={minTargetValue}
+        setMinValue={setMinTargetValue}
         maxValue={maxTargetValue}
+        setMaxValue={setMaxTargetValue}
       />
       <InputControlWindow
         isUnitpx={isWindowUnitsPx}
         setUnitpx={setIsWindowUnitsPx}
         minValue={minWindowValue}
+        setMinValue={setMinWindowValue}
         maxValue={maxWindowValue}
+        setMaxValue={setMaxWindowValue}
       />
     </div>
   );

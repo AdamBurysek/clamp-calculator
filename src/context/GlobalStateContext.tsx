@@ -30,9 +30,11 @@ export const useGlobalState = () => {
 };
 
 export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
+  const [initialLoad, setInitialLoad] = useState<boolean>(true);
+
   const initialRemBase = parseInt(getCookie("remBase") || "16", 10);
-  const initialTargetUnits = stringToBoolean(getCookie("targetUnits")) || true;
-  const initialWindowUnits = stringToBoolean(getCookie("windowUnits")) || true;
+  const initialTargetUnits = stringToBoolean(getCookie("targetUnits"));
+  const initialWindowUnits = stringToBoolean(getCookie("windowUnits"));
   const initialMinTargetValue = parseInt(getCookie("minTargetValue") || "16", 10);
   const initialMaxTargetValue = parseInt(getCookie("maxTargetValue") || "24", 10);
   const initialMinWindowValue = parseInt(getCookie("minWindowValue") || "400", 10);
@@ -48,17 +50,23 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const [maxWindowValue, setMaxWindowValue] = useState<number>(initialMaxWindowValue);
 
   useEffect(() => {
+    setInitialLoad(false);
+  }, []);
+
+  useEffect(() => {
     setCookie("remBase", remBase.toString(), 30);
   }, [remBase]);
 
   useEffect(() => {
     setCookie("targetUnits", booleanToString(isTargetUnitsPx), 30);
+    if (initialLoad) return;
     setMinTargetValue(convertUnits(minTargetValue, isTargetUnitsPx, remBase));
     setMaxTargetValue(convertUnits(maxTargetValue, isTargetUnitsPx, remBase));
   }, [isTargetUnitsPx]);
 
   useEffect(() => {
     setCookie("windowUnits", booleanToString(isWindowUnitsPx), 30);
+    if (initialLoad) return;
     setMinWindowValue(convertUnits(minWindowValue, isWindowUnitsPx, remBase));
     setMaxWindowValue(convertUnits(maxWindowValue, isWindowUnitsPx, remBase));
   }, [isWindowUnitsPx]);
