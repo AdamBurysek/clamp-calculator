@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import { booleanToString, getCookie, setCookie, stringToBoolean } from "../utils/cookies";
+import { convertUnits } from "../utils/calculations";
 
 interface GlobalStateProps {
   remBase: number;
@@ -46,28 +47,20 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const [minWindowValue, setMinWindowValue] = useState<number>(initialMinWindowValue);
   const [maxWindowValue, setMaxWindowValue] = useState<number>(initialMaxWindowValue);
 
-  const convertUnits = (value: number, isPx: boolean) => {
-    if (isPx) {
-      return value * remBase;
-    } else {
-      return value / remBase;
-    }
-  };
-
   useEffect(() => {
     setCookie("remBase", remBase.toString(), 30);
   }, [remBase]);
 
   useEffect(() => {
     setCookie("targetUnits", booleanToString(isTargetUnitsPx), 30);
-    setMinTargetValue(convertUnits(minTargetValue, isTargetUnitsPx));
-    setMaxTargetValue(convertUnits(maxTargetValue, isTargetUnitsPx));
+    setMinTargetValue(convertUnits(minTargetValue, isTargetUnitsPx, remBase));
+    setMaxTargetValue(convertUnits(maxTargetValue, isTargetUnitsPx, remBase));
   }, [isTargetUnitsPx]);
 
   useEffect(() => {
     setCookie("windowUnits", booleanToString(isWindowUnitsPx), 30);
-    setMinWindowValue(convertUnits(minWindowValue, isWindowUnitsPx));
-    setMaxWindowValue(convertUnits(maxWindowValue, isWindowUnitsPx));
+    setMinWindowValue(convertUnits(minWindowValue, isWindowUnitsPx, remBase));
+    setMaxWindowValue(convertUnits(maxWindowValue, isWindowUnitsPx, remBase));
   }, [isWindowUnitsPx]);
 
   useEffect(() => {

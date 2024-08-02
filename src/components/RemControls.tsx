@@ -1,31 +1,63 @@
 import React from "react";
 import StepButton from "../components/common/StepButton";
 import { useGlobalState } from "../context/GlobalStateContext";
+import { recalculateRem } from "../utils/calculations";
 
 const RemControls: React.FC = () => {
-  const { remBase, setRemBase } = useGlobalState();
+  const {
+    remBase,
+    isTargetUnitsPx,
+    isWindowUnitsPx,
+    minTargetValue,
+    maxTargetValue,
+    minWindowValue,
+    maxWindowValue,
+    setRemBase,
+    setMinTargetValue,
+    setMaxTargetValue,
+    setMinWindowValue,
+    setMaxWindowValue,
+  } = useGlobalState();
+
+  const updateValues = (oldRemBase: number, newRemBase: number) => {
+    setMinTargetValue(recalculateRem(oldRemBase, newRemBase, isTargetUnitsPx, minTargetValue));
+    setMaxTargetValue(recalculateRem(oldRemBase, newRemBase, isTargetUnitsPx, maxTargetValue));
+    setMinWindowValue(recalculateRem(oldRemBase, newRemBase, isWindowUnitsPx, minWindowValue));
+    setMaxWindowValue(recalculateRem(oldRemBase, newRemBase, isWindowUnitsPx, maxWindowValue));
+  };
 
   const changeRemBase = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const oldRemBase = remBase;
     const type = e.currentTarget.dataset.type;
     if (type === "increment" && remBase <= 1201) {
-      setRemBase(remBase + 1);
+      const newRemBase = remBase + 1;
+      setRemBase(newRemBase);
+      updateValues(oldRemBase, newRemBase);
     } else if (type === "decrement" && remBase > 1) {
-      setRemBase(remBase - 1);
+      const newRemBase = remBase - 1;
+      setRemBase(newRemBase);
+      updateValues(oldRemBase, newRemBase);
     }
   };
 
   const handleRemInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const oldRemBase = remBase;
     const value = e.target.value === "" ? "" : parseInt(e.target.value, 10);
     if (value === "" || (!isNaN(value) && value >= 0 && value <= 1201)) {
-      setRemBase(value as number);
+      const newRemBase = value as number;
+      setRemBase(newRemBase);
+      updateValues(oldRemBase, newRemBase);
     }
   };
 
   const handleRemInputBlur = () => {
+    const oldRemBase = remBase;
     if (remBase === null || remBase < 1) {
       setRemBase(1);
+      updateValues(oldRemBase, 1);
     } else if (remBase > 1201) {
       setRemBase(1201);
+      updateValues(oldRemBase, 1201);
     }
   };
 
