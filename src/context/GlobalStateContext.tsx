@@ -35,10 +35,10 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const initialRemBase = parseInt(getCookie("remBase") || "16", 10);
   const initialTargetUnits = stringToBoolean(getCookie("targetUnits"));
   const initialWindowUnits = stringToBoolean(getCookie("windowUnits"));
-  const initialMinTargetValue = parseInt(getCookie("minTargetValue") || "16", 10);
-  const initialMaxTargetValue = parseInt(getCookie("maxTargetValue") || "24", 10);
-  const initialMinWindowValue = parseInt(getCookie("minWindowValue") || "400", 10);
-  const initialMaxWindowValue = parseInt(getCookie("maxWindowValue") || "1024", 10);
+  const initialMinTargetValue = parseFloat(getCookie("minTargetValue") || "16");
+  const initialMaxTargetValue = parseFloat(getCookie("maxTargetValue") || "24");
+  const initialMinWindowValue = parseFloat(getCookie("minWindowValue") || "400");
+  const initialMaxWindowValue = parseFloat(getCookie("maxWindowValue") || "1024");
 
   const [remBase, setRemBase] = useState<number>(initialRemBase);
   const [isTargetUnitsPx, setIsTargetUnitsPx] = useState<boolean>(initialTargetUnits);
