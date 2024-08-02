@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import StepButton from "../components/common/StepButton";
 import { useGlobalState } from "../context/GlobalStateContext";
 import { recalculateRem } from "../utils/calculations";
@@ -19,6 +19,8 @@ const RemControls: React.FC = () => {
     setMaxWindowValue,
   } = useGlobalState();
 
+  const [localRemBase, setLocalRemBase] = useState<number>(remBase);
+
   const updateValues = (oldRemBase: number, newRemBase: number) => {
     setMinTargetValue(recalculateRem(oldRemBase, newRemBase, isTargetUnitsPx, minTargetValue));
     setMaxTargetValue(recalculateRem(oldRemBase, newRemBase, isTargetUnitsPx, maxTargetValue));
@@ -32,35 +34,38 @@ const RemControls: React.FC = () => {
     if (type === "increment" && remBase <= 1201) {
       const newRemBase = remBase + 1;
       setRemBase(newRemBase);
+      setLocalRemBase(newRemBase);
       updateValues(oldRemBase, newRemBase);
     } else if (type === "decrement" && remBase > 1) {
       const newRemBase = remBase - 1;
       setRemBase(newRemBase);
+      setLocalRemBase(newRemBase);
       updateValues(oldRemBase, newRemBase);
     }
   };
 
   const handleRemInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const oldRemBase = remBase;
     const value = e.target.value === "" ? "" : parseInt(e.target.value, 10);
     if (value === "" || (!isNaN(value) && value >= 0 && value <= 1201)) {
-      const newRemBase = value as number;
-      setRemBase(newRemBase);
-      updateValues(oldRemBase, newRemBase);
+      setLocalRemBase(value as number);
     }
   };
 
   const handleRemInputBlur = () => {
     const oldRemBase = remBase;
-    if (remBase === null || remBase < 1) {
+    const newRemBase = localRemBase;
+
+    if (newRemBase === null || newRemBase < 1) {
       setRemBase(1);
       updateValues(oldRemBase, 1);
-    } else if (remBase > 1201) {
+    } else if (newRemBase > 1201) {
       setRemBase(1201);
       updateValues(oldRemBase, 1201);
+    } else {
+      setRemBase(newRemBase);
+      updateValues(oldRemBase, newRemBase);
     }
   };
-
   const handleRemInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" || e.key === "Escape") {
       (e.target as HTMLInputElement).blur();
@@ -76,7 +81,7 @@ const RemControls: React.FC = () => {
           <input
             type="number"
             aria-label="Rem Base Value"
-            value={remBase}
+            value={localRemBase}
             onChange={handleRemInputChange}
             onBlur={handleRemInputBlur}
             onKeyDown={handleRemInputKeyDown}
