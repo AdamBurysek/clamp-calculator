@@ -30,6 +30,7 @@ export const useGlobalState = () => {
 };
 
 export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
+  // Fix issue with recalulations on initial load
   const [initialLoad, setInitialLoad] = useState<boolean>(true);
 
   const initialRemBase = parseInt(getCookie("remBase") || "16", 10);

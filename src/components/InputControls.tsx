@@ -12,6 +12,7 @@ const InputControls = () => {
   return (
     <div className="flex  gap-8 p-4 ">
       <InputControlWindow
+        header="Target Values"
         isUnitpx={isTargetUnitsPx}
         setUnitpx={setIsTargetUnitsPx}
         minValue={minTargetValue}
@@ -20,6 +21,7 @@ const InputControls = () => {
         setMaxValue={setMaxTargetValue}
       />
       <InputControlWindow
+        header="Window Values"
         isUnitpx={isWindowUnitsPx}
         setUnitpx={setIsWindowUnitsPx}
         minValue={minWindowValue}
