@@ -1,10 +1,14 @@
-import { useState } from "react";
 import { cn } from "../../utils/classNames";
 
 interface ToggleButtonProps {
   isActive: boolean;
   label: string;
   onClick: () => void;
+}
+
+interface ToggleUnitButtonProps {
+  isUnitpx: boolean | undefined;
+  setUnitpx: ((isUnitpx: boolean) => void) | undefined;
 }
 
 const ToggleButton = ({ isActive, label, onClick }: ToggleButtonProps) => (
@@ -19,17 +23,16 @@ const ToggleButton = ({ isActive, label, onClick }: ToggleButtonProps) => (
   </button>
 );
 
-const ToggleUnitButton = () => {
-  const [usePx, setUsePx] = useState(true);
-
+const ToggleUnitButton = ({ isUnitpx, setUnitpx }: ToggleUnitButtonProps) => {
   const handleUnitChange = () => {
-    setUsePx(!usePx);
+    if (!setUnitpx) return;
+    setUnitpx(!isUnitpx);
   };
 
   return (
     <div className="flex h-9 items-center px-1 bg-c-background rounded-full shadow-md">
-      <ToggleButton isActive={usePx} label="px" onClick={handleUnitChange} />
-      <ToggleButton isActive={!usePx} label="rem" onClick={handleUnitChange} />
+      <ToggleButton isActive={isUnitpx!} label="px" onClick={handleUnitChange} />
+      <ToggleButton isActive={!isUnitpx} label="rem" onClick={handleUnitChange} />
     </div>
   );
 };

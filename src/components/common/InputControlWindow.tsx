@@ -2,6 +2,7 @@ import ToggleUnitButton from "./ToggleUnitButton";
 
 interface InputControlWindowProps {
   isUnitpx?: boolean;
+  setUnitpx?: (isUnitpx: boolean) => void;
   minValue?: number;
   maxValue?: number;
 }
@@ -50,7 +51,12 @@ const InputForm = ({
   );
 };
 
-const InputControlWindow = ({ isUnitpx, minValue, maxValue }: InputControlWindowProps) => {
+const InputControlWindow = ({
+  isUnitpx,
+  minValue,
+  maxValue,
+  setUnitpx,
+}: InputControlWindowProps) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // const value = e.target.value === "" ? "" : parseInt(e.target.value, 10);
     // if (value === "" || (!isNaN(value) && value >= 0 && value <= 9999)) {
@@ -67,7 +73,7 @@ const InputControlWindow = ({ isUnitpx, minValue, maxValue }: InputControlWindow
     <div className="flex flex-col items-center gap-8 w-96 h-36 bg-c-secondary border border-c-background rounded-2xl drop-shadow-box">
       <div className="flex items-center gap-6 mt-2 h-12">
         <h3 className="pb-1">Target Values</h3>
-        <ToggleUnitButton />
+        <ToggleUnitButton isUnitpx={isUnitpx} setUnitpx={setUnitpx} />
       </div>
       <div className="flex gap-4 ">
         <InputForm
