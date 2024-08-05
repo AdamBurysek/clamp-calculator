@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 import About from "./pages/About.tsx";
 import HowItWorks from "./pages/HowItWorks.tsx";
 import Calculator from "./pages/Calculator.tsx";
+import { GlobalStateProvider } from "./context/GlobalStateContext.tsx";
 
 const Layout = () => (
   <>
@@ -24,7 +25,11 @@ const router = createBrowserRouter(
       children: [
         {
           path: "/",
-          element: <Calculator />,
+          element: (
+            <GlobalStateProvider>
+              <Calculator />
+            </GlobalStateProvider>
+          ),
         },
         {
           path: "/how-it-works",

@@ -33,6 +33,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const [minWindowValue, setMinWindowValue] = useState<number>(initialMinWindowValue);
   const [maxWindowValue, setMaxWindowValue] = useState<number>(initialMaxWindowValue);
 
+  const [clampValue, setClampValue] = useState<string>("");
+
   useEffect(() => {
     setInitialLoad(false);
   }, []);
@@ -72,7 +74,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   }, [maxWindowValue]);
 
   useEffect(() => {
-    console.log(
+    setClampValue(
       generateClamp(
         minTargetValue,
         maxTargetValue,
@@ -102,6 +104,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         setMinWindowValue,
         maxWindowValue,
         setMaxWindowValue,
+        clampValue,
+        setClampValue,
       }}
     >
       {children}

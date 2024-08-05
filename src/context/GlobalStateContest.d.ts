@@ -13,4 +13,6 @@ interface GlobalStateProps {
   setMinWindowValue: React.Dispatch<React.SetStateAction<number>>;
   maxWindowValue: number;
   setMaxWindowValue: React.Dispatch<React.SetStateAction<number>>;
+  clampValue: string;
+  setClampValue: React.Dispatch<React.SetStateAction<string>>;
 }
