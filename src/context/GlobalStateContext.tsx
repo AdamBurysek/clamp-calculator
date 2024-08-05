@@ -46,14 +46,14 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   }, [remBase]);
 
   useEffect(() => {
-    setCookie("targetUnits", booleanToString(isTargetUnitsPx), 30);
+    setCookie("targetUnitsPx", booleanToString(isTargetUnitsPx), 30);
     if (initialLoad) return;
     setMinTargetValue(convertUnits(minTargetValue, isTargetUnitsPx, remBase));
     setMaxTargetValue(convertUnits(maxTargetValue, isTargetUnitsPx, remBase));
   }, [isTargetUnitsPx]);
 
   useEffect(() => {
-    setCookie("windowUnits", booleanToString(isWindowUnitsPx), 30);
+    setCookie("windowUnitsPx", booleanToString(isWindowUnitsPx), 30);
     if (initialLoad) return;
     setMinWindowValue(convertUnits(minWindowValue, isWindowUnitsPx, remBase));
     setMaxWindowValue(convertUnits(maxWindowValue, isWindowUnitsPx, remBase));

@@ -59,21 +59,21 @@ const InputControlWindow = ({
       <div className="flex gap-4 ">
         <InputForm
           type="min"
-          min={1}
+          min={0.01}
           max={9999}
           isUnitpx={isUnitpx}
           value={minValue}
           setValue={setMinValue}
-          ariaLabel="Min Target Value"
+          ariaLabel="Min Value"
         />
         <InputForm
           type="max"
-          min={1}
+          min={0.01}
           max={9999}
           isUnitpx={isUnitpx}
           value={maxValue}
           setValue={setMaxValue}
-          ariaLabel="Max Target Value"
+          ariaLabel="Max Value"
         />
       </div>
     </div>
