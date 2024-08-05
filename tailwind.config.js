@@ -52,6 +52,10 @@ export default {
           'sans-serif',
         ],
       },
+      screens: {
+        's': '445px',
+        'm': '860px',
+      },
       transitionProperty: {
         'max-height': 'max-height',
         'filter': 'filter',

@@ -2,15 +2,23 @@ import { useGlobalState } from "../../context/GlobalStateContext";
 import InputControlWindow from "./InputControlWindow";
 
 const InputControls = () => {
-  const { isTargetUnitsPx, setIsTargetUnitsPx } = useGlobalState();
-  const { isWindowUnitsPx, setIsWindowUnitsPx } = useGlobalState();
-  const { minTargetValue, setMinTargetValue } = useGlobalState();
-  const { maxTargetValue, setMaxTargetValue } = useGlobalState();
-  const { minWindowValue, setMinWindowValue } = useGlobalState();
-  const { maxWindowValue, setMaxWindowValue } = useGlobalState();
+  const {
+    isTargetUnitsPx,
+    setIsTargetUnitsPx,
+    isWindowUnitsPx,
+    setIsWindowUnitsPx,
+    minTargetValue,
+    setMinTargetValue,
+    maxTargetValue,
+    setMaxTargetValue,
+    minWindowValue,
+    setMinWindowValue,
+    maxWindowValue,
+    setMaxWindowValue,
+  } = useGlobalState();
 
   return (
-    <div className="flex  gap-8 p-4 ">
+    <div className="flex gap-8 p-4 max-m:flex-col">
       <InputControlWindow
         header="Target Values"
         isUnitpx={isTargetUnitsPx}
