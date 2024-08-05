@@ -1,5 +1,5 @@
-import { useGlobalState } from "../context/GlobalStateContext";
-import InputControlWindow from "./common/InputControlWindow";
+import { useGlobalState } from "../../context/GlobalStateContext";
+import InputControlWindow from "./InputControlWindow";
 
 const InputControls = () => {
   const { isTargetUnitsPx, setIsTargetUnitsPx } = useGlobalState();

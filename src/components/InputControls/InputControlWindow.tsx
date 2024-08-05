@@ -1,24 +1,4 @@
-import ToggleUnitButton from "./ToggleUnitButton";
-
-interface InputControlWindowProps {
-  header: string;
-  isUnitpx?: boolean;
-  setUnitpx?: (isUnitpx: boolean) => void;
-  minValue?: number;
-  setMinValue?: (minValue: number) => void;
-  maxValue?: number;
-  setMaxValue?: (maxValue: number) => void;
-}
-
-interface InputFormProps {
-  type?: "min" | "max";
-  min: number;
-  max: number;
-  isUnitpx: boolean | undefined;
-  value: number | undefined;
-  setValue: ((value: number) => void) | undefined;
-  ariaLabel: string;
-}
+import ToggleUnitButton from "../common/ToggleUnitButton";
 
 const InputForm = ({ type, min, max, isUnitpx, value, setValue, ariaLabel }: InputFormProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

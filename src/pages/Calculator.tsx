@@ -1,4 +1,4 @@
-import InputControls from "../components/InputControls";
+import InputControls from "../components/InputControls/InputControls";
 import RemControls from "../components/RemControls";
 import { GlobalStateProvider } from "../context/GlobalStateContext";
 
