@@ -26,48 +26,45 @@ const formatNumber = (value: number): string => {
   return parseFloat(value.toFixed(3)).toString();
 };
 
-export const generateClampRem = (
+export const generateClamp = (
   minTargetValue: number,
   maxTargetValue: number,
   minWindowValue: number,
   maxWindowValue: number,
   isTargetUnitsPx: boolean,
   isWindowUnitsPx: boolean,
-  remBase: number
+  remBase: number,
+  outputInRem: boolean
 ): string => {
-  const minTargetRem = toRem(minTargetValue, isTargetUnitsPx, remBase);
-  const maxTargetRem = toRem(maxTargetValue, isTargetUnitsPx, remBase);
-  const minWindowRem = toRem(minWindowValue, isWindowUnitsPx, remBase);
-  const maxWindowRem = toRem(maxWindowValue, isWindowUnitsPx, remBase);
+  if (!(minTargetValue && maxTargetValue && minWindowValue && maxWindowValue)) {
+    return "";
+  }
 
-  const slope = (maxTargetRem - minTargetRem) / (maxWindowRem - minWindowRem);
-  const intercept = minTargetRem - slope * minWindowRem;
-  const slopePercentage = slope * 100;
+  if (outputInRem) {
+    const minTargetRem = toRem(minTargetValue, isTargetUnitsPx, remBase);
+    const maxTargetRem = toRem(maxTargetValue, isTargetUnitsPx, remBase);
+    const minWindowRem = toRem(minWindowValue, isWindowUnitsPx, remBase);
+    const maxWindowRem = toRem(maxWindowValue, isWindowUnitsPx, remBase);
 
-  return `clamp(${formatNumber(minTargetRem)}rem, ${formatNumber(intercept)}rem + ${formatNumber(
-    slopePercentage
-  )}vw, ${formatNumber(maxTargetRem)}rem)`;
-};
+    const slope = (maxTargetRem - minTargetRem) / (maxWindowRem - minWindowRem);
+    const intercept = minTargetRem - slope * minWindowRem;
+    const slopePercentage = slope * 100;
 
-export const generateClampPx = (
-  minTargetValue: number,
-  maxTargetValue: number,
-  minWindowValue: number,
-  maxWindowValue: number,
-  isTargetUnitsPx: boolean,
-  isWindowUnitsPx: boolean,
-  remBase: number
-): string => {
-  const minTargetPx = toPx(minTargetValue, isTargetUnitsPx, remBase);
-  const maxTargetPx = toPx(maxTargetValue, isTargetUnitsPx, remBase);
-  const minWindowPx = toPx(minWindowValue, isWindowUnitsPx, remBase);
-  const maxWindowPx = toPx(maxWindowValue, isWindowUnitsPx, remBase);
+    return `clamp(${formatNumber(minTargetRem)}rem, ${formatNumber(intercept)}rem + ${formatNumber(
+      slopePercentage
+    )}vw, ${formatNumber(maxTargetRem)}rem)`;
+  } else {
+    const minTargetPx = toPx(minTargetValue, isTargetUnitsPx, remBase);
+    const maxTargetPx = toPx(maxTargetValue, isTargetUnitsPx, remBase);
+    const minWindowPx = toPx(minWindowValue, isWindowUnitsPx, remBase);
+    const maxWindowPx = toPx(maxWindowValue, isWindowUnitsPx, remBase);
 
-  const slope = (maxTargetPx - minTargetPx) / (maxWindowPx - minWindowPx);
-  const intercept = minTargetPx - slope * minWindowPx;
-  const slopePercentage = slope * 100;
+    const slope = (maxTargetPx - minTargetPx) / (maxWindowPx - minWindowPx);
+    const intercept = minTargetPx - slope * minWindowPx;
+    const slopePercentage = slope * 100;
 
-  return `clamp(${formatNumber(minTargetPx)}px, ${formatNumber(intercept)}px + ${formatNumber(
-    slopePercentage
-  )}vw, ${formatNumber(maxTargetPx)}px)`;
+    return `clamp(${formatNumber(minTargetPx)}px, ${formatNumber(intercept)}px + ${formatNumber(
+      slopePercentage
+    )}vw, ${formatNumber(maxTargetPx)}px)`;
+  }
 };
