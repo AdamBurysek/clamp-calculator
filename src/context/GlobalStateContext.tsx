@@ -80,27 +80,29 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   }, [outputInRem]);
 
   useEffect(() => {
-    setClampValue(
-      outputInRem
-        ? generateClampRem(
-            minTargetValue,
-            maxTargetValue,
-            minWindowValue,
-            maxWindowValue,
-            isTargetUnitsPx,
-            isWindowUnitsPx,
-            remBase
-          )
-        : generateClampPx(
-            minTargetValue,
-            maxTargetValue,
-            minWindowValue,
-            maxWindowValue,
-            isTargetUnitsPx,
-            isWindowUnitsPx,
-            remBase
-          )
-    );
+    if (minTargetValue && maxTargetValue && minWindowValue && maxWindowValue) {
+      setClampValue(
+        outputInRem
+          ? generateClampRem(
+              minTargetValue,
+              maxTargetValue,
+              minWindowValue,
+              maxWindowValue,
+              isTargetUnitsPx,
+              isWindowUnitsPx,
+              remBase
+            )
+          : generateClampPx(
+              minTargetValue,
+              maxTargetValue,
+              minWindowValue,
+              maxWindowValue,
+              isTargetUnitsPx,
+              isWindowUnitsPx,
+              remBase
+            )
+      );
+    }
   }, [minTargetValue, maxTargetValue, minWindowValue, maxWindowValue, outputInRem]);
 
   return (
