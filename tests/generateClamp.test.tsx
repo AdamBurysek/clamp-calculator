@@ -1,9 +1,18 @@
 import { render, screen } from "@testing-library/react";
-import React from "react";
 import { describe, expect, it } from "vitest";
 import { generateClamp } from "../src/utils/calculations";
 
 const remBase = 16;
+
+interface TestProps {
+  minTargetValue: number;
+  maxTargetValue: number;
+  minWindowValue: number;
+  maxWindowValue: number;
+  isTargetUnitsPx: boolean;
+  isWindowUnitsPx: boolean;
+  outputInRem: boolean;
+}
 
 const TestComponent = ({
   minTargetValue,
@@ -13,7 +22,7 @@ const TestComponent = ({
   isTargetUnitsPx,
   isWindowUnitsPx,
   outputInRem,
-}) => {
+}: TestProps) => {
   const clampValue = generateClamp(
     minTargetValue,
     maxTargetValue,
