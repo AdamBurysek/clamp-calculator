@@ -14,7 +14,7 @@ const Calculator = () => {
         <RemControls />
         <InputControls />
       </div>
-      <p>Clamp Value: {clampValue}</p>
+      <p>{clampValue}</p>
       <input
         type="checkbox"
         name="outputInRem"
