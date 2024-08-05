@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import { booleanToString, getCookie, setCookie, stringToBoolean } from "../utils/cookies";
-import { convertUnits, generateClamp } from "../utils/calculations";
+import { convertUnits, generateClampPx, generateClampRem } from "../utils/calculations";
 
 const GlobalStateContext = createContext<GlobalStateProps | undefined>(undefined);
 
@@ -23,6 +23,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const initialMaxTargetValue = parseFloat(getCookie("maxTargetValue") || "24");
   const initialMinWindowValue = parseFloat(getCookie("minWindowValue") || "400");
   const initialMaxWindowValue = parseFloat(getCookie("maxWindowValue") || "1024");
+  const initialOutputInRem = stringToBoolean(getCookie("outputInRem"));
 
   const [remBase, setRemBase] = useState<number>(initialRemBase);
   const [isTargetUnitsPx, setIsTargetUnitsPx] = useState<boolean>(initialTargetUnits);
@@ -33,6 +34,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const [minWindowValue, setMinWindowValue] = useState<number>(initialMinWindowValue);
   const [maxWindowValue, setMaxWindowValue] = useState<number>(initialMaxWindowValue);
 
+  const [outputInRem, setOutputInRem] = useState<boolean>(initialOutputInRem);
   const [clampValue, setClampValue] = useState<string>("");
 
   useEffect(() => {
@@ -74,18 +76,32 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   }, [maxWindowValue]);
 
   useEffect(() => {
+    setCookie("outputInRem", booleanToString(outputInRem), 30);
+  }, [outputInRem]);
+
+  useEffect(() => {
     setClampValue(
-      generateClamp(
-        minTargetValue,
-        maxTargetValue,
-        minWindowValue,
-        maxWindowValue,
-        isTargetUnitsPx,
-        isWindowUnitsPx,
-        remBase
-      )
+      outputInRem
+        ? generateClampRem(
+            minTargetValue,
+            maxTargetValue,
+            minWindowValue,
+            maxWindowValue,
+            isTargetUnitsPx,
+            isWindowUnitsPx,
+            remBase
+          )
+        : generateClampPx(
+            minTargetValue,
+            maxTargetValue,
+            minWindowValue,
+            maxWindowValue,
+            isTargetUnitsPx,
+            isWindowUnitsPx,
+            remBase
+          )
     );
-  }, [minTargetValue, maxTargetValue, minWindowValue, maxWindowValue]);
+  }, [minTargetValue, maxTargetValue, minWindowValue, maxWindowValue, outputInRem]);
 
   return (
     <GlobalStateContext.Provider
@@ -106,6 +122,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         setMaxWindowValue,
         clampValue,
         setClampValue,
+        outputInRem,
+        setOutputInRem,
       }}
     >
       {children}
