@@ -31,6 +31,7 @@ const InputForm = ({ type, min, max, isUnitpx, value, setValue, ariaLabel }: Inp
           onBlur={handleBlur}
           onKeyDown={handleInputKeyDown}
           aria-label={ariaLabel}
+          name={ariaLabel}
           className="w-14 text-center bg-c-primary text-c-background font-bold"
           min={min}
           max={max}

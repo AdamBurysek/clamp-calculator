@@ -81,6 +81,7 @@ const RemControls: React.FC = () => {
           <input
             type="number"
             aria-label="Rem Base Value"
+            name="Rem Base Value"
             value={localRemBase}
             onChange={handleRemInputChange}
             onBlur={handleRemInputBlur}
