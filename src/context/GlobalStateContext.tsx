@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import { booleanToString, getCookie, setCookie, stringToBoolean } from "../utils/cookies";
-import { convertUnits } from "../utils/calculations";
+import { convertUnits, generateClamp } from "../utils/calculations";
 
 const GlobalStateContext = createContext<GlobalStateProps | undefined>(undefined);
 
@@ -71,33 +71,18 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     setCookie("maxWindowValue", maxWindowValue.toString(), 30);
   }, [maxWindowValue]);
 
-  const toRem = (value: number, isPx: boolean): number => {
-    return isPx ? value / remBase : value;
-  };
-
-  const formatNumber = (value: number): string => {
-    if (value === 0) return "0";
-    return parseFloat(value.toFixed(3)).toString();
-  };
-
-  const generateClamp = (): string => {
-    const minTargetRem = toRem(minTargetValue, isTargetUnitsPx);
-    const maxTargetRem = toRem(maxTargetValue, isTargetUnitsPx);
-    const minWindowRem = toRem(minWindowValue, isWindowUnitsPx);
-    const maxWindowRem = toRem(maxWindowValue, isWindowUnitsPx);
-
-    const slope = (maxTargetRem - minTargetRem) / (maxWindowRem - minWindowRem);
-    const intercept = minTargetRem - slope * minWindowRem;
-
-    const slopePercentage = slope * 100;
-
-    return `clamp(${formatNumber(minTargetRem)}rem, ${formatNumber(intercept)}rem + ${formatNumber(
-      slopePercentage
-    )}vw, ${formatNumber(maxTargetRem)}rem)`;
-  };
-
   useEffect(() => {
-    console.log(generateClamp());
+    console.log(
+      generateClamp(
+        minTargetValue,
+        maxTargetValue,
+        minWindowValue,
+        maxWindowValue,
+        isTargetUnitsPx,
+        isWindowUnitsPx,
+        remBase
+      )
+    );
   }, [minTargetValue, maxTargetValue, minWindowValue, maxWindowValue]);
 
   return (
