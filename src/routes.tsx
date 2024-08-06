@@ -1,4 +1,4 @@
-import { GlobalStateProvider } from "./context/GlobalStateContext.tsx";
+import { GlobalStateProvider } from "./providers/GlobalStateProvider.tsx";
 import About from "./pages/About.tsx";
 import Calculator from "./pages/Calculator.tsx";
 import HowItWorks from "./pages/HowItWorks.tsx";

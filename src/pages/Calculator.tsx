@@ -1,6 +1,6 @@
 import InputControls from "../components/InputControls/InputControls";
 import RemControls from "../components/RemControls";
-import { useGlobalState } from "../context/GlobalStateContext";
+import useGlobalState from "../hooks/useGlobalState";
 
 const Calculator = () => {
   const { clampValue, outputInRem, setOutputInRem } = useGlobalState();

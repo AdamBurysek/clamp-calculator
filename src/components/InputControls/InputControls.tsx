@@ -1,4 +1,4 @@
-import { useGlobalState } from "../../context/GlobalStateContext";
+import useGlobalState from "../../hooks/useGlobalState";
 import InputControlWindow from "./InputControlWindow";
 
 const InputControls = () => {

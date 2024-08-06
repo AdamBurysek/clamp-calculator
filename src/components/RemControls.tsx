@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import StepButton from "../components/common/StepButton";
-import { useGlobalState } from "../context/GlobalStateContext";
 import { recalculateRem } from "../utils/calculations";
+import useGlobalState from "../hooks/useGlobalState";
 
 const RemControls: React.FC = () => {
   const {
