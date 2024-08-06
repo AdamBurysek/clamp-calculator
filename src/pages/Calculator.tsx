@@ -10,6 +10,7 @@ const Calculator = () => {
       navigator.clipboard.writeText(clampValue);
     }
   };
+
   return (
     <div className="w-full max-w-content flex flex-col items-center ">
       <h1 className="py-4 bg-gradient-to-r from-c-grey-nine from-20% via-c-primary via-85% to-c-grey-nine to-50% inline-block text-transparent bg-clip-text">
@@ -32,7 +33,7 @@ const Calculator = () => {
             <p>{clampValue}</p>
           </div>
           <button
-            className="w-24 bg-c-primary mr-4 text-c-background font-bold rounded-r-xl"
+            className="w-24 bg-c-primary mr-4 text-c-background font-bold rounded-r-xl hover:bg-green-600 active:bg-green-500"
             onClick={handleCopy}
           >
             COPY

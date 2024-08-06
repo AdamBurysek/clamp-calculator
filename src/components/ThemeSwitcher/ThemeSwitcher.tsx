@@ -4,8 +4,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./ThemeSwitcher.module.css";
 import { getCookie, setCookie } from "../../utils/cookies";
 
-// eslint-disable-next-line no-unused-labels
-TODO: "Make this with tailwind";
+// TODO: "Make this with tailwind";
 
 const Light = () => (
   <svg
