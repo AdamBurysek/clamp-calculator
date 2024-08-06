@@ -19,8 +19,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const [initialLoad, setInitialLoad] = useState<boolean>(true);
 
   const initialRemBase = parseInt(getCookie("remBase") || "16", 10);
-  const initialTargetUnits = stringToBoolean(getCookie("targetUnits"));
-  const initialWindowUnits = stringToBoolean(getCookie("windowUnits"));
+  const initialTargetUnits = stringToBoolean(getCookie("targetUnitsPx"));
+  const initialWindowUnits = stringToBoolean(getCookie("windowUnitsPx"));
   const initialMinTargetValue = parseFloat(getCookie("minTargetValue") || "16");
   const initialMaxTargetValue = parseFloat(getCookie("maxTargetValue") || "24");
   const initialMinWindowValue = parseFloat(getCookie("minWindowValue") || "400");
