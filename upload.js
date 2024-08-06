@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import dotenv from 'dotenv';
 import FTPClient from 'ftp';
 import fs from 'fs';
