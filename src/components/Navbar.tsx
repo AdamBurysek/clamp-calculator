@@ -28,7 +28,7 @@ const Navbar = () => {
       className={cn(
         "fixed z-50 w-full max-h-16 h-screen flex justify-center bg-c-grey-one duration-15 transition-[max-height] duration-1000",
         {
-          "position-absolute max-h-screen bg-c-grey-two md:max-h-16 md:bg-c-grey-one": menuOpened,
+          "max-h-screen bg-c-grey-two md:max-h-16 md:bg-c-grey-one": menuOpened,
         }
       )}
     >
