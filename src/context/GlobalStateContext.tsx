@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { ReactNode, createContext, useContext, useEffect, useState } from "react";
 import { convertUnits, generateClamp } from "../utils/calculations";
 import { booleanToString, getCookie, setCookie, stringToBoolean } from "../utils/cookies";

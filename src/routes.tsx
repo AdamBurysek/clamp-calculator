@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { GlobalStateProvider } from "./context/GlobalStateContext.tsx";
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar.tsx";

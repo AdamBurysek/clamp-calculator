@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./ThemeSwitcher.module.css";
 import { getCookie, setCookie } from "../../utils/cookies";
 
+// eslint-disable-next-line no-unused-labels
 TODO: "Make this with tailwind";
 
 const Light = () => (
@@ -114,11 +115,7 @@ const ThemeSwitcher = () => {
       >
         <Dark />
       </button>
-      <motion.div
-        className={styles.slider}
-        layout
-        transition={{ duration, type: "spring" }}
-      />
+      <motion.div className={styles.slider} layout transition={{ duration, type: "spring" }} />
     </div>
   );
 };
