@@ -1,7 +1,6 @@
+import { GlobalStateProvider } from "./context/GlobalStateContext.tsx";
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar.tsx";
-import { GlobalStateProvider } from "./context/GlobalStateContext.tsx";
-import "./index.css";
 import About from "./pages/About.tsx";
 import Calculator from "./pages/Calculator.tsx";
 import HowItWorks from "./pages/HowItWorks.tsx";
