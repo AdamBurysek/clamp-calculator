@@ -1,19 +1,8 @@
-/* eslint-disable react-refresh/only-export-components */
 import { GlobalStateProvider } from "./context/GlobalStateContext.tsx";
-import { Outlet } from "react-router-dom";
-import Navbar from "./components/Navbar.tsx";
 import About from "./pages/About.tsx";
 import Calculator from "./pages/Calculator.tsx";
 import HowItWorks from "./pages/HowItWorks.tsx";
-
-const Layout = () => (
-  <>
-    <Navbar />
-    <main className="flex justify-center pt-16">
-      <Outlet />
-    </main>
-  </>
-);
+import Layout from "./pages/Layout.tsx";
 
 const routes = [
   {
