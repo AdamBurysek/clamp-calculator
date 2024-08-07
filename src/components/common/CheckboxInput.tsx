@@ -9,6 +9,7 @@ interface Props {
 const CheckboxInput: React.FC<Props> = ({ onChange, checked, label }) => {
   return (
     <div className="flex items-center">
+      <label htmlFor={label}>{label}</label>
       <div className="relative flex cursor-pointer items-center rounded-full p-3">
         <input
           type="checkbox"
@@ -36,7 +37,6 @@ const CheckboxInput: React.FC<Props> = ({ onChange, checked, label }) => {
           </svg>
         </div>
       </div>
-      <label htmlFor={label}>{label}</label>
     </div>
   );
 };
