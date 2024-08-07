@@ -84,7 +84,16 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         outputInRem
       )
     );
-  }, [minTargetValue, maxTargetValue, minWindowValue, maxWindowValue, outputInRem]);
+  }, [
+    minTargetValue,
+    maxTargetValue,
+    minWindowValue,
+    maxWindowValue,
+    isTargetUnitsPx,
+    isWindowUnitsPx,
+    remBase,
+    outputInRem,
+  ]);
 
   return (
     <GlobalStateContext.Provider
