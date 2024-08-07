@@ -15,7 +15,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const initialMaxTargetValue = parseFloat(getCookie("maxTargetValue") || "24");
   const initialMinWindowValue = parseFloat(getCookie("minWindowValue") || "400");
   const initialMaxWindowValue = parseFloat(getCookie("maxWindowValue") || "1024");
-  const initialOutputInRem = stringToBoolean(getCookie("outputInRem"));
+  const initialOutputInPx = stringToBoolean(getCookie("outputInPx"));
 
   const [remBase, setRemBase] = useState<number>(initialRemBase);
   const [isTargetUnitsPx, setIsTargetUnitsPx] = useState<boolean>(initialTargetUnits);
@@ -26,7 +26,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const [minWindowValue, setMinWindowValue] = useState<number>(initialMinWindowValue);
   const [maxWindowValue, setMaxWindowValue] = useState<number>(initialMaxWindowValue);
 
-  const [outputInRem, setOutputInRem] = useState<boolean>(initialOutputInRem);
+  const [outputInPx, setOutputInPx] = useState<boolean>(initialOutputInPx);
   const [clampValue, setClampValue] = useState<string>("");
 
   useEffect(() => {
@@ -68,8 +68,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   }, [maxWindowValue]);
 
   useEffect(() => {
-    setCookie("outputInRem", booleanToString(outputInRem), 30);
-  }, [outputInRem]);
+    setCookie("outputInPx", booleanToString(outputInPx), 30);
+  }, [outputInPx]);
 
   useEffect(() => {
     setClampValue(
@@ -81,7 +81,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         isTargetUnitsPx,
         isWindowUnitsPx,
         remBase,
-        outputInRem
+        outputInPx
       )
     );
   }, [
@@ -92,7 +92,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     isTargetUnitsPx,
     isWindowUnitsPx,
     remBase,
-    outputInRem,
+    outputInPx,
   ]);
 
   return (
@@ -114,8 +114,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         setMaxWindowValue,
         clampValue,
         setClampValue,
-        outputInRem,
-        setOutputInRem,
+        outputInPx,
+        setOutputInPx,
       }}
     >
       {children}
