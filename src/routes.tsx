@@ -10,7 +10,7 @@ const routes = [
     element: <Layout />,
     children: [
       {
-        path: "/",
+        index: true,
         element: (
           <GlobalStateProvider>
             <Calculator />
