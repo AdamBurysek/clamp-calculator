@@ -1,15 +1,10 @@
+import ClampOutputBox from "../components/ClampOutputBox";
 import InputControls from "../components/InputControls/InputControls";
 import RemControls from "../components/RemControls";
 import useGlobalState from "../hooks/useGlobalState";
 
 const Calculator = () => {
-  const { clampValue, outputInRem, setOutputInRem } = useGlobalState();
-
-  const handleCopy = () => {
-    if (clampValue) {
-      navigator.clipboard.writeText(clampValue);
-    }
-  };
+  const { outputInRem, setOutputInRem } = useGlobalState();
 
   return (
     <div className="w-full max-w-content flex flex-col items-center ">
@@ -28,17 +23,7 @@ const Calculator = () => {
             onChange={() => setOutputInRem(!outputInRem)}
           />
         </div>
-        <div className="flex my-4 py-4 pl-4 bg-c-secondary rounded-2xl ">
-          <div className="w-full text-center py-4 bg-c-grey-one rounded-l-xl">
-            <p>{clampValue}</p>
-          </div>
-          <button
-            className="w-24 bg-c-primary mr-4 text-c-background font-bold rounded-r-xl hover:bg-green-600 active:bg-green-500"
-            onClick={handleCopy}
-          >
-            COPY
-          </button>
-        </div>
+        <ClampOutputBox />
       </div>
     </div>
   );
