@@ -1,6 +1,7 @@
 import useGlobalState from "../hooks/useGlobalState";
-import CheckboxInput from "./common/CheckboxInput";
+
 import OptionInput from "./common/OptionInput";
+import ToggleOption from "./common/ToggleOption";
 
 const AdditionalControls = () => {
   const { outputInPx, setOutputInPx } = useGlobalState();
@@ -16,11 +17,16 @@ const AdditionalControls = () => {
 
   return (
     <div>
-      <OptionInput options={targetOptions} />
-      <CheckboxInput
+      <OptionInput options={targetOptions} label="Target" name="clamp-options" />
+      {/* <CheckboxInput
         onChange={() => setOutputInPx(!outputInPx)}
         checked={!outputInPx}
         label="Output in pixels"
+      /> */}
+      <ToggleOption
+        label="Output in pixels"
+        onClick={() => setOutputInPx(!outputInPx)}
+        value={!outputInPx}
       />
     </div>
   );
