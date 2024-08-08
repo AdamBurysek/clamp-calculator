@@ -7,7 +7,8 @@ export const generateComment = (
   maxWindowValue: number,
   isTargetUnitsPx: boolean,
   isWindowUnitsPx: boolean,
-  remBase: number
+  remBase: number,
+  targetValue: string
 ): string => {
   if (!(minTargetValue && maxTargetValue && minWindowValue && maxWindowValue)) {
     return "";
@@ -17,6 +18,6 @@ export const generateComment = (
     const minWindowPx = formatNumber(toPx(minWindowValue, isWindowUnitsPx, remBase));
     const maxWindowPx = formatNumber(toPx(maxWindowValue, isWindowUnitsPx, remBase));
 
-    return `/* width: ${minTargetPx}px, window: ${minWindowPx}px -> width: ${maxTargetPx}px, window: ${maxWindowPx}px */`;
+    return `/* ${targetValue} ${minTargetPx}px, window: ${minWindowPx}px -> ${targetValue} ${maxTargetPx}px, window: ${maxWindowPx}px */`;
   }
 };

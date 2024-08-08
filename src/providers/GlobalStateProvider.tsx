@@ -106,7 +106,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         maxWindowValue,
         isTargetUnitsPx,
         isWindowUnitsPx,
-        remBase
+        remBase,
+        targetValue
       )
     );
   }, [
@@ -118,6 +119,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     isWindowUnitsPx,
     remBase,
     outputInPx,
+    targetValue,
   ]);
 
   return (
