@@ -1,11 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
-import { generateClamp } from "../src/utils/clamps";
+import { generateComment } from "../../../src/utils/comments";
 
-const remBase = 16;
-
-interface TestProps {
+type TestComponentProps = {
   minTargetValue: number;
   maxTargetValue: number;
   minWindowValue: number;
@@ -13,18 +10,21 @@ interface TestProps {
   isTargetUnitsPx: boolean;
   isWindowUnitsPx: boolean;
   outputInPx: boolean;
-}
+  remBase: number;
+  targetValue: string;
+};
 
-const TestComponent: React.FC<TestProps> = ({
+const TestComponent: React.FC<TestComponentProps> = ({
   minTargetValue,
   maxTargetValue,
   minWindowValue,
   maxWindowValue,
   isTargetUnitsPx,
   isWindowUnitsPx,
-  outputInPx,
+  remBase,
+  targetValue,
 }) => {
-  const clampValue = generateClamp(
+  const comment = generateComment(
     minTargetValue,
     maxTargetValue,
     minWindowValue,
@@ -32,12 +32,12 @@ const TestComponent: React.FC<TestProps> = ({
     isTargetUnitsPx,
     isWindowUnitsPx,
     remBase,
-    outputInPx
+    targetValue
   );
-  return <div>{clampValue ? clampValue : "none"}</div>;
+  return <div>{comment ? comment : "none"}</div>;
 };
 
-describe("generateClamp", () => {
+describe("generateComment", () => {
   it("should return none if minTargetValue value is missing", () => {
     render(
       <TestComponent
@@ -48,6 +48,8 @@ describe("generateClamp", () => {
         isTargetUnitsPx={true}
         isWindowUnitsPx={true}
         outputInPx={false}
+        remBase={16}
+        targetValue={""}
       />
     );
     expect(screen.getByText("none")).toBeInTheDocument();
@@ -63,6 +65,8 @@ describe("generateClamp", () => {
         isTargetUnitsPx={true}
         isWindowUnitsPx={true}
         outputInPx={false}
+        remBase={16}
+        targetValue={""}
       />
     );
     expect(screen.getByText("none")).toBeInTheDocument();
@@ -78,6 +82,8 @@ describe("generateClamp", () => {
         isTargetUnitsPx={true}
         isWindowUnitsPx={true}
         outputInPx={false}
+        remBase={16}
+        targetValue={""}
       />
     );
     expect(screen.getByText("none")).toBeInTheDocument();
@@ -88,73 +94,53 @@ describe("generateClamp", () => {
       <TestComponent
         minTargetValue={10}
         maxTargetValue={10}
-        minWindowValue={0}
+        minWindowValue={10}
         maxWindowValue={0}
         isTargetUnitsPx={true}
         isWindowUnitsPx={true}
         outputInPx={false}
+        remBase={16}
+        targetValue={""}
       />
     );
     expect(screen.getByText("none")).toBeInTheDocument();
   });
 
-  it("should generate clamp value in rem", () => {
+  it("should generate comment with no target value", () => {
     render(
       <TestComponent
         minTargetValue={1}
         maxTargetValue={2}
-        minWindowValue={25}
-        maxWindowValue={50}
+        minWindowValue={320}
+        maxWindowValue={1024}
         isTargetUnitsPx={false}
-        isWindowUnitsPx={false}
+        isWindowUnitsPx={true}
         outputInPx={false}
+        remBase={16}
+        targetValue={""}
       />
     );
-    expect(screen.getByText("clamp(1rem, 0rem + 4vw, 2rem)")).toBeInTheDocument();
+    expect(
+      screen.getByText("/* 16px, window: 320px -> 32px, window: 1024px */")
+    ).toBeInTheDocument();
   });
 
-  it("should generate clamp value in px", () => {
+  it("should generate comment with target value", () => {
     render(
       <TestComponent
         minTargetValue={16}
         maxTargetValue={32}
         minWindowValue={320}
-        maxWindowValue={640}
+        maxWindowValue={1024}
         isTargetUnitsPx={true}
         isWindowUnitsPx={true}
         outputInPx={true}
+        remBase={16}
+        targetValue={"width:"}
       />
     );
-    expect(screen.getByText("clamp(16px, 0px + 5vw, 32px)")).toBeInTheDocument();
-  });
-
-  it("should handle mixed units correctly - target units in rem", () => {
-    render(
-      <TestComponent
-        minTargetValue={1}
-        maxTargetValue={2}
-        minWindowValue={400}
-        maxWindowValue={1000}
-        isTargetUnitsPx={false}
-        isWindowUnitsPx={true}
-        outputInPx={false}
-      />
-    );
-    expect(screen.getByText("clamp(1rem, 0.333rem + 2.667vw, 2rem)")).toBeInTheDocument();
-  });
-
-  it("should handle mixed units correctly - window units in rem", () => {
-    render(
-      <TestComponent
-        minTargetValue={16}
-        maxTargetValue={32}
-        minWindowValue={25}
-        maxWindowValue={50}
-        isTargetUnitsPx={true}
-        isWindowUnitsPx={false}
-        outputInPx={true}
-      />
-    );
-    expect(screen.getByText("clamp(16px, 0px + 4vw, 32px)")).toBeInTheDocument();
+    expect(
+      screen.getByText("/* width: 16px, window: 320px -> width: 32px, window: 1024px */")
+    ).toBeInTheDocument();
   });
 });
