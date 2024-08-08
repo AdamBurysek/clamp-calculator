@@ -66,6 +66,7 @@ const RemControls: React.FC = () => {
       updateValues(oldRemBase, newRemBase);
     }
   };
+
   const handleRemInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" || e.key === "Escape") {
       (e.target as HTMLInputElement).blur();
