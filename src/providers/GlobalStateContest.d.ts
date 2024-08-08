@@ -19,4 +19,8 @@ interface GlobalStateProps {
   setOutputInPx: React.Dispatch<React.SetStateAction<boolean>>;
   targetValue: string;
   setTargetValue: React.Dispatch<React.SetStateAction<string>>;
+  commentValue: string;
+  setCommentValue: React.Dispatch<React.SetStateAction<string>>;
+  hideComment: boolean;
+  setHideComment: React.Dispatch<React.SetStateAction<boolean>>;
 }

@@ -4,7 +4,8 @@ import OptionInput from "./common/OptionInput";
 import ToggleOption from "./common/ToggleOption";
 
 const AdditionalControls = () => {
-  const { outputInPx, setOutputInPx, targetValue, setTargetValue } = useGlobalState();
+  const { outputInPx, setOutputInPx, targetValue, setTargetValue, hideComment, setHideComment } =
+    useGlobalState();
 
   const targetOptions = [
     { label: "none", value: "" },
@@ -29,6 +30,11 @@ const AdditionalControls = () => {
         label="Output in pixels"
         onClick={() => setOutputInPx(!outputInPx)}
         value={!outputInPx}
+      />
+      <ToggleOption
+        label="Add comment"
+        onClick={() => setHideComment(!hideComment)}
+        value={!hideComment}
       />
     </div>
   );

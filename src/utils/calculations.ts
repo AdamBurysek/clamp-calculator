@@ -18,11 +18,11 @@ const toRem = (value: number, isPx: boolean, remBase: number): number => {
   return isPx ? value / remBase : value;
 };
 
-const toPx = (value: number, isPx: boolean, remBase: number): number => {
+export const toPx = (value: number, isPx: boolean, remBase: number): number => {
   return isPx ? value : value * remBase;
 };
 
-const formatNumber = (value: number): string => {
+export const formatNumber = (value: number): string => {
   return parseFloat(value.toFixed(3)).toString();
 };
 

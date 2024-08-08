@@ -3,6 +3,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { convertUnits, generateClamp } from "../utils/calculations";
 import { booleanToString, getCookie, setCookie, stringToBoolean } from "../utils/cookies";
 import { GlobalStateContext } from "./GlobalStateContext";
+import { generateComment } from "../utils/comments";
 
 export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   // Fix issue with recalulations on initial load
@@ -16,6 +17,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const initialMinWindowValue = parseFloat(getCookie("minWindowValue") || "400");
   const initialMaxWindowValue = parseFloat(getCookie("maxWindowValue") || "1024");
   const initialOutputInPx = stringToBoolean(getCookie("outputInPx"));
+  const initialHideComment = stringToBoolean(getCookie("hideComment"));
   const initialTargetValue = getCookie("targetValue") || "";
 
   const [remBase, setRemBase] = useState<number>(initialRemBase);
@@ -28,8 +30,10 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const [maxWindowValue, setMaxWindowValue] = useState<number>(initialMaxWindowValue);
 
   const [outputInPx, setOutputInPx] = useState<boolean>(initialOutputInPx);
-  const [clampValue, setClampValue] = useState<string>("");
+  const [hideComment, setHideComment] = useState<boolean>(initialHideComment);
   const [targetValue, setTargetValue] = useState<string>(initialTargetValue);
+  const [clampValue, setClampValue] = useState<string>("");
+  const [commentValue, setCommentValue] = useState<string>("");
 
   useEffect(() => {
     setInitialLoad(false);
@@ -74,6 +78,10 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   }, [outputInPx]);
 
   useEffect(() => {
+    setCookie("hideComment", booleanToString(hideComment), 30);
+  }, [hideComment]);
+
+  useEffect(() => {
     setCookie("targetValue", targetValue, 30);
   }, [targetValue]);
 
@@ -88,6 +96,17 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         isWindowUnitsPx,
         remBase,
         outputInPx
+      )
+    );
+    setCommentValue(
+      generateComment(
+        minTargetValue,
+        maxTargetValue,
+        minWindowValue,
+        maxWindowValue,
+        isTargetUnitsPx,
+        isWindowUnitsPx,
+        remBase
       )
     );
   }, [
@@ -124,6 +143,10 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         setOutputInPx,
         targetValue,
         setTargetValue,
+        commentValue,
+        setCommentValue,
+        hideComment,
+        setHideComment,
       }}
     >
       {children}
