@@ -9,12 +9,12 @@ const AdditionalControls = () => {
 
   const targetOptions = [
     { label: "none", value: "" },
-    { label: "Font size", value: "font-size: " },
-    { label: "Width", value: "width: " },
-    { label: "Padding left", value: "padding-left: " },
-    { label: "Padding right", value: "padding-right: " },
-    { label: "Margin left", value: "margin-left: " },
-    { label: "Margin right", value: "margin-right: " },
+    { label: "Font size", value: "font-size:" },
+    { label: "Width", value: "width:" },
+    { label: "Padding left", value: "padding-left:" },
+    { label: "Padding right", value: "padding-right:" },
+    { label: "Margin left", value: "margin-left:" },
+    { label: "Margin right", value: "margin-right:" },
   ];
 
   return (
