@@ -78,7 +78,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   }, [outputInPx]);
 
   useEffect(() => {
-    setCookie("hideComment", booleanToString(addComment), 30);
+    setCookie("addComment", booleanToString(addComment), 30);
   }, [addComment]);
 
   useEffect(() => {
