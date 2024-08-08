@@ -31,10 +31,10 @@ const ClampOutputBox = () => {
               </span>
             ) : null}
             <span>
-              {targetValue}
+              {clampValue ? targetValue : ""}
               {targetValue ? " " : ""}
               {clampValue}
-              {targetValue ? ";" : ""}
+              {targetValue && clampValue ? ";" : ""}
             </span>
           </span>
         </p>
