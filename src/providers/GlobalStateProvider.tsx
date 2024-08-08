@@ -16,6 +16,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const initialMinWindowValue = parseFloat(getCookie("minWindowValue") || "400");
   const initialMaxWindowValue = parseFloat(getCookie("maxWindowValue") || "1024");
   const initialOutputInPx = stringToBoolean(getCookie("outputInPx"));
+  const initialTargetValue = getCookie("targetValue") || "";
 
   const [remBase, setRemBase] = useState<number>(initialRemBase);
   const [isTargetUnitsPx, setIsTargetUnitsPx] = useState<boolean>(initialTargetUnits);
@@ -28,6 +29,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
 
   const [outputInPx, setOutputInPx] = useState<boolean>(initialOutputInPx);
   const [clampValue, setClampValue] = useState<string>("");
+  const [targetValue, setTargetValue] = useState<string>(initialTargetValue);
 
   useEffect(() => {
     setInitialLoad(false);
@@ -70,6 +72,10 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     setCookie("outputInPx", booleanToString(outputInPx), 30);
   }, [outputInPx]);
+
+  useEffect(() => {
+    setCookie("targetValue", targetValue, 30);
+  }, [targetValue]);
 
   useEffect(() => {
     setClampValue(
@@ -116,6 +122,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         setClampValue,
         outputInPx,
         setOutputInPx,
+        targetValue,
+        setTargetValue,
       }}
     >
       {children}

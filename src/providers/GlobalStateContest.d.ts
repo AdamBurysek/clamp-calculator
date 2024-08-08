@@ -17,4 +17,6 @@ interface GlobalStateProps {
   setClampValue: React.Dispatch<React.SetStateAction<string>>;
   outputInPx: boolean;
   setOutputInPx: React.Dispatch<React.SetStateAction<boolean>>;
+  targetValue: string;
+  setTargetValue: React.Dispatch<React.SetStateAction<string>>;
 }

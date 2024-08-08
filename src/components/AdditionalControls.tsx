@@ -4,25 +4,27 @@ import OptionInput from "./common/OptionInput";
 import ToggleOption from "./common/ToggleOption";
 
 const AdditionalControls = () => {
-  const { outputInPx, setOutputInPx } = useGlobalState();
+  const { outputInPx, setOutputInPx, targetValue, setTargetValue } = useGlobalState();
 
   const targetOptions = [
-    { label: "Font size", value: "font-size" },
-    { label: "Width", value: "width" },
-    { label: "Padding left", value: "padding-left" },
-    { label: "Padding right", value: "padding-right" },
-    { label: "Margin left", value: "margin-left" },
-    { label: "Margin right", value: "margin-right" },
+    { label: "none", value: "" },
+    { label: "Font size", value: "font-size: " },
+    { label: "Width", value: "width: " },
+    { label: "Padding left", value: "padding-left: " },
+    { label: "Padding right", value: "padding-right: " },
+    { label: "Margin left", value: "margin-left: " },
+    { label: "Margin right", value: "margin-right: " },
   ];
 
   return (
     <div>
-      <OptionInput options={targetOptions} label="Target" name="clamp-options" />
-      {/* <CheckboxInput
-        onChange={() => setOutputInPx(!outputInPx)}
-        checked={!outputInPx}
-        label="Output in pixels"
-      /> */}
+      <OptionInput
+        options={targetOptions}
+        label="Target"
+        name="clamp-options"
+        setValue={setTargetValue}
+        value={targetValue}
+      />
       <ToggleOption
         label="Output in pixels"
         onClick={() => setOutputInPx(!outputInPx)}
