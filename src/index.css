@@ -131,6 +131,10 @@ body {
   @apply text-c-text bg-c-background;
 }
 
+#root {
+  @apply flex flex-col min-h-screen justify-between;
+}
+
 *,
 :before,
 :after {
