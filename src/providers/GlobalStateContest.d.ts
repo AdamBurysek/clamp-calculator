@@ -21,6 +21,6 @@ interface GlobalStateProps {
   setTargetValue: React.Dispatch<React.SetStateAction<string>>;
   commentValue: string;
   setCommentValue: React.Dispatch<React.SetStateAction<string>>;
-  hideComment: boolean;
-  setHideComment: React.Dispatch<React.SetStateAction<boolean>>;
+  addComment: boolean;
+  setAddComment: React.Dispatch<React.SetStateAction<boolean>>;
 }

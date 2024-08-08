@@ -16,8 +16,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const initialMaxTargetValue = parseFloat(getCookie("maxTargetValue") || "24");
   const initialMinWindowValue = parseFloat(getCookie("minWindowValue") || "400");
   const initialMaxWindowValue = parseFloat(getCookie("maxWindowValue") || "1024");
-  const initialOutputInPx = stringToBoolean(getCookie("outputInPx"));
-  const initialHideComment = stringToBoolean(getCookie("hideComment"));
+  const initialOutputInPx = stringToBoolean(getCookie("outputInPx"), false);
+  const initialAddComment = stringToBoolean(getCookie("addComment"), false);
   const initialTargetValue = getCookie("targetValue") || "";
 
   const [remBase, setRemBase] = useState<number>(initialRemBase);
@@ -30,7 +30,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const [maxWindowValue, setMaxWindowValue] = useState<number>(initialMaxWindowValue);
 
   const [outputInPx, setOutputInPx] = useState<boolean>(initialOutputInPx);
-  const [hideComment, setHideComment] = useState<boolean>(initialHideComment);
+  const [addComment, setAddComment] = useState<boolean>(initialAddComment);
   const [targetValue, setTargetValue] = useState<string>(initialTargetValue);
   const [clampValue, setClampValue] = useState<string>("");
   const [commentValue, setCommentValue] = useState<string>("");
@@ -78,8 +78,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   }, [outputInPx]);
 
   useEffect(() => {
-    setCookie("hideComment", booleanToString(hideComment), 30);
-  }, [hideComment]);
+    setCookie("hideComment", booleanToString(addComment), 30);
+  }, [addComment]);
 
   useEffect(() => {
     setCookie("targetValue", targetValue, 30);
@@ -145,8 +145,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         setTargetValue,
         commentValue,
         setCommentValue,
-        hideComment,
-        setHideComment,
+        addComment,
+        setAddComment,
       }}
     >
       {children}

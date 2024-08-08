@@ -16,8 +16,8 @@ export const getCookie = (name: string): string | null => {
 
 // Functions for handling boolean values in cookies
 
-export const stringToBoolean = (value: string | null): boolean => {
-  if (value === null) return true;
+export const stringToBoolean = (value: string | null, defaultValue: boolean = true): boolean => {
+  if (value === null) return defaultValue;
   return value === "true";
 };
 

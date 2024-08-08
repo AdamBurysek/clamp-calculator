@@ -4,7 +4,7 @@ import { CheckIcon } from "./Icons";
 import { cn } from "../utils/classNames";
 
 const ClampOutputBox = () => {
-  const { clampValue, targetValue, hideComment, commentValue } = useGlobalState();
+  const { clampValue, targetValue, addComment, commentValue } = useGlobalState();
   const [showIcon, setShowIcon] = useState(false);
   const textRef = useRef<HTMLParagraphElement | null>(null);
 
@@ -24,12 +24,12 @@ const ClampOutputBox = () => {
       <div className="w-full text-center py-4 bg-c-grey-one rounded-l-xl">
         <p ref={textRef}>
           <span>
-            {hideComment ? null : (
+            {addComment ? (
               <span>
                 {commentValue}
                 <br />
               </span>
-            )}
+            ) : null}
             <span>
               {targetValue}
               {clampValue}
