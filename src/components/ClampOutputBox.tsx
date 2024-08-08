@@ -4,12 +4,12 @@ import { CheckIcon } from "./Icons";
 import { cn } from "../utils/classNames";
 
 const ClampOutputBox = () => {
-  const { clampValue } = useGlobalState();
+  const { clampValue, targetValue } = useGlobalState();
   const [showIcon, setShowIcon] = useState(false);
 
   const handleCopy = () => {
     if (clampValue) {
-      navigator.clipboard.writeText(clampValue);
+      navigator.clipboard.writeText(targetValue + clampValue);
       setShowIcon(true);
       setTimeout(() => {
         setShowIcon(false);
@@ -20,7 +20,10 @@ const ClampOutputBox = () => {
   return (
     <div className="flex my-4 py-4 pl-4 bg-c-secondary rounded-2xl ">
       <div className="w-full text-center py-4 bg-c-grey-one rounded-l-xl">
-        <p>{clampValue}</p>
+        <p>
+          {targetValue}
+          {clampValue}
+        </p>
       </div>
       <button
         className={cn(
