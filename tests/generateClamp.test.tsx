@@ -12,7 +12,7 @@ interface TestProps {
   maxWindowValue: number;
   isTargetUnitsPx: boolean;
   isWindowUnitsPx: boolean;
-  outputInRem: boolean;
+  outputInPx: boolean;
 }
 
 const TestComponent: React.FC<TestProps> = ({
@@ -22,7 +22,7 @@ const TestComponent: React.FC<TestProps> = ({
   maxWindowValue,
   isTargetUnitsPx,
   isWindowUnitsPx,
-  outputInRem,
+  outputInPx,
 }) => {
   const clampValue = generateClamp(
     minTargetValue,
@@ -32,7 +32,7 @@ const TestComponent: React.FC<TestProps> = ({
     isTargetUnitsPx,
     isWindowUnitsPx,
     remBase,
-    outputInRem
+    outputInPx
   );
   return <div>{clampValue ? clampValue : "none"}</div>;
 };
@@ -47,7 +47,7 @@ describe("generateClamp", () => {
         maxWindowValue={10}
         isTargetUnitsPx={true}
         isWindowUnitsPx={true}
-        outputInRem={true}
+        outputInPx={false}
       />
     );
     expect(screen.getByText("none")).toBeInTheDocument();
@@ -62,7 +62,7 @@ describe("generateClamp", () => {
         maxWindowValue={10}
         isTargetUnitsPx={true}
         isWindowUnitsPx={true}
-        outputInRem={true}
+        outputInPx={false}
       />
     );
     expect(screen.getByText("none")).toBeInTheDocument();
@@ -77,7 +77,7 @@ describe("generateClamp", () => {
         maxWindowValue={10}
         isTargetUnitsPx={true}
         isWindowUnitsPx={true}
-        outputInRem={true}
+        outputInPx={false}
       />
     );
     expect(screen.getByText("none")).toBeInTheDocument();
@@ -92,7 +92,7 @@ describe("generateClamp", () => {
         maxWindowValue={0}
         isTargetUnitsPx={true}
         isWindowUnitsPx={true}
-        outputInRem={true}
+        outputInPx={false}
       />
     );
     expect(screen.getByText("none")).toBeInTheDocument();
@@ -107,7 +107,7 @@ describe("generateClamp", () => {
         maxWindowValue={50}
         isTargetUnitsPx={false}
         isWindowUnitsPx={false}
-        outputInRem={true}
+        outputInPx={false}
       />
     );
     expect(screen.getByText("clamp(1rem, 0rem + 4vw, 2rem)")).toBeInTheDocument();
@@ -122,7 +122,7 @@ describe("generateClamp", () => {
         maxWindowValue={640}
         isTargetUnitsPx={true}
         isWindowUnitsPx={true}
-        outputInRem={false}
+        outputInPx={true}
       />
     );
     expect(screen.getByText("clamp(16px, 0px + 5vw, 32px)")).toBeInTheDocument();
@@ -137,7 +137,7 @@ describe("generateClamp", () => {
         maxWindowValue={1000}
         isTargetUnitsPx={false}
         isWindowUnitsPx={true}
-        outputInRem={true}
+        outputInPx={false}
       />
     );
     expect(screen.getByText("clamp(1rem, 0.333rem + 2.667vw, 2rem)")).toBeInTheDocument();
@@ -152,7 +152,7 @@ describe("generateClamp", () => {
         maxWindowValue={50}
         isTargetUnitsPx={true}
         isWindowUnitsPx={false}
-        outputInRem={false}
+        outputInPx={true}
       />
     );
     expect(screen.getByText("clamp(16px, 0px + 4vw, 32px)")).toBeInTheDocument();
