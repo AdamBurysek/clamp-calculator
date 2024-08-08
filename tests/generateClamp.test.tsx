@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { generateClamp } from "../src/utils/calculations";
+import { generateClamp } from "../src/utils/clamps";
 
 const remBase = 16;
 
