@@ -9,7 +9,7 @@ const ClampOutputBox = () => {
 
   const handleCopy = () => {
     if (clampValue) {
-      navigator.clipboard.writeText(targetValue + clampValue);
+      navigator.clipboard.writeText(targetValue + clampValue + (targetValue ? ";" : ""));
       setShowIcon(true);
       setTimeout(() => {
         setShowIcon(false);
@@ -23,6 +23,7 @@ const ClampOutputBox = () => {
         <p>
           {targetValue}
           {clampValue}
+          {targetValue ? ";" : ""}
         </p>
       </div>
       <button
