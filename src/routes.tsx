@@ -1,4 +1,3 @@
-import { GlobalStateProvider } from "./providers/GlobalStateProvider.tsx";
 import About from "./pages/About.tsx";
 import Calculator from "./pages/Calculator.tsx";
 import HowItWorks from "./pages/HowItWorks.tsx";
@@ -11,11 +10,7 @@ const routes = [
     children: [
       {
         index: true,
-        element: (
-          <GlobalStateProvider>
-            <Calculator />
-          </GlobalStateProvider>
-        ),
+        element: <Calculator />,
       },
       {
         path: "/how-it-works",

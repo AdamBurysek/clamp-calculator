@@ -10,8 +10,6 @@ const OptionInput = () => {
         <option value="none">None</option>
         <option value="font-size">Font size</option>
         <option value="width">Width</option>
-        <option value="padding">Padding</option>
-        <option value="margin">Margin</option>
         <option value="padding-left">Padding left</option>
         <option value="padding-right">Padding right</option>
         <option value="margin-left">Margin left</option>
