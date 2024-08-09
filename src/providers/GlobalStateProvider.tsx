@@ -20,6 +20,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const initialOutputInPx = stringToBoolean(getCookie("outputInPx"), false);
   const initialAddComment = stringToBoolean(getCookie("addComment"), false);
   const initialTargetValue = getCookie("targetValue") || "";
+  const initialUseTailwind = stringToBoolean(getCookie("useTailwind"), false);
 
   const [remBase, setRemBase] = useState<number>(initialRemBase);
   const [isTargetUnitsPx, setIsTargetUnitsPx] = useState<boolean>(initialTargetUnits);
@@ -32,6 +33,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
 
   const [outputInPx, setOutputInPx] = useState<boolean>(initialOutputInPx);
   const [addComment, setAddComment] = useState<boolean>(initialAddComment);
+  const [useTailwind, setUseTailwind] = useState<boolean>(initialUseTailwind);
   const [targetValue, setTargetValue] = useState<string>(initialTargetValue);
   const [clampValue, setClampValue] = useState<string>("");
   const [commentValue, setCommentValue] = useState<string>("");
@@ -87,6 +89,10 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   }, [targetValue]);
 
   useEffect(() => {
+    setCookie("useTailwind", booleanToString(useTailwind), 30);
+  }, [useTailwind]);
+
+  useEffect(() => {
     setClampValue(
       generateClamp(
         minTargetValue,
@@ -96,7 +102,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         isTargetUnitsPx,
         isViewportUnitsPx,
         remBase,
-        outputInPx
+        outputInPx,
+        useTailwind
       )
     );
     setCommentValue(
@@ -108,7 +115,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         isTargetUnitsPx,
         isViewportUnitsPx,
         remBase,
-        targetValue
+        targetValue,
+        useTailwind
       )
     );
   }, [
@@ -121,6 +129,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     remBase,
     outputInPx,
     targetValue,
+    useTailwind,
   ]);
 
   return (
@@ -150,6 +159,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         setCommentValue,
         addComment,
         setAddComment,
+        useTailwind,
+        setUseTailwind,
       }}
     >
       {children}

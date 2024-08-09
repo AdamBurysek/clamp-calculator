@@ -23,4 +23,6 @@ interface GlobalStateProps {
   setCommentValue: React.Dispatch<React.SetStateAction<string>>;
   addComment: boolean;
   setAddComment: React.Dispatch<React.SetStateAction<boolean>>;
+  useTailwind: boolean;
+  setUseTailwind: React.Dispatch<React.SetStateAction<boolean>>;
 }
