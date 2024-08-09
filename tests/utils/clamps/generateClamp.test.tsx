@@ -98,6 +98,36 @@ describe("generateClamp", () => {
     expect(screen.getByText("clamp(0.625rem, 6.25rem + -900vw, 6.25rem)")).toBeInTheDocument();
   });
 
+  it("should handle negative target values", () => {
+    render(
+      <TestComponent
+        minTargetValue={-10}
+        maxTargetValue={-5}
+        minViewportValue={10}
+        maxViewportValue={100}
+        isTargetUnitsPx={false}
+        isViewportUnitsPx={true}
+        outputInPx={false}
+      />
+    );
+    expect(screen.getByText("clamp(-10rem, -10.556rem + 88.889vw, -5rem)")).toBeInTheDocument();
+  });
+
+  it("should handle negative viewport values", () => {
+    render(
+      <TestComponent
+        minTargetValue={10}
+        maxTargetValue={100}
+        minViewportValue={-1000}
+        maxViewportValue={-500}
+        isTargetUnitsPx={true}
+        isViewportUnitsPx={true}
+        outputInPx={false}
+      />
+    );
+    expect(screen.getByText("clamp(0.625rem, 11.875rem + 18vw, 6.25rem)")).toBeInTheDocument();
+  });
+
   it("should generate clamp value in rem", () => {
     render(
       <TestComponent
