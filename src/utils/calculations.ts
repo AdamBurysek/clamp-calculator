@@ -15,10 +15,12 @@ export const recalculateRem = (
 };
 
 export const toRem = (value: number, isPx: boolean, remBase: number): number => {
+  if (!value) return 0;
   return isPx ? value / remBase : value;
 };
 
 export const toPx = (value: number, isPx: boolean, remBase: number): number => {
+  if (!value) return 0;
   return isPx ? value : value * remBase;
 };
 

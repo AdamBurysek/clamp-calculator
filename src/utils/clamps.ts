@@ -10,10 +10,6 @@ export const generateClamp = (
   remBase: number,
   outputInPx: boolean
 ): string => {
-  if (!(minTargetValue && maxTargetValue && minViewportValue && maxViewportValue)) {
-    return "";
-  }
-
   if (outputInPx) {
     const minTargetPx = toPx(minTargetValue, isTargetUnitsPx, remBase);
     const maxTargetPx = toPx(maxTargetValue, isTargetUnitsPx, remBase);

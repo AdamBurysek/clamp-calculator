@@ -34,68 +34,68 @@ const TestComponent: React.FC<TestProps> = ({
     remBase,
     outputInPx
   );
-  return <div>{clampValue ? clampValue : "none"}</div>;
+  return <div>{clampValue}</div>;
 };
 
 describe("generateClamp", () => {
-  it("should return none if minTargetValue value is missing", () => {
+  it("should handle if minTargetValue value is zero", () => {
     render(
       <TestComponent
         minTargetValue={0}
-        maxTargetValue={10}
+        maxTargetValue={100}
         minViewportValue={10}
-        maxViewportValue={10}
+        maxViewportValue={100}
         isTargetUnitsPx={true}
         isViewportUnitsPx={true}
         outputInPx={false}
       />
     );
-    expect(screen.getByText("none")).toBeInTheDocument();
+    expect(screen.getByText("clamp(0rem, -0.694rem + 111.111vw, 6.25rem)")).toBeInTheDocument();
   });
 
-  it("should return none if maxTargetValue value is missing", () => {
+  it("should handle if maxTargetValue value is zero", () => {
     render(
       <TestComponent
-        minTargetValue={10}
+        minTargetValue={100}
         maxTargetValue={0}
         minViewportValue={10}
-        maxViewportValue={10}
+        maxViewportValue={100}
         isTargetUnitsPx={true}
         isViewportUnitsPx={true}
         outputInPx={false}
       />
     );
-    expect(screen.getByText("none")).toBeInTheDocument();
+    expect(screen.getByText("clamp(6.25rem, 6.944rem + -111.111vw, 0rem)")).toBeInTheDocument();
   });
 
-  it("should return none if minViewportValue value is missing", () => {
+  it("should handle if minViewportValue value is zero", () => {
     render(
       <TestComponent
         minTargetValue={10}
-        maxTargetValue={10}
+        maxTargetValue={100}
         minViewportValue={0}
-        maxViewportValue={10}
+        maxViewportValue={100}
         isTargetUnitsPx={true}
         isViewportUnitsPx={true}
         outputInPx={false}
       />
     );
-    expect(screen.getByText("none")).toBeInTheDocument();
+    expect(screen.getByText("clamp(0.625rem, 0.625rem + 90vw, 6.25rem)")).toBeInTheDocument();
   });
 
-  it("should return none if maxViewportValue value is missing", () => {
+  it("should handle if maxViewportValue value is zero", () => {
     render(
       <TestComponent
         minTargetValue={10}
-        maxTargetValue={10}
-        minViewportValue={0}
+        maxTargetValue={100}
+        minViewportValue={10}
         maxViewportValue={0}
         isTargetUnitsPx={true}
         isViewportUnitsPx={true}
         outputInPx={false}
       />
     );
-    expect(screen.getByText("none")).toBeInTheDocument();
+    expect(screen.getByText("clamp(0.625rem, 6.25rem + -900vw, 6.25rem)")).toBeInTheDocument();
   });
 
   it("should generate clamp value in rem", () => {

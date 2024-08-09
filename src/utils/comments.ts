@@ -10,14 +10,10 @@ export const generateComment = (
   remBase: number,
   targetValue: string
 ): string => {
-  if (!(minTargetValue && maxTargetValue && minViewportValue && maxViewportValue)) {
-    return "";
-  } else {
-    const minTargetPx = formatNumber(toPx(minTargetValue, isTargetUnitsPx, remBase));
-    const maxTargetPx = formatNumber(toPx(maxTargetValue, isTargetUnitsPx, remBase));
-    const minViewportPx = formatNumber(toPx(minViewportValue, isViewportUnitsPx, remBase));
-    const maxViewportPx = formatNumber(toPx(maxViewportValue, isViewportUnitsPx, remBase));
+  const minTargetPx = formatNumber(toPx(minTargetValue, isTargetUnitsPx, remBase));
+  const maxTargetPx = formatNumber(toPx(maxTargetValue, isTargetUnitsPx, remBase));
+  const minViewportPx = formatNumber(toPx(minViewportValue, isViewportUnitsPx, remBase));
+  const maxViewportPx = formatNumber(toPx(maxViewportValue, isViewportUnitsPx, remBase));
 
-    return `/* ${targetValue} ${minTargetPx}px, viewport: ${minViewportPx}px -> ${targetValue} ${maxTargetPx}px, viewport: ${maxViewportPx}px */`;
-  }
+  return `/* ${targetValue} ${minTargetPx}px, viewport: ${minViewportPx}px -> ${targetValue} ${maxTargetPx}px, viewport: ${maxViewportPx}px */`;
 };

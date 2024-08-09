@@ -34,17 +34,17 @@ const TestComponent: React.FC<TestComponentProps> = ({
     remBase,
     targetValue
   );
-  return <div>{comment ? comment : "none"}</div>;
+  return <div>{comment}</div>;
 };
 
 describe("generateComment", () => {
-  it("should return none if minTargetValue value is missing", () => {
+  it("should handle if minTargetValue value is zero", () => {
     render(
       <TestComponent
         minTargetValue={0}
-        maxTargetValue={10}
+        maxTargetValue={100}
         minViewportValue={10}
-        maxViewportValue={10}
+        maxViewportValue={100}
         isTargetUnitsPx={true}
         isViewportUnitsPx={true}
         outputInPx={false}
@@ -52,16 +52,18 @@ describe("generateComment", () => {
         targetValue={""}
       />
     );
-    expect(screen.getByText("none")).toBeInTheDocument();
+    expect(
+      screen.getByText("/* 0px, viewport: 10px -> 100px, viewport: 100px */")
+    ).toBeInTheDocument();
   });
 
-  it("should return none if maxTargetValue value is missing", () => {
+  it("should handle if maxTargetValue value is zero", () => {
     render(
       <TestComponent
         minTargetValue={10}
         maxTargetValue={0}
         minViewportValue={10}
-        maxViewportValue={10}
+        maxViewportValue={100}
         isTargetUnitsPx={true}
         isViewportUnitsPx={true}
         outputInPx={false}
@@ -69,16 +71,18 @@ describe("generateComment", () => {
         targetValue={""}
       />
     );
-    expect(screen.getByText("none")).toBeInTheDocument();
+    expect(
+      screen.getByText("/* 10px, viewport: 10px -> 0px, viewport: 100px */")
+    ).toBeInTheDocument();
   });
 
-  it("should return none if minViewportValue value is missing", () => {
+  it("should handle if minViewportValue value is zero", () => {
     render(
       <TestComponent
         minTargetValue={10}
-        maxTargetValue={10}
+        maxTargetValue={100}
         minViewportValue={0}
-        maxViewportValue={10}
+        maxViewportValue={100}
         isTargetUnitsPx={true}
         isViewportUnitsPx={true}
         outputInPx={false}
@@ -86,14 +90,16 @@ describe("generateComment", () => {
         targetValue={""}
       />
     );
-    expect(screen.getByText("none")).toBeInTheDocument();
+    expect(
+      screen.getByText("/* 10px, viewport: 0px -> 100px, viewport: 100px */")
+    ).toBeInTheDocument();
   });
 
-  it("should return none if maxViewportValue value is missing", () => {
+  it("should handle if maxViewportValue value is zero", () => {
     render(
       <TestComponent
         minTargetValue={10}
-        maxTargetValue={10}
+        maxTargetValue={100}
         minViewportValue={10}
         maxViewportValue={0}
         isTargetUnitsPx={true}
@@ -103,7 +109,9 @@ describe("generateComment", () => {
         targetValue={""}
       />
     );
-    expect(screen.getByText("none")).toBeInTheDocument();
+    expect(
+      screen.getByText("/* 10px, viewport: 10px -> 100px, viewport: 0px */")
+    ).toBeInTheDocument();
   });
 
   it("should generate comment with no target value", () => {
