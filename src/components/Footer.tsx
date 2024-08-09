@@ -8,6 +8,7 @@ const Footer = () => {
           className="cursor-pointer mt-10"
           href="https://github.com/AdamBurysek/clamp-calculator"
           target="_blank"
+          aria-label="Clamp Calculator Github Repository"
         >
           <GithubIcon />
         </a>
@@ -17,6 +18,7 @@ const Footer = () => {
             className="cursor-pointer font-semibold"
             href="https://code.adamplanet.cz"
             target="_blank"
+            aria-label="Adam Code Website"
           >
             Adam Code
           </a>

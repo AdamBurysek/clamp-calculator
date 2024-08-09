@@ -60,7 +60,7 @@ const InputControlWindow = ({
       <div className="flex gap-4">
         <InputForm
           type="min"
-          min={0.01}
+          min={-9999}
           max={9999}
           isUnitpx={isUnitpx}
           value={minValue}
@@ -69,7 +69,7 @@ const InputControlWindow = ({
         />
         <InputForm
           type="max"
-          min={0.01}
+          min={-9999}
           max={9999}
           isUnitpx={isUnitpx}
           value={maxValue}
