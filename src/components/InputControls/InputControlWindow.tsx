@@ -57,7 +57,7 @@ const InputControlWindow = ({
         <h3 className="pb-1">{header}</h3>
         <ToggleUnitButton isUnitpx={isUnitpx} setUnitpx={setUnitpx} />
       </div>
-      <div className="flex gap-4 ">
+      <div className="flex gap-4">
         <InputForm
           type="min"
           min={0.01}

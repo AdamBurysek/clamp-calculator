@@ -5,10 +5,10 @@ import { generateComment } from "../../../src/utils/comments";
 type TestComponentProps = {
   minTargetValue: number;
   maxTargetValue: number;
-  minWindowValue: number;
-  maxWindowValue: number;
+  minViewportValue: number;
+  maxViewportValue: number;
   isTargetUnitsPx: boolean;
-  isWindowUnitsPx: boolean;
+  isViewportUnitsPx: boolean;
   outputInPx: boolean;
   remBase: number;
   targetValue: string;
@@ -17,20 +17,20 @@ type TestComponentProps = {
 const TestComponent: React.FC<TestComponentProps> = ({
   minTargetValue,
   maxTargetValue,
-  minWindowValue,
-  maxWindowValue,
+  minViewportValue,
+  maxViewportValue,
   isTargetUnitsPx,
-  isWindowUnitsPx,
+  isViewportUnitsPx,
   remBase,
   targetValue,
 }) => {
   const comment = generateComment(
     minTargetValue,
     maxTargetValue,
-    minWindowValue,
-    maxWindowValue,
+    minViewportValue,
+    maxViewportValue,
     isTargetUnitsPx,
-    isWindowUnitsPx,
+    isViewportUnitsPx,
     remBase,
     targetValue
   );
@@ -43,10 +43,10 @@ describe("generateComment", () => {
       <TestComponent
         minTargetValue={0}
         maxTargetValue={10}
-        minWindowValue={10}
-        maxWindowValue={10}
+        minViewportValue={10}
+        maxViewportValue={10}
         isTargetUnitsPx={true}
-        isWindowUnitsPx={true}
+        isViewportUnitsPx={true}
         outputInPx={false}
         remBase={16}
         targetValue={""}
@@ -60,10 +60,10 @@ describe("generateComment", () => {
       <TestComponent
         minTargetValue={10}
         maxTargetValue={0}
-        minWindowValue={10}
-        maxWindowValue={10}
+        minViewportValue={10}
+        maxViewportValue={10}
         isTargetUnitsPx={true}
-        isWindowUnitsPx={true}
+        isViewportUnitsPx={true}
         outputInPx={false}
         remBase={16}
         targetValue={""}
@@ -72,15 +72,15 @@ describe("generateComment", () => {
     expect(screen.getByText("none")).toBeInTheDocument();
   });
 
-  it("should return none if minWindowValue value is missing", () => {
+  it("should return none if minViewportValue value is missing", () => {
     render(
       <TestComponent
         minTargetValue={10}
         maxTargetValue={10}
-        minWindowValue={0}
-        maxWindowValue={10}
+        minViewportValue={0}
+        maxViewportValue={10}
         isTargetUnitsPx={true}
-        isWindowUnitsPx={true}
+        isViewportUnitsPx={true}
         outputInPx={false}
         remBase={16}
         targetValue={""}
@@ -89,15 +89,15 @@ describe("generateComment", () => {
     expect(screen.getByText("none")).toBeInTheDocument();
   });
 
-  it("should return none if maxWindowValue value is missing", () => {
+  it("should return none if maxViewportValue value is missing", () => {
     render(
       <TestComponent
         minTargetValue={10}
         maxTargetValue={10}
-        minWindowValue={10}
-        maxWindowValue={0}
+        minViewportValue={10}
+        maxViewportValue={0}
         isTargetUnitsPx={true}
-        isWindowUnitsPx={true}
+        isViewportUnitsPx={true}
         outputInPx={false}
         remBase={16}
         targetValue={""}
@@ -111,17 +111,17 @@ describe("generateComment", () => {
       <TestComponent
         minTargetValue={1}
         maxTargetValue={2}
-        minWindowValue={320}
-        maxWindowValue={1024}
+        minViewportValue={320}
+        maxViewportValue={1024}
         isTargetUnitsPx={false}
-        isWindowUnitsPx={true}
+        isViewportUnitsPx={true}
         outputInPx={false}
         remBase={16}
         targetValue={""}
       />
     );
     expect(
-      screen.getByText("/* 16px, window: 320px -> 32px, window: 1024px */")
+      screen.getByText("/* 16px, viewport: 320px -> 32px, viewport: 1024px */")
     ).toBeInTheDocument();
   });
 
@@ -130,17 +130,17 @@ describe("generateComment", () => {
       <TestComponent
         minTargetValue={16}
         maxTargetValue={32}
-        minWindowValue={320}
-        maxWindowValue={1024}
+        minViewportValue={320}
+        maxViewportValue={1024}
         isTargetUnitsPx={true}
-        isWindowUnitsPx={true}
+        isViewportUnitsPx={true}
         outputInPx={true}
         remBase={16}
         targetValue={"width:"}
       />
     );
     expect(
-      screen.getByText("/* width: 16px, window: 320px -> width: 32px, window: 1024px */")
+      screen.getByText("/* width: 16px, viewport: 320px -> width: 32px, viewport: 1024px */")
     ).toBeInTheDocument();
   });
 });

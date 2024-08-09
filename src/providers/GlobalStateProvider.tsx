@@ -12,23 +12,23 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
 
   const initialRemBase = parseInt(getCookie("remBase") || "16", 10);
   const initialTargetUnits = stringToBoolean(getCookie("targetUnitsPx"));
-  const initialWindowUnits = stringToBoolean(getCookie("windowUnitsPx"));
+  const initialViewportUnits = stringToBoolean(getCookie("viewportUnitsPx"));
   const initialMinTargetValue = parseFloat(getCookie("minTargetValue") || "16");
   const initialMaxTargetValue = parseFloat(getCookie("maxTargetValue") || "24");
-  const initialMinWindowValue = parseFloat(getCookie("minWindowValue") || "400");
-  const initialMaxWindowValue = parseFloat(getCookie("maxWindowValue") || "1024");
+  const initialMinViewportValue = parseFloat(getCookie("minViewportValue") || "400");
+  const initialMaxViewportValue = parseFloat(getCookie("maxViewportValue") || "1024");
   const initialOutputInPx = stringToBoolean(getCookie("outputInPx"), false);
   const initialAddComment = stringToBoolean(getCookie("addComment"), false);
   const initialTargetValue = getCookie("targetValue") || "";
 
   const [remBase, setRemBase] = useState<number>(initialRemBase);
   const [isTargetUnitsPx, setIsTargetUnitsPx] = useState<boolean>(initialTargetUnits);
-  const [isWindowUnitsPx, setIsWindowUnitsPx] = useState<boolean>(initialWindowUnits);
+  const [isViewportUnitsPx, setIsViewportUnitsPx] = useState<boolean>(initialViewportUnits);
 
   const [minTargetValue, setMinTargetValue] = useState<number>(initialMinTargetValue);
   const [maxTargetValue, setMaxTargetValue] = useState<number>(initialMaxTargetValue);
-  const [minWindowValue, setMinWindowValue] = useState<number>(initialMinWindowValue);
-  const [maxWindowValue, setMaxWindowValue] = useState<number>(initialMaxWindowValue);
+  const [minViewportValue, setMinViewportValue] = useState<number>(initialMinViewportValue);
+  const [maxViewportValue, setMaxViewportValue] = useState<number>(initialMaxViewportValue);
 
   const [outputInPx, setOutputInPx] = useState<boolean>(initialOutputInPx);
   const [addComment, setAddComment] = useState<boolean>(initialAddComment);
@@ -52,11 +52,11 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   }, [isTargetUnitsPx]);
 
   useEffect(() => {
-    setCookie("windowUnitsPx", booleanToString(isWindowUnitsPx), 30);
+    setCookie("viewportUnitsPx", booleanToString(isViewportUnitsPx), 30);
     if (initialLoad) return;
-    setMinWindowValue(convertUnits(minWindowValue, isWindowUnitsPx, remBase));
-    setMaxWindowValue(convertUnits(maxWindowValue, isWindowUnitsPx, remBase));
-  }, [isWindowUnitsPx]);
+    setMinViewportValue(convertUnits(minViewportValue, isViewportUnitsPx, remBase));
+    setMaxViewportValue(convertUnits(maxViewportValue, isViewportUnitsPx, remBase));
+  }, [isViewportUnitsPx]);
 
   useEffect(() => {
     setCookie("minTargetValue", minTargetValue.toString(), 30);
@@ -67,12 +67,12 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   }, [maxTargetValue]);
 
   useEffect(() => {
-    setCookie("minWindowValue", minWindowValue.toString(), 30);
-  }, [minWindowValue]);
+    setCookie("minViewportValue", minViewportValue.toString(), 30);
+  }, [minViewportValue]);
 
   useEffect(() => {
-    setCookie("maxWindowValue", maxWindowValue.toString(), 30);
-  }, [maxWindowValue]);
+    setCookie("maxViewportValue", maxViewportValue.toString(), 30);
+  }, [maxViewportValue]);
 
   useEffect(() => {
     setCookie("outputInPx", booleanToString(outputInPx), 30);
@@ -91,10 +91,10 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
       generateClamp(
         minTargetValue,
         maxTargetValue,
-        minWindowValue,
-        maxWindowValue,
+        minViewportValue,
+        maxViewportValue,
         isTargetUnitsPx,
-        isWindowUnitsPx,
+        isViewportUnitsPx,
         remBase,
         outputInPx
       )
@@ -103,10 +103,10 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
       generateComment(
         minTargetValue,
         maxTargetValue,
-        minWindowValue,
-        maxWindowValue,
+        minViewportValue,
+        maxViewportValue,
         isTargetUnitsPx,
-        isWindowUnitsPx,
+        isViewportUnitsPx,
         remBase,
         targetValue
       )
@@ -114,10 +114,10 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   }, [
     minTargetValue,
     maxTargetValue,
-    minWindowValue,
-    maxWindowValue,
+    minViewportValue,
+    maxViewportValue,
     isTargetUnitsPx,
-    isWindowUnitsPx,
+    isViewportUnitsPx,
     remBase,
     outputInPx,
     targetValue,
@@ -130,16 +130,16 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         setRemBase,
         isTargetUnitsPx,
         setIsTargetUnitsPx,
-        isWindowUnitsPx,
-        setIsWindowUnitsPx,
+        isViewportUnitsPx,
+        setIsViewportUnitsPx,
         minTargetValue,
         setMinTargetValue,
         maxTargetValue,
         setMaxTargetValue,
-        minWindowValue,
-        setMinWindowValue,
-        maxWindowValue,
-        setMaxWindowValue,
+        minViewportValue,
+        setMinViewportValue,
+        maxViewportValue,
+        setMaxViewportValue,
         clampValue,
         setClampValue,
         outputInPx,

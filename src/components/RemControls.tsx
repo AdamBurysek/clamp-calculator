@@ -7,16 +7,16 @@ const RemControls: React.FC = () => {
   const {
     remBase,
     isTargetUnitsPx,
-    isWindowUnitsPx,
+    isViewportUnitsPx,
     minTargetValue,
     maxTargetValue,
-    minWindowValue,
-    maxWindowValue,
+    minViewportValue,
+    maxViewportValue,
     setRemBase,
     setMinTargetValue,
     setMaxTargetValue,
-    setMinWindowValue,
-    setMaxWindowValue,
+    setMinViewportValue,
+    setMaxViewportValue,
   } = useGlobalState();
 
   const [localRemBase, setLocalRemBase] = useState<number>(remBase);
@@ -24,8 +24,12 @@ const RemControls: React.FC = () => {
   const updateValues = (oldRemBase: number, newRemBase: number) => {
     setMinTargetValue(recalculateRem(oldRemBase, newRemBase, isTargetUnitsPx, minTargetValue));
     setMaxTargetValue(recalculateRem(oldRemBase, newRemBase, isTargetUnitsPx, maxTargetValue));
-    setMinWindowValue(recalculateRem(oldRemBase, newRemBase, isWindowUnitsPx, minWindowValue));
-    setMaxWindowValue(recalculateRem(oldRemBase, newRemBase, isWindowUnitsPx, maxWindowValue));
+    setMinViewportValue(
+      recalculateRem(oldRemBase, newRemBase, isViewportUnitsPx, minViewportValue)
+    );
+    setMaxViewportValue(
+      recalculateRem(oldRemBase, newRemBase, isViewportUnitsPx, maxViewportValue)
+    );
   };
 
   const changeRemBase = (e: React.MouseEvent<HTMLButtonElement>) => {

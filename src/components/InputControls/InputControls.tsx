@@ -1,25 +1,25 @@
 import useGlobalState from "../../hooks/useGlobalState";
-import InputControlWindow from "./InputControlWindow";
+import InputControlViewport from "./InputControlWindow";
 
 const InputControls = () => {
   const {
     isTargetUnitsPx,
     setIsTargetUnitsPx,
-    isWindowUnitsPx,
-    setIsWindowUnitsPx,
+    isViewportUnitsPx,
+    setIsViewportUnitsPx,
     minTargetValue,
     setMinTargetValue,
     maxTargetValue,
     setMaxTargetValue,
-    minWindowValue,
-    setMinWindowValue,
-    maxWindowValue,
-    setMaxWindowValue,
+    minViewportValue,
+    setMinViewportValue,
+    maxViewportValue,
+    setMaxViewportValue,
   } = useGlobalState();
 
   return (
     <div className="flex gap-8 p-4 max-m:flex-col">
-      <InputControlWindow
+      <InputControlViewport
         header="Target Values"
         isUnitpx={isTargetUnitsPx}
         setUnitpx={setIsTargetUnitsPx}
@@ -28,14 +28,14 @@ const InputControls = () => {
         maxValue={maxTargetValue}
         setMaxValue={setMaxTargetValue}
       />
-      <InputControlWindow
-        header="Window Values"
-        isUnitpx={isWindowUnitsPx}
-        setUnitpx={setIsWindowUnitsPx}
-        minValue={minWindowValue}
-        setMinValue={setMinWindowValue}
-        maxValue={maxWindowValue}
-        setMaxValue={setMaxWindowValue}
+      <InputControlViewport
+        header="Viewport Range"
+        isUnitpx={isViewportUnitsPx}
+        setUnitpx={setIsViewportUnitsPx}
+        minValue={minViewportValue}
+        setMinValue={setMinViewportValue}
+        maxValue={maxViewportValue}
+        setMaxValue={setMaxViewportValue}
       />
     </div>
   );

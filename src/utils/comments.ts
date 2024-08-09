@@ -3,21 +3,21 @@ import { formatNumber, toPx } from "./calculations";
 export const generateComment = (
   minTargetValue: number,
   maxTargetValue: number,
-  minWindowValue: number,
-  maxWindowValue: number,
+  minViewportValue: number,
+  maxViewportValue: number,
   isTargetUnitsPx: boolean,
-  isWindowUnitsPx: boolean,
+  isViewportUnitsPx: boolean,
   remBase: number,
   targetValue: string
 ): string => {
-  if (!(minTargetValue && maxTargetValue && minWindowValue && maxWindowValue)) {
+  if (!(minTargetValue && maxTargetValue && minViewportValue && maxViewportValue)) {
     return "";
   } else {
     const minTargetPx = formatNumber(toPx(minTargetValue, isTargetUnitsPx, remBase));
     const maxTargetPx = formatNumber(toPx(maxTargetValue, isTargetUnitsPx, remBase));
-    const minWindowPx = formatNumber(toPx(minWindowValue, isWindowUnitsPx, remBase));
-    const maxWindowPx = formatNumber(toPx(maxWindowValue, isWindowUnitsPx, remBase));
+    const minViewportPx = formatNumber(toPx(minViewportValue, isViewportUnitsPx, remBase));
+    const maxViewportPx = formatNumber(toPx(maxViewportValue, isViewportUnitsPx, remBase));
 
-    return `/* ${targetValue} ${minTargetPx}px, window: ${minWindowPx}px -> ${targetValue} ${maxTargetPx}px, window: ${maxWindowPx}px */`;
+    return `/* ${targetValue} ${minTargetPx}px, viewport: ${minViewportPx}px -> ${targetValue} ${maxTargetPx}px, viewport: ${maxViewportPx}px */`;
   }
 };

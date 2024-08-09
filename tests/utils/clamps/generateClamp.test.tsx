@@ -8,29 +8,29 @@ const remBase = 16;
 interface TestProps {
   minTargetValue: number;
   maxTargetValue: number;
-  minWindowValue: number;
-  maxWindowValue: number;
+  minViewportValue: number;
+  maxViewportValue: number;
   isTargetUnitsPx: boolean;
-  isWindowUnitsPx: boolean;
+  isViewportUnitsPx: boolean;
   outputInPx: boolean;
 }
 
 const TestComponent: React.FC<TestProps> = ({
   minTargetValue,
   maxTargetValue,
-  minWindowValue,
-  maxWindowValue,
+  minViewportValue,
+  maxViewportValue,
   isTargetUnitsPx,
-  isWindowUnitsPx,
+  isViewportUnitsPx,
   outputInPx,
 }) => {
   const clampValue = generateClamp(
     minTargetValue,
     maxTargetValue,
-    minWindowValue,
-    maxWindowValue,
+    minViewportValue,
+    maxViewportValue,
     isTargetUnitsPx,
-    isWindowUnitsPx,
+    isViewportUnitsPx,
     remBase,
     outputInPx
   );
@@ -43,10 +43,10 @@ describe("generateClamp", () => {
       <TestComponent
         minTargetValue={0}
         maxTargetValue={10}
-        minWindowValue={10}
-        maxWindowValue={10}
+        minViewportValue={10}
+        maxViewportValue={10}
         isTargetUnitsPx={true}
-        isWindowUnitsPx={true}
+        isViewportUnitsPx={true}
         outputInPx={false}
       />
     );
@@ -58,40 +58,40 @@ describe("generateClamp", () => {
       <TestComponent
         minTargetValue={10}
         maxTargetValue={0}
-        minWindowValue={10}
-        maxWindowValue={10}
+        minViewportValue={10}
+        maxViewportValue={10}
         isTargetUnitsPx={true}
-        isWindowUnitsPx={true}
+        isViewportUnitsPx={true}
         outputInPx={false}
       />
     );
     expect(screen.getByText("none")).toBeInTheDocument();
   });
 
-  it("should return none if minWindowValue value is missing", () => {
+  it("should return none if minViewportValue value is missing", () => {
     render(
       <TestComponent
         minTargetValue={10}
         maxTargetValue={10}
-        minWindowValue={0}
-        maxWindowValue={10}
+        minViewportValue={0}
+        maxViewportValue={10}
         isTargetUnitsPx={true}
-        isWindowUnitsPx={true}
+        isViewportUnitsPx={true}
         outputInPx={false}
       />
     );
     expect(screen.getByText("none")).toBeInTheDocument();
   });
 
-  it("should return none if maxWindowValue value is missing", () => {
+  it("should return none if maxViewportValue value is missing", () => {
     render(
       <TestComponent
         minTargetValue={10}
         maxTargetValue={10}
-        minWindowValue={0}
-        maxWindowValue={0}
+        minViewportValue={0}
+        maxViewportValue={0}
         isTargetUnitsPx={true}
-        isWindowUnitsPx={true}
+        isViewportUnitsPx={true}
         outputInPx={false}
       />
     );
@@ -103,10 +103,10 @@ describe("generateClamp", () => {
       <TestComponent
         minTargetValue={1}
         maxTargetValue={2}
-        minWindowValue={25}
-        maxWindowValue={50}
+        minViewportValue={25}
+        maxViewportValue={50}
         isTargetUnitsPx={false}
-        isWindowUnitsPx={false}
+        isViewportUnitsPx={false}
         outputInPx={false}
       />
     );
@@ -118,10 +118,10 @@ describe("generateClamp", () => {
       <TestComponent
         minTargetValue={16}
         maxTargetValue={32}
-        minWindowValue={320}
-        maxWindowValue={640}
+        minViewportValue={320}
+        maxViewportValue={640}
         isTargetUnitsPx={true}
-        isWindowUnitsPx={true}
+        isViewportUnitsPx={true}
         outputInPx={true}
       />
     );
@@ -133,25 +133,25 @@ describe("generateClamp", () => {
       <TestComponent
         minTargetValue={1}
         maxTargetValue={2}
-        minWindowValue={400}
-        maxWindowValue={1000}
+        minViewportValue={400}
+        maxViewportValue={1000}
         isTargetUnitsPx={false}
-        isWindowUnitsPx={true}
+        isViewportUnitsPx={true}
         outputInPx={false}
       />
     );
     expect(screen.getByText("clamp(1rem, 0.333rem + 2.667vw, 2rem)")).toBeInTheDocument();
   });
 
-  it("should handle mixed units correctly - window units in rem", () => {
+  it("should handle mixed units correctly - viewport units in rem", () => {
     render(
       <TestComponent
         minTargetValue={16}
         maxTargetValue={32}
-        minWindowValue={25}
-        maxWindowValue={50}
+        minViewportValue={25}
+        maxViewportValue={50}
         isTargetUnitsPx={true}
-        isWindowUnitsPx={false}
+        isViewportUnitsPx={false}
         outputInPx={true}
       />
     );
