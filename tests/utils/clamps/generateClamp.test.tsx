@@ -3,8 +3,6 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { generateClamp } from "../../../src/utils/clamps";
 
-const remBase = 16;
-
 interface TestProps {
   minTargetValue: number;
   maxTargetValue: number;
@@ -12,6 +10,7 @@ interface TestProps {
   maxViewportValue: number;
   isTargetUnitsPx: boolean;
   isViewportUnitsPx: boolean;
+  remBase: number;
   outputInPx: boolean;
 }
 
@@ -22,6 +21,7 @@ const TestComponent: React.FC<TestProps> = ({
   maxViewportValue,
   isTargetUnitsPx,
   isViewportUnitsPx,
+  remBase,
   outputInPx,
 }) => {
   const clampValue = generateClamp(
@@ -47,6 +47,7 @@ describe("generateClamp", () => {
         maxViewportValue={100}
         isTargetUnitsPx={true}
         isViewportUnitsPx={true}
+        remBase={16}
         outputInPx={false}
       />
     );
@@ -62,6 +63,7 @@ describe("generateClamp", () => {
         maxViewportValue={100}
         isTargetUnitsPx={true}
         isViewportUnitsPx={true}
+        remBase={16}
         outputInPx={false}
       />
     );
@@ -77,6 +79,7 @@ describe("generateClamp", () => {
         maxViewportValue={100}
         isTargetUnitsPx={true}
         isViewportUnitsPx={true}
+        remBase={16}
         outputInPx={false}
       />
     );
@@ -92,6 +95,7 @@ describe("generateClamp", () => {
         maxViewportValue={0}
         isTargetUnitsPx={true}
         isViewportUnitsPx={true}
+        remBase={16}
         outputInPx={false}
       />
     );
@@ -107,6 +111,7 @@ describe("generateClamp", () => {
         maxViewportValue={100}
         isTargetUnitsPx={false}
         isViewportUnitsPx={true}
+        remBase={16}
         outputInPx={false}
       />
     );
@@ -122,6 +127,7 @@ describe("generateClamp", () => {
         maxViewportValue={-500}
         isTargetUnitsPx={true}
         isViewportUnitsPx={true}
+        remBase={16}
         outputInPx={false}
       />
     );
@@ -137,6 +143,7 @@ describe("generateClamp", () => {
         maxViewportValue={50}
         isTargetUnitsPx={false}
         isViewportUnitsPx={false}
+        remBase={16}
         outputInPx={false}
       />
     );
@@ -152,6 +159,7 @@ describe("generateClamp", () => {
         maxViewportValue={640}
         isTargetUnitsPx={true}
         isViewportUnitsPx={true}
+        remBase={16}
         outputInPx={true}
       />
     );
@@ -167,6 +175,7 @@ describe("generateClamp", () => {
         maxViewportValue={1000}
         isTargetUnitsPx={false}
         isViewportUnitsPx={true}
+        remBase={16}
         outputInPx={false}
       />
     );
@@ -182,9 +191,26 @@ describe("generateClamp", () => {
         maxViewportValue={50}
         isTargetUnitsPx={true}
         isViewportUnitsPx={false}
+        remBase={16}
         outputInPx={true}
       />
     );
     expect(screen.getByText("clamp(16px, 0px + 4vw, 32px)")).toBeInTheDocument();
+  });
+
+  it("should handle remBase change", () => {
+    render(
+      <TestComponent
+        minTargetValue={2}
+        maxTargetValue={4}
+        minViewportValue={320}
+        maxViewportValue={1024}
+        isTargetUnitsPx={false}
+        isViewportUnitsPx={true}
+        remBase={8}
+        outputInPx={true}
+      />
+    );
+    expect(screen.getByText("clamp(16px, 8.727px + 2.273vw, 32px)")).toBeInTheDocument();
   });
 });

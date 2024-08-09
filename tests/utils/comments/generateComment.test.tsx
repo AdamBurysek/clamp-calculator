@@ -114,6 +114,44 @@ describe("generateComment", () => {
     ).toBeInTheDocument();
   });
 
+  it("should handle negative target values", () => {
+    render(
+      <TestComponent
+        minTargetValue={-10}
+        maxTargetValue={-1}
+        minViewportValue={10}
+        maxViewportValue={100}
+        isTargetUnitsPx={true}
+        isViewportUnitsPx={true}
+        outputInPx={false}
+        remBase={16}
+        targetValue={""}
+      />
+    );
+    expect(
+      screen.getByText("/* -10px, viewport: 10px -> -1px, viewport: 100px */")
+    ).toBeInTheDocument();
+  });
+
+  it("should handle negative viewport values", () => {
+    render(
+      <TestComponent
+        minTargetValue={10}
+        maxTargetValue={100}
+        minViewportValue={-10}
+        maxViewportValue={-1}
+        isTargetUnitsPx={true}
+        isViewportUnitsPx={true}
+        outputInPx={false}
+        remBase={16}
+        targetValue={""}
+      />
+    );
+    expect(
+      screen.getByText("/* 10px, viewport: -10px -> 100px, viewport: -1px */")
+    ).toBeInTheDocument();
+  });
+
   it("should generate comment with no target value", () => {
     render(
       <TestComponent
@@ -149,6 +187,27 @@ describe("generateComment", () => {
     );
     expect(
       screen.getByText("/* width: 16px, viewport: 320px -> width: 32px, viewport: 1024px */")
+    ).toBeInTheDocument();
+  });
+
+  it("should handle remBase change", () => {
+    render(
+      <TestComponent
+        minTargetValue={2}
+        maxTargetValue={4}
+        minViewportValue={320}
+        maxViewportValue={1024}
+        isTargetUnitsPx={false}
+        isViewportUnitsPx={true}
+        outputInPx={true}
+        remBase={8}
+        targetValue={"font-size:"}
+      />
+    );
+    expect(
+      screen.getByText(
+        "/* font-size: 16px, viewport: 320px -> font-size: 32px, viewport: 1024px */"
+      )
     ).toBeInTheDocument();
   });
 });
