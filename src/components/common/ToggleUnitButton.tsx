@@ -13,9 +13,9 @@ interface ToggleUnitButtonProps {
 
 const ToggleButton = ({ isActive, label, onClick }: ToggleButtonProps) => (
   <button
-    className={cn("px-3 pb-1 rounded-full font-bold", {
-      "text-c-background bg-c-primary": isActive,
-      "text-c-text bg-c-background": !isActive,
+    className={cn("rounded-full px-3 pb-1 font-bold", {
+      "bg-c-primary text-c-background": isActive,
+      "bg-c-background text-c-text": !isActive,
     })}
     onClick={onClick}
   >
@@ -30,7 +30,7 @@ const ToggleUnitButton = ({ isUnitpx, setUnitpx }: ToggleUnitButtonProps) => {
   };
 
   return (
-    <div className="flex h-9 items-center px-1 bg-c-background rounded-full shadow-md">
+    <div className="flex h-9 items-center rounded-full bg-c-background px-1 shadow-md">
       <ToggleButton isActive={isUnitpx!} label="px" onClick={handleUnitChange} />
       <ToggleButton isActive={!isUnitpx} label="rem" onClick={handleUnitChange} />
     </div>

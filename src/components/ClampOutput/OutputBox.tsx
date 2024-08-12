@@ -31,8 +31,8 @@ const OutputBox = ({
     }
   };
   return (
-    <div className="flex my-4 py-4 pl-4 bg-c-secondary rounded-2xl">
-      <div className="w-full text-center py-4 bg-c-grey-one rounded-l-xl">
+    <div className="my-4 flex rounded-2xl bg-c-secondary py-4 pl-4">
+      <div className="w-full rounded-l-xl bg-c-grey-one py-4 text-center">
         <p ref={textRef}>
           <span>
             {/* Comment */}
@@ -58,8 +58,8 @@ const OutputBox = ({
       </div>
       <button
         className={cn(
-          "w-24 bg-c-primary mr-4 text-c-background font-bold flex justify-center items-center rounded-r-xl hover:bg-green-600 active:bg-green-500",
-          { "bg-green-600": showIcon }
+          "mr-4 flex w-24 items-center justify-center rounded-r-xl bg-c-primary font-bold text-c-background hover:bg-green-600 active:bg-green-500",
+          { "bg-green-600": showIcon },
         )}
         onClick={handleCopy}
       >

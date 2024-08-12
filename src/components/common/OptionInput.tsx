@@ -11,10 +11,10 @@ const OptionInput = ({ label, name, options, setValue, value }: Props) => {
     setValue(e.target.value);
   };
   return (
-    <div className="flex gap-2 my-2">
+    <div className="my-2 flex gap-2">
       <label htmlFor={name}>{label}</label>
       <select
-        className="px-6 rounded-md text-center bg-c-background"
+        className="rounded-md bg-c-background px-6 text-center"
         name={name}
         id={name}
         onChange={onChange}

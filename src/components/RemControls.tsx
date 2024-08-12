@@ -25,10 +25,10 @@ const RemControls: React.FC = () => {
     setMinTargetValue(recalculateRem(oldRemBase, newRemBase, isTargetUnitsPx, minTargetValue));
     setMaxTargetValue(recalculateRem(oldRemBase, newRemBase, isTargetUnitsPx, maxTargetValue));
     setMinViewportValue(
-      recalculateRem(oldRemBase, newRemBase, isViewportUnitsPx, minViewportValue)
+      recalculateRem(oldRemBase, newRemBase, isViewportUnitsPx, minViewportValue),
     );
     setMaxViewportValue(
-      recalculateRem(oldRemBase, newRemBase, isViewportUnitsPx, maxViewportValue)
+      recalculateRem(oldRemBase, newRemBase, isViewportUnitsPx, maxViewportValue),
     );
   };
 
@@ -78,10 +78,10 @@ const RemControls: React.FC = () => {
   };
 
   return (
-    <div className="flex gap-4 my-4">
+    <div className="my-4 flex gap-4">
       <StepButton type="decrement" onClick={changeRemBase} />
-      <div className="bg-c-primary rounded-2xl">
-        <p className="pt-2 px-6 text-c-background text-xl font-bold ">
+      <div className="rounded-2xl bg-c-primary">
+        <p className="px-6 pt-2 text-xl font-bold text-c-background">
           1 rem =
           <input
             type="number"
@@ -91,7 +91,7 @@ const RemControls: React.FC = () => {
             onChange={handleRemInputChange}
             onBlur={handleRemInputBlur}
             onKeyDown={handleRemInputKeyDown}
-            className="w-14 text-center bg-c-primary text-c-background"
+            className="w-14 bg-c-primary text-center text-c-background"
             min={1}
             max={1201}
           />

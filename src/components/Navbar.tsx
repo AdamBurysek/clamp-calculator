@@ -26,17 +26,17 @@ const Navbar = () => {
   return (
     <header
       className={cn(
-        "fixed z-50 w-full max-h-16 h-screen flex justify-center bg-c-grey-one duration-15 transition-[max-height] duration-1000",
+        "duration-15 fixed z-50 flex h-screen max-h-16 w-full justify-center bg-c-grey-one transition-[max-height] duration-1000",
         {
           "max-h-screen bg-c-grey-two md:max-h-16 md:bg-c-grey-one": menuOpened,
-        }
+        },
       )}
     >
-      <nav className="flex w-full max-w-content justify-between px-8 pt-4 overflow-hidden max-md:flex-col max-md:items-center">
+      <nav className="flex w-full max-w-content justify-between overflow-hidden px-8 pt-4 max-md:flex-col max-md:items-center">
         <Link to="/" aria-label="Clamp Calculator" className="pt-1 max-md:pb-8">
           <ClampCalculatorIcon />
         </Link>
-        <div className="flex w-full max-w-80 justify-between mr-20 font-medium  max-md:flex-col max-md:gap-10 max-md:items-center max-md:mr-0 max-md:pt-6">
+        <div className="mr-20 flex w-full max-w-80 justify-between font-medium max-md:mr-0 max-md:flex-col max-md:items-center max-md:gap-10 max-md:pt-6">
           {navLinks.map((link) => (
             <Link
               key={link.name}

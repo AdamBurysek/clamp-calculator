@@ -2,10 +2,10 @@ import { GithubIcon } from "./Icons";
 
 const Footer = () => {
   return (
-    <footer className="bg-c-grey-one w-full flex justify-center mt-12">
-      <div className="max-w-content h-36 flex flex-col items-center gap-8">
+    <footer className="mt-12 flex w-full justify-center bg-c-grey-one">
+      <div className="flex h-36 max-w-content flex-col items-center gap-8">
         <a
-          className="cursor-pointer mt-10"
+          className="mt-10 cursor-pointer"
           href="https://github.com/AdamBurysek/clamp-calculator"
           target="_blank"
           aria-label="Clamp Calculator Github Repository"

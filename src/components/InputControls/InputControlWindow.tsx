@@ -22,8 +22,8 @@ const InputForm = ({ type, min, max, isUnitpx, value, setValue, ariaLabel }: Inp
 
   return (
     <div className="flex gap-2">
-      <p className="text-c-text font-bold text-xl">{type === "min" ? "MIN" : "MAX"}</p>
-      <span className="flex gap-2 px-2 items-center bg-c-primary text-c-background rounded-md">
+      <p className="text-xl font-bold text-c-text">{type === "min" ? "MIN" : "MAX"}</p>
+      <span className="flex items-center gap-2 rounded-md bg-c-primary px-2 text-c-background">
         <input
           type="number"
           value={value}
@@ -32,11 +32,11 @@ const InputForm = ({ type, min, max, isUnitpx, value, setValue, ariaLabel }: Inp
           onKeyDown={handleInputKeyDown}
           aria-label={ariaLabel}
           name={ariaLabel}
-          className="w-14 text-center bg-c-primary text-c-background font-bold"
+          className="w-14 bg-c-primary text-center font-bold text-c-background"
           min={min}
           max={max}
         />
-        <p className="text-c-background font-bold">{isUnitpx ? "px" : "rem"}</p>
+        <p className="font-bold text-c-background">{isUnitpx ? "px" : "rem"}</p>
       </span>
     </div>
   );
@@ -52,8 +52,8 @@ const InputControlWindow = ({
   setUnitpx,
 }: InputControlWindowProps) => {
   return (
-    <div className="flex flex-col items-center gap-8 w-96 h-36 bg-c-secondary border border-c-background rounded-2xl drop-shadow-box">
-      <div className="flex items-center gap-6 mt-2 h-12">
+    <div className="flex h-36 w-96 flex-col items-center gap-8 rounded-2xl border border-c-background bg-c-secondary drop-shadow-box">
+      <div className="mt-2 flex h-12 items-center gap-6">
         <h3 className="pb-1">{header}</h3>
         <ToggleUnitButton isUnitpx={isUnitpx} setUnitpx={setUnitpx} />
       </div>
