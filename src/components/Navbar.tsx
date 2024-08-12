@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <header
       className={cn(
-        "duration-15 fixed z-50 flex h-screen max-h-16 w-full justify-center bg-c-grey-one transition-[max-height] duration-1000",
+        "fixed z-50 flex h-screen max-h-16 w-full justify-center bg-c-grey-one transition-[max-height] duration-1000",
         {
           "max-h-screen bg-c-grey-two md:max-h-16 md:bg-c-grey-one": menuOpened,
         },
