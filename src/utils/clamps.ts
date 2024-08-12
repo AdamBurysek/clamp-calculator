@@ -8,7 +8,8 @@ export const generateClamp = (
   isTargetUnitsPx: boolean,
   isViewportUnitsPx: boolean,
   remBase: number,
-  outputInPx: boolean
+  outputInPx: boolean,
+  useTailwind: boolean
 ): string => {
   if (outputInPx) {
     const minTargetPx = toPx(minTargetValue, isTargetUnitsPx, remBase);
@@ -20,9 +21,15 @@ export const generateClamp = (
     const intercept = minTargetPx - slope * minViewportPx;
     const slopePercentage = slope * 100;
 
-    return `clamp(${formatNumber(minTargetPx)}px, ${formatNumber(intercept)}px + ${formatNumber(
-      slopePercentage
-    )}vw, ${formatNumber(maxTargetPx)}px)`;
+    if (useTailwind) {
+      return `[clamp(${formatNumber(minTargetPx)}px,${formatNumber(intercept)}px+${formatNumber(
+        slopePercentage
+      )}vw,${formatNumber(maxTargetPx)}px)]`;
+    } else {
+      return `clamp(${formatNumber(minTargetPx)}px, ${formatNumber(intercept)}px + ${formatNumber(
+        slopePercentage
+      )}vw, ${formatNumber(maxTargetPx)}px)`;
+    }
   } else {
     const minTargetRem = toRem(minTargetValue, isTargetUnitsPx, remBase);
     const maxTargetRem = toRem(maxTargetValue, isTargetUnitsPx, remBase);
@@ -33,8 +40,14 @@ export const generateClamp = (
     const intercept = minTargetRem - slope * minViewportRem;
     const slopePercentage = slope * 100;
 
-    return `clamp(${formatNumber(minTargetRem)}rem, ${formatNumber(intercept)}rem + ${formatNumber(
-      slopePercentage
-    )}vw, ${formatNumber(maxTargetRem)}rem)`;
+    if (useTailwind) {
+      return `[clamp(${formatNumber(minTargetRem)}rem,${formatNumber(intercept)}rem+${formatNumber(
+        slopePercentage
+      )}vw,${formatNumber(maxTargetRem)}rem)]`;
+    } else {
+      return `clamp(${formatNumber(minTargetRem)}rem, ${formatNumber(
+        intercept
+      )}rem + ${formatNumber(slopePercentage)}vw, ${formatNumber(maxTargetRem)}rem)`;
+    }
   }
 };

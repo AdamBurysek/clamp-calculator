@@ -1,15 +1,27 @@
-import { useState, useRef } from "react";
-import useGlobalState from "../hooks/useGlobalState";
-import { CheckIcon } from "./Icons";
-import { cn } from "../utils/classNames";
+import { useRef, useState } from "react";
+import { cn } from "../../utils/classNames";
+import { CheckIcon } from "../Icons";
 
-const ClampOutputBox = () => {
-  const { clampValue, targetValue, addComment, commentValue } = useGlobalState();
+interface OutputBoxProps {
+  clampValue: string;
+  targetValue: string;
+  addComment: boolean;
+  commentValue: string;
+  useTailwind: boolean;
+}
+
+const OutputBox = ({
+  clampValue,
+  targetValue,
+  addComment,
+  commentValue,
+  useTailwind,
+}: OutputBoxProps) => {
   const [showIcon, setShowIcon] = useState(false);
   const textRef = useRef<HTMLParagraphElement | null>(null);
 
   const handleCopy = () => {
-    if (clampValue && textRef.current) {
+    if (textRef.current) {
       const textToCopy = textRef.current.innerText;
       navigator.clipboard.writeText(textToCopy);
       setShowIcon(true);
@@ -18,24 +30,29 @@ const ClampOutputBox = () => {
       }, 1000);
     }
   };
-
   return (
     <div className="flex my-4 py-4 pl-4 bg-c-secondary rounded-2xl">
       <div className="w-full text-center py-4 bg-c-grey-one rounded-l-xl">
         <p ref={textRef}>
           <span>
-            {addComment ? (
+            {/* Comment */}
+            {addComment && (
               <span>
                 {commentValue}
                 <br />
               </span>
-            ) : null}
-            <span>
-              {clampValue ? targetValue : ""}
-              {targetValue ? " " : ""}
-              {clampValue}
-              {targetValue && clampValue ? ";" : ""}
-            </span>
+            )}
+            {/* Clamp */}
+            {clampValue && (
+              <span>
+                {targetValue}
+                {/* Adding a space between targetValue and clampValue if targetValue is not empty and useTailwind is false */}
+                {targetValue && !useTailwind ? " " : ""}
+                {clampValue}
+                {/* Adding a semicolon at the end of the clamp if targetValue is provided */}
+                {targetValue && clampValue ? ";" : ""}
+              </span>
+            )}
           </span>
         </p>
       </div>
@@ -52,4 +69,4 @@ const ClampOutputBox = () => {
   );
 };
 
-export default ClampOutputBox;
+export default OutputBox;

@@ -12,6 +12,7 @@ type TestComponentProps = {
   outputInPx: boolean;
   remBase: number;
   targetValue: string;
+  useTailwind: boolean;
 };
 
 const TestComponent: React.FC<TestComponentProps> = ({
@@ -23,6 +24,7 @@ const TestComponent: React.FC<TestComponentProps> = ({
   isViewportUnitsPx,
   remBase,
   targetValue,
+  useTailwind,
 }) => {
   const comment = generateComment(
     minTargetValue,
@@ -32,7 +34,8 @@ const TestComponent: React.FC<TestComponentProps> = ({
     isTargetUnitsPx,
     isViewportUnitsPx,
     remBase,
-    targetValue
+    targetValue,
+    useTailwind
   );
   return <div>{comment}</div>;
 };
@@ -50,6 +53,7 @@ describe("generateComment", () => {
         outputInPx={false}
         remBase={16}
         targetValue={""}
+        useTailwind={false}
       />
     );
     expect(
@@ -69,6 +73,7 @@ describe("generateComment", () => {
         outputInPx={false}
         remBase={16}
         targetValue={""}
+        useTailwind={false}
       />
     );
     expect(
@@ -88,6 +93,7 @@ describe("generateComment", () => {
         outputInPx={false}
         remBase={16}
         targetValue={""}
+        useTailwind={false}
       />
     );
     expect(
@@ -107,6 +113,7 @@ describe("generateComment", () => {
         outputInPx={false}
         remBase={16}
         targetValue={""}
+        useTailwind={false}
       />
     );
     expect(
@@ -126,6 +133,7 @@ describe("generateComment", () => {
         outputInPx={false}
         remBase={16}
         targetValue={""}
+        useTailwind={false}
       />
     );
     expect(
@@ -145,6 +153,7 @@ describe("generateComment", () => {
         outputInPx={false}
         remBase={16}
         targetValue={""}
+        useTailwind={false}
       />
     );
     expect(
@@ -164,6 +173,7 @@ describe("generateComment", () => {
         outputInPx={false}
         remBase={16}
         targetValue={""}
+        useTailwind={false}
       />
     );
     expect(
@@ -183,6 +193,7 @@ describe("generateComment", () => {
         outputInPx={true}
         remBase={16}
         targetValue={"width:"}
+        useTailwind={false}
       />
     );
     expect(
@@ -202,12 +213,33 @@ describe("generateComment", () => {
         outputInPx={true}
         remBase={8}
         targetValue={"font-size:"}
+        useTailwind={false}
       />
     );
     expect(
       screen.getByText(
         "/* font-size: 16px, viewport: 320px -> font-size: 32px, viewport: 1024px */"
       )
+    ).toBeInTheDocument();
+  });
+
+  it("should handle useTailwind option", () => {
+    render(
+      <TestComponent
+        minTargetValue={1}
+        maxTargetValue={2}
+        minViewportValue={320}
+        maxViewportValue={1024}
+        isTargetUnitsPx={false}
+        isViewportUnitsPx={true}
+        outputInPx={false}
+        remBase={16}
+        targetValue={""}
+        useTailwind={true}
+      />
+    );
+    expect(
+      screen.getByText("{/* clamp: 16px, viewport: 320px -> 32px, viewport: 1024px */}")
     ).toBeInTheDocument();
   });
 });

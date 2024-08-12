@@ -12,6 +12,7 @@ interface TestProps {
   isViewportUnitsPx: boolean;
   remBase: number;
   outputInPx: boolean;
+  useTailwind: boolean;
 }
 
 const TestComponent: React.FC<TestProps> = ({
@@ -23,6 +24,7 @@ const TestComponent: React.FC<TestProps> = ({
   isViewportUnitsPx,
   remBase,
   outputInPx,
+  useTailwind,
 }) => {
   const clampValue = generateClamp(
     minTargetValue,
@@ -32,7 +34,8 @@ const TestComponent: React.FC<TestProps> = ({
     isTargetUnitsPx,
     isViewportUnitsPx,
     remBase,
-    outputInPx
+    outputInPx,
+    useTailwind
   );
   return <div>{clampValue}</div>;
 };
@@ -49,6 +52,7 @@ describe("generateClamp", () => {
         isViewportUnitsPx={true}
         remBase={16}
         outputInPx={false}
+        useTailwind={false}
       />
     );
     expect(screen.getByText("clamp(0rem, -0.694rem + 111.111vw, 6.25rem)")).toBeInTheDocument();
@@ -65,6 +69,7 @@ describe("generateClamp", () => {
         isViewportUnitsPx={true}
         remBase={16}
         outputInPx={false}
+        useTailwind={false}
       />
     );
     expect(screen.getByText("clamp(6.25rem, 6.944rem + -111.111vw, 0rem)")).toBeInTheDocument();
@@ -81,6 +86,7 @@ describe("generateClamp", () => {
         isViewportUnitsPx={true}
         remBase={16}
         outputInPx={false}
+        useTailwind={false}
       />
     );
     expect(screen.getByText("clamp(0.625rem, 0.625rem + 90vw, 6.25rem)")).toBeInTheDocument();
@@ -97,6 +103,7 @@ describe("generateClamp", () => {
         isViewportUnitsPx={true}
         remBase={16}
         outputInPx={false}
+        useTailwind={false}
       />
     );
     expect(screen.getByText("clamp(0.625rem, 6.25rem + -900vw, 6.25rem)")).toBeInTheDocument();
@@ -113,6 +120,7 @@ describe("generateClamp", () => {
         isViewportUnitsPx={true}
         remBase={16}
         outputInPx={false}
+        useTailwind={false}
       />
     );
     expect(screen.getByText("clamp(-10rem, -10.556rem + 88.889vw, -5rem)")).toBeInTheDocument();
@@ -129,6 +137,7 @@ describe("generateClamp", () => {
         isViewportUnitsPx={true}
         remBase={16}
         outputInPx={false}
+        useTailwind={false}
       />
     );
     expect(screen.getByText("clamp(0.625rem, 11.875rem + 18vw, 6.25rem)")).toBeInTheDocument();
@@ -145,6 +154,7 @@ describe("generateClamp", () => {
         isViewportUnitsPx={false}
         remBase={16}
         outputInPx={false}
+        useTailwind={false}
       />
     );
     expect(screen.getByText("clamp(1rem, 0rem + 4vw, 2rem)")).toBeInTheDocument();
@@ -161,6 +171,7 @@ describe("generateClamp", () => {
         isViewportUnitsPx={true}
         remBase={16}
         outputInPx={true}
+        useTailwind={false}
       />
     );
     expect(screen.getByText("clamp(16px, 0px + 5vw, 32px)")).toBeInTheDocument();
@@ -177,6 +188,7 @@ describe("generateClamp", () => {
         isViewportUnitsPx={true}
         remBase={16}
         outputInPx={false}
+        useTailwind={false}
       />
     );
     expect(screen.getByText("clamp(1rem, 0.333rem + 2.667vw, 2rem)")).toBeInTheDocument();
@@ -193,6 +205,7 @@ describe("generateClamp", () => {
         isViewportUnitsPx={false}
         remBase={16}
         outputInPx={true}
+        useTailwind={false}
       />
     );
     expect(screen.getByText("clamp(16px, 0px + 4vw, 32px)")).toBeInTheDocument();
@@ -209,8 +222,26 @@ describe("generateClamp", () => {
         isViewportUnitsPx={true}
         remBase={8}
         outputInPx={true}
+        useTailwind={false}
       />
     );
     expect(screen.getByText("clamp(16px, 8.727px + 2.273vw, 32px)")).toBeInTheDocument();
+  });
+
+  it("should handle useTailwind option", () => {
+    render(
+      <TestComponent
+        minTargetValue={1}
+        maxTargetValue={2}
+        minViewportValue={320}
+        maxViewportValue={1024}
+        isTargetUnitsPx={false}
+        isViewportUnitsPx={true}
+        remBase={16}
+        outputInPx={false}
+        useTailwind={true}
+      />
+    );
+    expect(screen.getByText("[clamp(1rem,0.545rem+2.273vw,2rem)]")).toBeInTheDocument();
   });
 });

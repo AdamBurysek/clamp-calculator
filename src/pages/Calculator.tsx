@@ -1,5 +1,5 @@
 import AdditionalControls from "../components/AdditionalControls";
-import ClampOutputBox from "../components/ClampOutputBox";
+import ClampOutputBox from "../components/ClampOutput/ClampOutputBox";
 import InputControls from "../components/InputControls/InputControls";
 import RemControls from "../components/RemControls";
 

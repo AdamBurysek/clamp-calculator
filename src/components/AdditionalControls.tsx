@@ -4,8 +4,16 @@ import OptionInput from "./common/OptionInput";
 import ToggleOption from "./common/ToggleOption";
 
 const AdditionalControls = () => {
-  const { outputInPx, setOutputInPx, targetValue, setTargetValue, addComment, setAddComment } =
-    useGlobalState();
+  const {
+    outputInPx,
+    setOutputInPx,
+    targetValue,
+    setTargetValue,
+    addComment,
+    setAddComment,
+    useTailwind,
+    setUseTailwind,
+  } = useGlobalState();
 
   const targetOptions = [
     { label: "none", value: "" },
@@ -35,6 +43,11 @@ const AdditionalControls = () => {
         label="Add comment"
         onClick={() => setAddComment(!addComment)}
         value={addComment}
+      />
+      <ToggleOption
+        label="Use TailwindCSS"
+        onClick={() => setUseTailwind(!useTailwind)}
+        value={useTailwind}
       />
     </div>
   );
