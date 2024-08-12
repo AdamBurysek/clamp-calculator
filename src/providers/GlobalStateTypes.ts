@@ -1,4 +1,4 @@
-interface GlobalStateProps {
+export interface GlobalStateProps {
   remBase: number;
   setRemBase: React.Dispatch<React.SetStateAction<number>>;
   isTargetUnitsPx: boolean;
