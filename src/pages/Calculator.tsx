@@ -1,5 +1,5 @@
 import AdditionalControls from "../components/AdditionalControls";
-import ClampOutputBox from "../components/ClampOutputBox";
+import ClampOutputBox from "../components/ClampOutput/ClampOutputBox";
 import InputControls from "../components/InputControls/InputControls";
 import RemControls from "../components/RemControls";
 
@@ -18,8 +18,8 @@ const Calculator = () => {
         </div>
         <ClampOutputBox />
       </div>
-      {/* clamp: width: 16px, viewport: 320px -> width: 32px, viewport: 1000px */}
-      <div className="w-[clamp(80px,445.714px+-114.286vw,400px)] h-20 bg-c-secondary"></div>
+      {/* clamp: 32px, viewport: 320px -> 960px, viewport: 1500px */}
+      <div className="w-[clamp(2rem,-13.729rem+78.644vw,60rem)] h-20 bg-c-secondary"></div>
     </div>
   );
 };

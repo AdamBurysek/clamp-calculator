@@ -2,9 +2,9 @@
 import { ReactNode, useEffect, useState } from "react";
 import { convertUnits } from "../utils/calculations";
 import { booleanToString, getCookie, setCookie, stringToBoolean } from "../utils/cookies";
-import { GlobalStateContext } from "./GlobalStateContext";
 import { generateComment } from "../utils/comments";
 import { generateClamp } from "../utils/clamps";
+import { GlobalStateContext } from "./GlobalStateContext";
 
 export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   // Fix issue with recalulations on initial load

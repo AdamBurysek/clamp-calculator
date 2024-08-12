@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
-import useGlobalState from "../hooks/useGlobalState";
-import { CheckIcon } from "./Icons";
-import { cn } from "../utils/classNames";
+import useGlobalState from "../../hooks/useGlobalState";
+import { CheckIcon } from "../Icons";
+import { cn } from "../../utils/classNames";
 
 const ClampOutputBox = () => {
   const { clampValue, targetValue, addComment, commentValue } = useGlobalState();
