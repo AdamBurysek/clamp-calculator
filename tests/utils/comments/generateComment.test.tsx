@@ -3,28 +3,28 @@ import { render, screen } from "@testing-library/react";
 import { generateComment } from "../../../src/utils/comments";
 
 type TestComponentProps = {
-  minTargetValue: number;
-  maxTargetValue: number;
-  minViewportValue: number;
-  maxViewportValue: number;
-  isTargetUnitsPx: boolean;
-  isViewportUnitsPx: boolean;
-  outputInPx: boolean;
-  remBase: number;
-  targetValue: string;
-  useTailwind: boolean;
+  minTargetValue?: number;
+  maxTargetValue?: number;
+  minViewportValue?: number;
+  maxViewportValue?: number;
+  isTargetUnitsPx?: boolean;
+  isViewportUnitsPx?: boolean;
+  outputInPx?: boolean;
+  remBase?: number;
+  targetValue?: string;
+  useTailwind?: boolean;
 };
 
 const TestComponent: React.FC<TestComponentProps> = ({
-  minTargetValue,
-  maxTargetValue,
-  minViewportValue,
-  maxViewportValue,
-  isTargetUnitsPx,
-  isViewportUnitsPx,
-  remBase,
-  targetValue,
-  useTailwind,
+  minTargetValue = 10,
+  maxTargetValue = 100,
+  minViewportValue = 10,
+  maxViewportValue = 100,
+  isTargetUnitsPx = true,
+  isViewportUnitsPx = true,
+  remBase = 16,
+  targetValue = "",
+  useTailwind = false,
 }) => {
   const comment = generateComment(
     minTargetValue,
@@ -35,129 +35,51 @@ const TestComponent: React.FC<TestComponentProps> = ({
     isViewportUnitsPx,
     remBase,
     targetValue,
-    useTailwind
+    useTailwind,
   );
   return <div>{comment}</div>;
 };
 
 describe("generateComment", () => {
   it("should handle if minTargetValue value is zero", () => {
-    render(
-      <TestComponent
-        minTargetValue={0}
-        maxTargetValue={100}
-        minViewportValue={10}
-        maxViewportValue={100}
-        isTargetUnitsPx={true}
-        isViewportUnitsPx={true}
-        outputInPx={false}
-        remBase={16}
-        targetValue={""}
-        useTailwind={false}
-      />
-    );
+    render(<TestComponent minTargetValue={0} />);
     expect(
-      screen.getByText("/* 0px, viewport: 10px -> 100px, viewport: 100px */")
+      screen.getByText("/* 0px, viewport: 10px -> 100px, viewport: 100px */"),
     ).toBeInTheDocument();
   });
 
   it("should handle if maxTargetValue value is zero", () => {
-    render(
-      <TestComponent
-        minTargetValue={10}
-        maxTargetValue={0}
-        minViewportValue={10}
-        maxViewportValue={100}
-        isTargetUnitsPx={true}
-        isViewportUnitsPx={true}
-        outputInPx={false}
-        remBase={16}
-        targetValue={""}
-        useTailwind={false}
-      />
-    );
+    render(<TestComponent maxTargetValue={0} />);
     expect(
-      screen.getByText("/* 10px, viewport: 10px -> 0px, viewport: 100px */")
+      screen.getByText("/* 10px, viewport: 10px -> 0px, viewport: 100px */"),
     ).toBeInTheDocument();
   });
 
   it("should handle if minViewportValue value is zero", () => {
-    render(
-      <TestComponent
-        minTargetValue={10}
-        maxTargetValue={100}
-        minViewportValue={0}
-        maxViewportValue={100}
-        isTargetUnitsPx={true}
-        isViewportUnitsPx={true}
-        outputInPx={false}
-        remBase={16}
-        targetValue={""}
-        useTailwind={false}
-      />
-    );
+    render(<TestComponent minViewportValue={0} />);
     expect(
-      screen.getByText("/* 10px, viewport: 0px -> 100px, viewport: 100px */")
+      screen.getByText("/* 10px, viewport: 0px -> 100px, viewport: 100px */"),
     ).toBeInTheDocument();
   });
 
   it("should handle if maxViewportValue value is zero", () => {
-    render(
-      <TestComponent
-        minTargetValue={10}
-        maxTargetValue={100}
-        minViewportValue={10}
-        maxViewportValue={0}
-        isTargetUnitsPx={true}
-        isViewportUnitsPx={true}
-        outputInPx={false}
-        remBase={16}
-        targetValue={""}
-        useTailwind={false}
-      />
-    );
+    render(<TestComponent maxViewportValue={0} />);
     expect(
-      screen.getByText("/* 10px, viewport: 10px -> 100px, viewport: 0px */")
+      screen.getByText("/* 10px, viewport: 10px -> 100px, viewport: 0px */"),
     ).toBeInTheDocument();
   });
 
   it("should handle negative target values", () => {
-    render(
-      <TestComponent
-        minTargetValue={-10}
-        maxTargetValue={-1}
-        minViewportValue={10}
-        maxViewportValue={100}
-        isTargetUnitsPx={true}
-        isViewportUnitsPx={true}
-        outputInPx={false}
-        remBase={16}
-        targetValue={""}
-        useTailwind={false}
-      />
-    );
+    render(<TestComponent minTargetValue={-10} maxTargetValue={-1} />);
     expect(
-      screen.getByText("/* -10px, viewport: 10px -> -1px, viewport: 100px */")
+      screen.getByText("/* -10px, viewport: 10px -> -1px, viewport: 100px */"),
     ).toBeInTheDocument();
   });
 
   it("should handle negative viewport values", () => {
-    render(
-      <TestComponent
-        minTargetValue={10}
-        maxTargetValue={100}
-        minViewportValue={-10}
-        maxViewportValue={-1}
-        isTargetUnitsPx={true}
-        isViewportUnitsPx={true}
-        outputInPx={false}
-        remBase={16}
-        targetValue={""}
-        useTailwind={false}
-      />
-    );
+    render(<TestComponent minViewportValue={-10} maxViewportValue={-1} />);
     expect(
-      screen.getByText("/* 10px, viewport: -10px -> 100px, viewport: -1px */")
+      screen.getByText("/* 10px, viewport: -10px -> 100px, viewport: -1px */"),
     ).toBeInTheDocument();
   });
 
@@ -169,15 +91,10 @@ describe("generateComment", () => {
         minViewportValue={320}
         maxViewportValue={1024}
         isTargetUnitsPx={false}
-        isViewportUnitsPx={true}
-        outputInPx={false}
-        remBase={16}
-        targetValue={""}
-        useTailwind={false}
-      />
+      />,
     );
     expect(
-      screen.getByText("/* 16px, viewport: 320px -> 32px, viewport: 1024px */")
+      screen.getByText("/* 16px, viewport: 320px -> 32px, viewport: 1024px */"),
     ).toBeInTheDocument();
   });
 
@@ -188,16 +105,11 @@ describe("generateComment", () => {
         maxTargetValue={32}
         minViewportValue={320}
         maxViewportValue={1024}
-        isTargetUnitsPx={true}
-        isViewportUnitsPx={true}
-        outputInPx={true}
-        remBase={16}
         targetValue={"width:"}
-        useTailwind={false}
-      />
+      />,
     );
     expect(
-      screen.getByText("/* width: 16px, viewport: 320px -> width: 32px, viewport: 1024px */")
+      screen.getByText("/* width: 16px, viewport: 320px -> width: 32px, viewport: 1024px */"),
     ).toBeInTheDocument();
   });
 
@@ -209,17 +121,14 @@ describe("generateComment", () => {
         minViewportValue={320}
         maxViewportValue={1024}
         isTargetUnitsPx={false}
-        isViewportUnitsPx={true}
-        outputInPx={true}
         remBase={8}
         targetValue={"font-size:"}
-        useTailwind={false}
-      />
+      />,
     );
     expect(
       screen.getByText(
-        "/* font-size: 16px, viewport: 320px -> font-size: 32px, viewport: 1024px */"
-      )
+        "/* font-size: 16px, viewport: 320px -> font-size: 32px, viewport: 1024px */",
+      ),
     ).toBeInTheDocument();
   });
 
@@ -231,15 +140,11 @@ describe("generateComment", () => {
         minViewportValue={320}
         maxViewportValue={1024}
         isTargetUnitsPx={false}
-        isViewportUnitsPx={true}
-        outputInPx={false}
-        remBase={16}
-        targetValue={""}
         useTailwind={true}
-      />
+      />,
     );
     expect(
-      screen.getByText("{/* clamp: 16px, viewport: 320px -> 32px, viewport: 1024px */}")
+      screen.getByText("{/* clamp: 16px, viewport: 320px -> 32px, viewport: 1024px */}"),
     ).toBeInTheDocument();
   });
 });
