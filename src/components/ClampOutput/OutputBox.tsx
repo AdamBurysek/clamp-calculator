@@ -50,7 +50,7 @@ const OutputBox = ({
                 {targetValue && !useTailwind ? " " : ""}
                 {clampValue}
                 {/* Adding a semicolon at the end of the clamp if targetValue is provided */}
-                {targetValue && clampValue ? ";" : ""}
+                {targetValue && clampValue && !useTailwind ? ";" : ""}
               </span>
             )}
           </span>
