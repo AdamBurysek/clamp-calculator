@@ -7,9 +7,16 @@ interface OutputBoxProps {
   targetValue: string;
   addComment: boolean;
   commentValue: string;
+  useTailwind: boolean;
 }
 
-const OutputBox = ({ clampValue, targetValue, addComment, commentValue }: OutputBoxProps) => {
+const OutputBox = ({
+  clampValue,
+  targetValue,
+  addComment,
+  commentValue,
+  useTailwind,
+}: OutputBoxProps) => {
   const [showIcon, setShowIcon] = useState(false);
   const textRef = useRef<HTMLParagraphElement | null>(null);
 
@@ -39,8 +46,8 @@ const OutputBox = ({ clampValue, targetValue, addComment, commentValue }: Output
             {clampValue && (
               <span>
                 {targetValue}
-                {/* Adding a space between targetValue and clampValue if targetValue is not empty */}
-                {targetValue ? " " : ""}
+                {/* Adding a space between targetValue and clampValue if targetValue is not empty and useTailwind is false */}
+                {targetValue && !useTailwind ? " " : ""}
                 {clampValue}
                 {/* Adding a semicolon at the end of the clamp if targetValue is provided */}
                 {targetValue && clampValue ? ";" : ""}

@@ -4,15 +4,33 @@ import OutputBox from "./OutputBox";
 const ClampOutputBox = () => {
   const { clampValue, targetValue, addComment, commentValue, useTailwind } = useGlobalState();
 
+  const tailwindNames = [
+    { name: "font-size:", value: "text-" },
+    { name: "width:", value: "w-" },
+    { name: "padding-left:", value: "pl-" },
+    { name: "padding-right:", value: "pr-" },
+    { name: "margin-left:", value: "ml-" },
+    { name: "margin-right:", value: "mr-" },
+  ];
+
+  const getTailwindValue = (name: string) => {
+    const tailwindName = tailwindNames.find((item) => item.name === name);
+    if (tailwindName) {
+      return tailwindName.value;
+    }
+    return "";
+  };
+
   return (
     <>
       {useTailwind ? (
         <>
           <OutputBox
             clampValue={clampValue}
-            targetValue={targetValue}
+            targetValue={getTailwindValue(targetValue)}
             addComment={false}
             commentValue={""}
+            useTailwind={useTailwind}
           />
           {addComment && (
             <OutputBox
@@ -20,6 +38,7 @@ const ClampOutputBox = () => {
               targetValue={""}
               addComment={true}
               commentValue={commentValue}
+              useTailwind={useTailwind}
             />
           )}
         </>
@@ -29,6 +48,7 @@ const ClampOutputBox = () => {
           targetValue={targetValue}
           addComment={addComment}
           commentValue={commentValue}
+          useTailwind={useTailwind}
         />
       )}
     </>

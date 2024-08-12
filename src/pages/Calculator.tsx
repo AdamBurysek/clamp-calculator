@@ -18,8 +18,6 @@ const Calculator = () => {
         </div>
         <ClampOutputBox />
       </div>
-      {/* clamp: 32px, viewport: 320px -> 960px, viewport: 1500px */}
-      <div className="w-[clamp(2rem,-13.729rem+78.644vw,60rem)] h-20 bg-c-secondary"></div>
     </div>
   );
 };
