@@ -1,54 +1,37 @@
-import { useState, useRef } from "react";
 import useGlobalState from "../../hooks/useGlobalState";
-import { CheckIcon } from "../Icons";
-import { cn } from "../../utils/classNames";
+import OutputBox from "./OutputBox";
 
 const ClampOutputBox = () => {
-  const { clampValue, targetValue, addComment, commentValue } = useGlobalState();
-  const [showIcon, setShowIcon] = useState(false);
-  const textRef = useRef<HTMLParagraphElement | null>(null);
-
-  const handleCopy = () => {
-    if (clampValue && textRef.current) {
-      const textToCopy = textRef.current.innerText;
-      navigator.clipboard.writeText(textToCopy);
-      setShowIcon(true);
-      setTimeout(() => {
-        setShowIcon(false);
-      }, 1000);
-    }
-  };
+  const { clampValue, targetValue, addComment, commentValue, useTailwind } = useGlobalState();
 
   return (
-    <div className="flex my-4 py-4 pl-4 bg-c-secondary rounded-2xl">
-      <div className="w-full text-center py-4 bg-c-grey-one rounded-l-xl">
-        <p ref={textRef}>
-          <span>
-            {addComment ? (
-              <span>
-                {commentValue}
-                <br />
-              </span>
-            ) : null}
-            <span>
-              {clampValue ? targetValue : ""}
-              {targetValue ? " " : ""}
-              {clampValue}
-              {targetValue && clampValue ? ";" : ""}
-            </span>
-          </span>
-        </p>
-      </div>
-      <button
-        className={cn(
-          "w-24 bg-c-primary mr-4 text-c-background font-bold flex justify-center items-center rounded-r-xl hover:bg-green-600 active:bg-green-500",
-          { "bg-green-600": showIcon }
-        )}
-        onClick={handleCopy}
-      >
-        {showIcon ? <CheckIcon /> : "COPY"}
-      </button>
-    </div>
+    <>
+      {useTailwind ? (
+        <>
+          <OutputBox
+            clampValue={clampValue}
+            targetValue={targetValue}
+            addComment={false}
+            commentValue={""}
+          />
+          {addComment && (
+            <OutputBox
+              clampValue={""}
+              targetValue={""}
+              addComment={true}
+              commentValue={commentValue}
+            />
+          )}
+        </>
+      ) : (
+        <OutputBox
+          clampValue={clampValue}
+          targetValue={targetValue}
+          addComment={addComment}
+          commentValue={commentValue}
+        />
+      )}
+    </>
   );
 };
 
