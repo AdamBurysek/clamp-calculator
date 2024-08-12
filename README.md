@@ -60,3 +60,14 @@ $ npm run upload
 ## License
 
 This project is licensed under the MIT License.
+
+## Todo
+
+- [x] Add tailwind support
+- [ ] Make custom target value
+- [ ] Make More settings button and hide some settings
+- [ ] Make How it works page
+- [ ] Make About page
+- [ ] Add contact form
+- [ ] Add meta tags
+- [ ] Move automatic deployment to github actions
