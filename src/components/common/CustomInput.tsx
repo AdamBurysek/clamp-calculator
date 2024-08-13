@@ -1,3 +1,5 @@
+import useHandleInputKeyDown from "../../hooks/useHandleInputKeyDown";
+
 interface Props {
   label: string;
   name: string;
@@ -6,6 +8,8 @@ interface Props {
 }
 
 const CustomInput = ({ label, name, value, setValue }: Props) => {
+  const handleKeyDown = useHandleInputKeyDown();
+
   return (
     <div className="flex gap-2">
       <label htmlFor={name}>{label}</label>
@@ -16,6 +20,7 @@ const CustomInput = ({ label, name, value, setValue }: Props) => {
         id={name}
         value={value}
         onChange={(e) => setValue(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
     </div>
   );
