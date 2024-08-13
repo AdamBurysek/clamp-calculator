@@ -12,6 +12,7 @@ type TestComponentProps = {
   outputInPx?: boolean;
   remBase?: number;
   targetValue?: string;
+  customTaregtValue?: string;
   useTailwind?: boolean;
 };
 
@@ -24,6 +25,7 @@ const TestComponent: React.FC<TestComponentProps> = ({
   isViewportUnitsPx = true,
   remBase = 16,
   targetValue = "",
+  customTaregtValue = "",
   useTailwind = false,
 }) => {
   const comment = generateComment(
@@ -35,6 +37,7 @@ const TestComponent: React.FC<TestComponentProps> = ({
     isViewportUnitsPx,
     remBase,
     targetValue,
+    customTaregtValue,
     useTailwind,
   );
   return <div>{comment}</div>;
@@ -110,6 +113,24 @@ describe("generateComment", () => {
     );
     expect(
       screen.getByText("/* width: 16px, viewport: 320px -> width: 32px, viewport: 1024px */"),
+    ).toBeInTheDocument();
+  });
+
+  it("should generate comment with custom target value", () => {
+    render(<TestComponent customTaregtValue={"--fs-heading1:"} />);
+    expect(
+      screen.getByText(
+        "/* --fs-heading1: 10px, viewport: 10px -> --fs-heading1: 100px, viewport: 100px */",
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("should override target value with custom target value", () => {
+    render(<TestComponent targetValue={"width:"} customTaregtValue={"--fs-heading1:"} />);
+    expect(
+      screen.getByText(
+        "/* --fs-heading1: 10px, viewport: 10px -> --fs-heading1: 100px, viewport: 100px */",
+      ),
     ).toBeInTheDocument();
   });
 
