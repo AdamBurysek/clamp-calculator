@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import StepButton from "../components/common/StepButton";
 import { recalculateRem } from "../utils/calculations";
+
+import useHandleInputKeyDown from "../hooks/useHandleInputKeyDown";
 import useGlobalState from "../hooks/useGlobalState";
 
 const RemControls: React.FC = () => {
@@ -71,11 +73,7 @@ const RemControls: React.FC = () => {
     }
   };
 
-  const handleRemInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" || e.key === "Escape") {
-      (e.target as HTMLInputElement).blur();
-    }
-  };
+  const handleRemInputKeyDown = useHandleInputKeyDown();
 
   return (
     <div className="my-4 flex gap-4">

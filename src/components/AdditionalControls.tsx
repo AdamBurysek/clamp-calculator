@@ -1,4 +1,5 @@
 import useGlobalState from "../hooks/useGlobalState";
+import CustomInput from "./common/CustomInput";
 
 import OptionInput from "./common/OptionInput";
 import ToggleOption from "./common/ToggleOption";
@@ -26,29 +27,34 @@ const AdditionalControls = () => {
   ];
 
   return (
-    <div>
-      <OptionInput
-        options={targetOptions}
-        label="Target"
-        name="clamp-options"
-        setValue={setTargetValue}
-        value={targetValue}
-      />
-      <ToggleOption
-        label="Output in pixels"
-        onClick={() => setOutputInPx(!outputInPx)}
-        value={outputInPx}
-      />
-      <ToggleOption
-        label="Add comment"
-        onClick={() => setAddComment(!addComment)}
-        value={addComment}
-      />
-      <ToggleOption
-        label="Use TailwindCSS"
-        onClick={() => setUseTailwind(!useTailwind)}
-        value={useTailwind}
-      />
+    <div className="gap flex flex-col">
+      <div className="flex items-center gap-4">
+        <OptionInput
+          options={targetOptions}
+          label="Target"
+          name="clamp-options"
+          setValue={setTargetValue}
+          value={targetValue}
+        />
+        <CustomInput />
+      </div>
+      <div className="flex items-center gap-4">
+        <ToggleOption
+          label="Output in pixels"
+          onClick={() => setOutputInPx(!outputInPx)}
+          value={outputInPx}
+        />
+        <ToggleOption
+          label="Add comment"
+          onClick={() => setAddComment(!addComment)}
+          value={addComment}
+        />
+        <ToggleOption
+          label="Use TailwindCSS"
+          onClick={() => setUseTailwind(!useTailwind)}
+          value={useTailwind}
+        />
+      </div>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import useHandleInputKeyDown from "../../hooks/useHandleInputKeyDown";
 import ToggleUnitButton from "../common/ToggleUnitButton";
 
 const InputForm = ({ type, min, max, isUnitpx, value, setValue, ariaLabel }: InputFormProps) => {
@@ -14,11 +15,7 @@ const InputForm = ({ type, min, max, isUnitpx, value, setValue, ariaLabel }: Inp
     }
   };
 
-  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" || e.key === "Escape") {
-      (e.target as HTMLInputElement).blur();
-    }
-  };
+  const handleInputKeyDown = useHandleInputKeyDown();
 
   return (
     <div className="flex gap-2">
