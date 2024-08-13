@@ -29,8 +29,8 @@ const AdditionalControls = () => {
   ];
 
   return (
-    <div className="gap flex flex-col">
-      <div className="flex items-center justify-center gap-4">
+    <div className="gap max-m: flex flex-col">
+      <div className="flex items-center justify-center gap-4 max-m:flex-col max-m:items-start max-m:pb-3">
         <OptionInput
           options={targetOptions}
           label="Target"
@@ -45,7 +45,7 @@ const AdditionalControls = () => {
           setValue={setCustomTargetValue}
         />
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center max-m:flex-col max-m:items-start m:gap-4">
         <ToggleOption
           label="Add comment"
           onClick={() => setAddComment(!addComment)}
