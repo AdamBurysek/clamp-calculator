@@ -64,8 +64,7 @@ This project is licensed under the MIT License.
 ## Todo
 
 - [x] Add tailwind support
-- [ ] Make custom target value
-- [ ] Make More settings button and hide some settings
+- [x] Make custom target value
 - [ ] Make How it works page
 - [ ] Make About page
 - [ ] Add contact form
