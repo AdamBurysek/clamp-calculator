@@ -2,7 +2,8 @@ import useGlobalState from "../../hooks/useGlobalState";
 import OutputBox from "./OutputBox";
 
 const ClampOutputBox = () => {
-  const { clampValue, targetValue, addComment, commentValue, useTailwind } = useGlobalState();
+  const { clampValue, targetValue, customTargetValue, addComment, commentValue, useTailwind } =
+    useGlobalState();
 
   const tailwindNames = [
     { name: "font-size:", value: "text-" },
@@ -27,7 +28,7 @@ const ClampOutputBox = () => {
         <>
           <OutputBox
             clampValue={clampValue}
-            targetValue={getTailwindValue(targetValue)}
+            targetValue={customTargetValue ? customTargetValue : getTailwindValue(targetValue)}
             addComment={false}
             commentValue={""}
             useTailwind={useTailwind}
@@ -45,7 +46,7 @@ const ClampOutputBox = () => {
       ) : (
         <OutputBox
           clampValue={clampValue}
-          targetValue={targetValue}
+          targetValue={customTargetValue ? customTargetValue : targetValue}
           addComment={addComment}
           commentValue={commentValue}
           useTailwind={useTailwind}

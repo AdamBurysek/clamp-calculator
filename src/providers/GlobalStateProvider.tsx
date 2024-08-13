@@ -35,6 +35,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const [addComment, setAddComment] = useState<boolean>(initialAddComment);
   const [useTailwind, setUseTailwind] = useState<boolean>(initialUseTailwind);
   const [targetValue, setTargetValue] = useState<string>(initialTargetValue);
+  const [customTargetValue, setCustomTargetValue] = useState<string>("");
   const [clampValue, setClampValue] = useState<string>("");
   const [commentValue, setCommentValue] = useState<string>("");
 
@@ -103,8 +104,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         isViewportUnitsPx,
         remBase,
         outputInPx,
-        useTailwind
-      )
+        useTailwind,
+      ),
     );
     setCommentValue(
       generateComment(
@@ -116,8 +117,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         isViewportUnitsPx,
         remBase,
         targetValue,
-        useTailwind
-      )
+        useTailwind,
+      ),
     );
   }, [
     minTargetValue,
@@ -161,6 +162,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         setAddComment,
         useTailwind,
         setUseTailwind,
+        customTargetValue,
+        setCustomTargetValue,
       }}
     >
       {children}

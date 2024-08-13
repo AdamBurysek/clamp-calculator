@@ -25,4 +25,6 @@ export interface GlobalStateProps {
   setAddComment: React.Dispatch<React.SetStateAction<boolean>>;
   useTailwind: boolean;
   setUseTailwind: React.Dispatch<React.SetStateAction<boolean>>;
+  customTargetValue: string;
+  setCustomTargetValue: React.Dispatch<React.SetStateAction<string>>;
 }
