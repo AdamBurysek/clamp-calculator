@@ -9,7 +9,8 @@ export const generateComment = (
   isViewportUnitsPx: boolean,
   remBase: number,
   targetValue: string,
-  useTailwind: boolean
+  customTargetValue: string,
+  useTailwind: boolean,
 ): string => {
   const minTargetPx = formatNumber(toPx(minTargetValue, isTargetUnitsPx, remBase));
   const maxTargetPx = formatNumber(toPx(maxTargetValue, isTargetUnitsPx, remBase));
@@ -17,8 +18,8 @@ export const generateComment = (
   const maxViewportPx = formatNumber(toPx(maxViewportValue, isViewportUnitsPx, remBase));
 
   if (useTailwind) {
-    return `{/* clamp: ${targetValue} ${minTargetPx}px, viewport: ${minViewportPx}px -> ${targetValue} ${maxTargetPx}px, viewport: ${maxViewportPx}px */}`;
+    return `{/* clamp: ${customTargetValue ? customTargetValue : targetValue} ${minTargetPx}px, viewport: ${minViewportPx}px -> ${customTargetValue ? customTargetValue : targetValue} ${maxTargetPx}px, viewport: ${maxViewportPx}px */}`;
   } else {
-    return `/* ${targetValue} ${minTargetPx}px, viewport: ${minViewportPx}px -> ${targetValue} ${maxTargetPx}px, viewport: ${maxViewportPx}px */`;
+    return `/* ${customTargetValue ? customTargetValue : targetValue} ${minTargetPx}px, viewport: ${minViewportPx}px -> ${customTargetValue ? customTargetValue : targetValue} ${maxTargetPx}px, viewport: ${maxViewportPx}px */`;
   }
 };

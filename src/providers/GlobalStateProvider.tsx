@@ -117,6 +117,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         isViewportUnitsPx,
         remBase,
         targetValue,
+        customTargetValue,
         useTailwind,
       ),
     );
@@ -130,6 +131,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     remBase,
     outputInPx,
     targetValue,
+    customTargetValue,
     useTailwind,
   ]);
 
