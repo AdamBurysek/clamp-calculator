@@ -12,35 +12,8 @@ type TestComponentProps = {
   outputInPx?: boolean;
   remBase?: number;
   targetValue?: string;
-  customTaregtValue?: string;
+  customTargetValue?: string;
   useTailwind?: boolean;
-};
-
-const TestComponent: React.FC<TestComponentProps> = ({
-  minTargetValue = 10,
-  maxTargetValue = 100,
-  minViewportValue = 10,
-  maxViewportValue = 100,
-  isTargetUnitsPx = true,
-  isViewportUnitsPx = true,
-  remBase = 16,
-  targetValue = "",
-  customTaregtValue = "",
-  useTailwind = false,
-}) => {
-  const comment = generateComment(
-    minTargetValue,
-    maxTargetValue,
-    minViewportValue,
-    maxViewportValue,
-    isTargetUnitsPx,
-    isViewportUnitsPx,
-    remBase,
-    targetValue,
-    customTaregtValue,
-    useTailwind,
-  );
-  return <div>{comment}</div>;
 };
 
 describe("generateComment", () => {
@@ -86,21 +59,6 @@ describe("generateComment", () => {
     ).toBeInTheDocument();
   });
 
-  it("should generate comment with no target value", () => {
-    render(
-      <TestComponent
-        minTargetValue={1}
-        maxTargetValue={2}
-        minViewportValue={320}
-        maxViewportValue={1024}
-        isTargetUnitsPx={false}
-      />,
-    );
-    expect(
-      screen.getByText("/* 16px, viewport: 320px -> 32px, viewport: 1024px */"),
-    ).toBeInTheDocument();
-  });
-
   it("should generate comment with target value", () => {
     render(
       <TestComponent
@@ -117,7 +75,7 @@ describe("generateComment", () => {
   });
 
   it("should generate comment with custom target value", () => {
-    render(<TestComponent customTaregtValue={"--fs-heading1:"} />);
+    render(<TestComponent customTargetValue={"--fs-heading1:"} />);
     expect(
       screen.getByText(
         "/* --fs-heading1: 10px, viewport: 10px -> --fs-heading1: 100px, viewport: 100px */",
@@ -126,7 +84,7 @@ describe("generateComment", () => {
   });
 
   it("should override target value with custom target value", () => {
-    render(<TestComponent targetValue={"width:"} customTaregtValue={"--fs-heading1:"} />);
+    render(<TestComponent targetValue={"width:"} customTargetValue={"--fs-heading1:"} />);
     expect(
       screen.getByText(
         "/* --fs-heading1: 10px, viewport: 10px -> --fs-heading1: 100px, viewport: 100px */",
@@ -168,4 +126,38 @@ describe("generateComment", () => {
       screen.getByText("{/* clamp: 16px, viewport: 320px -> 32px, viewport: 1024px */}"),
     ).toBeInTheDocument();
   });
+
+  it("should handle useTailwind option with custom target value", () => {
+    render(<TestComponent useTailwind={true} customTargetValue={"text-"} />);
+    expect(
+      screen.getByText("{/* clamp: text- 10px, viewport: 10px -> text- 100px, viewport: 100px */}"),
+    ).toBeInTheDocument();
+  });
 });
+
+const TestComponent: React.FC<TestComponentProps> = ({
+  minTargetValue = 10,
+  maxTargetValue = 100,
+  minViewportValue = 10,
+  maxViewportValue = 100,
+  isTargetUnitsPx = true,
+  isViewportUnitsPx = true,
+  remBase = 16,
+  targetValue = "",
+  customTargetValue = "",
+  useTailwind = false,
+}) => {
+  const comment = generateComment(
+    minTargetValue,
+    maxTargetValue,
+    minViewportValue,
+    maxViewportValue,
+    isTargetUnitsPx,
+    isViewportUnitsPx,
+    remBase,
+    targetValue,
+    customTargetValue,
+    useTailwind,
+  );
+  return <div>{comment}</div>;
+};

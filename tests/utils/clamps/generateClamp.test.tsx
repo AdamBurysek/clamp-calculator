@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { generateClamp } from "../../../src/utils/clamps";
 
-interface TestProps {
+interface TestComponentProps {
   minTargetValue?: number;
   maxTargetValue?: number;
   minViewportValue?: number;
@@ -14,31 +14,6 @@ interface TestProps {
   outputInPx?: boolean;
   useTailwind?: boolean;
 }
-
-const TestComponent: React.FC<TestProps> = ({
-  minTargetValue = 10,
-  maxTargetValue = 100,
-  minViewportValue = 10,
-  maxViewportValue = 100,
-  isTargetUnitsPx = true,
-  isViewportUnitsPx = true,
-  remBase = 16,
-  outputInPx = false,
-  useTailwind = false,
-}) => {
-  const clampValue = generateClamp(
-    minTargetValue,
-    maxTargetValue,
-    minViewportValue,
-    maxViewportValue,
-    isTargetUnitsPx,
-    isViewportUnitsPx,
-    remBase,
-    outputInPx,
-    useTailwind,
-  );
-  return <div>{clampValue}</div>;
-};
 
 describe("generateClamp", () => {
   it("should handle if minTargetValue value is zero", () => {
@@ -153,4 +128,44 @@ describe("generateClamp", () => {
     );
     expect(screen.getByText("[clamp(1rem,0.545rem+2.273vw,2rem)]")).toBeInTheDocument();
   });
+
+  it("should handle useTailwind option with px output", () => {
+    render(
+      <TestComponent
+        minTargetValue={1}
+        maxTargetValue={2}
+        minViewportValue={320}
+        maxViewportValue={1024}
+        isTargetUnitsPx={false}
+        outputInPx={true}
+        useTailwind={true}
+      />,
+    );
+    expect(screen.getByText("[clamp(16px,8.727px+2.273vw,32px)]")).toBeInTheDocument();
+  });
 });
+
+const TestComponent: React.FC<TestComponentProps> = ({
+  minTargetValue = 10,
+  maxTargetValue = 100,
+  minViewportValue = 10,
+  maxViewportValue = 100,
+  isTargetUnitsPx = true,
+  isViewportUnitsPx = true,
+  remBase = 16,
+  outputInPx = false,
+  useTailwind = false,
+}) => {
+  const clampValue = generateClamp(
+    minTargetValue,
+    maxTargetValue,
+    minViewportValue,
+    maxViewportValue,
+    isTargetUnitsPx,
+    isViewportUnitsPx,
+    remBase,
+    outputInPx,
+    useTailwind,
+  );
+  return <div>{clampValue}</div>;
+};
