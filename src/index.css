@@ -128,17 +128,17 @@ a {
 }
 
 body {
-  @apply text-c-text bg-c-background;
+  @apply bg-c-background text-c-text;
 }
 
 #root {
-  @apply flex flex-col min-h-screen justify-between;
+  @apply flex min-h-screen flex-col justify-between;
 }
 
 *,
 :before,
 :after {
-  @apply box-border p-0 m-0;
+  @apply m-0 box-border p-0;
 }
 
 html,
