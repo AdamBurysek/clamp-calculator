@@ -12,6 +12,8 @@ const InputForm = ({ type, min, max, isUnitpx, value, setValue, ariaLabel }: Inp
       setValue!(min);
     } else if (value! > max) {
       setValue!(max);
+    } else if (!value) {
+      setValue!(0);
     }
   };
 
