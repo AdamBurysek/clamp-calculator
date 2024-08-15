@@ -13,6 +13,18 @@ const HowItWorks = () => {
       <p className="py-4 text-[clamp(1rem,0.273rem+3.636vw,1.5rem)] font-bold">
         clamp(minimum, preferred, maximum)
       </p>
+      <ul className="list-disc px-4 py-4">
+        <li>
+          The <b>minimum</b> is the smallest value that the function will return.
+        </li>
+        <li>
+          The <b>preferred</b> is the value that the function will return if it falls within the
+          specified range.
+        </li>
+        <li>
+          The <b>maximum</b> is the largest value that the function will return.
+        </li>
+      </ul>
       <div className="h-auto max-h-[280px] w-full max-w-[544px]">
         <ClampGraph className="h-full w-full" />
       </div>
