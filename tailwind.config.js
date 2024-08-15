@@ -33,9 +33,9 @@ export default {
         'box': '0 0 4px var(--color-primary)',
       },
       fontSize: {
-        'heading1': 'clamp(1.375rem, 1.0713rem + 1.5186vw, 2.438rem)',
-        'heading2': 'clamp(1.25rem, 1.0534rem + 0.9829vw, 1.938rem)',
-        'heading3': 'clamp(1.188rem, 1.0811rem + 0.5343vw, 1.562rem)',
+        'heading1': 'var(--fs-heading1)',
+        'heading2': 'var(--fs-heading2)',
+        'heading3': 'var(--fs-heading3)',
       },
       fontFamily: {
         sans: [
