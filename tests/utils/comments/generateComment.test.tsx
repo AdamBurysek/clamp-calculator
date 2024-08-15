@@ -1,5 +1,5 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
+import React from "react";
 import { generateComment } from "../../../src/utils/comments";
 
 type TestComponentProps = {
@@ -92,7 +92,7 @@ describe("generateComment", () => {
     ).toBeInTheDocument();
   });
 
-  it("should handle remBase change", () => {
+  it("should handle remBase change and wirte target value in rem", () => {
     render(
       <TestComponent
         minTargetValue={2}
@@ -106,7 +106,7 @@ describe("generateComment", () => {
     );
     expect(
       screen.getByText(
-        "/* font-size: 16px, viewport: 320px -> font-size: 32px, viewport: 1024px */",
+        "/* font-size: 2rem, viewport: 320px -> font-size: 4rem, viewport: 1024px */",
       ),
     ).toBeInTheDocument();
   });
@@ -123,7 +123,7 @@ describe("generateComment", () => {
       />,
     );
     expect(
-      screen.getByText("{/* clamp: 16px, viewport: 320px -> 32px, viewport: 1024px */}"),
+      screen.getByText("{/* clamp: 1rem, viewport: 320px -> 2rem, viewport: 1024px */}"),
     ).toBeInTheDocument();
   });
 
