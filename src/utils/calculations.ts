@@ -26,5 +26,6 @@ export const toPx = (value: number, isPx: boolean, remBase: number): number => {
 
 // This function returns a nicely formatted string (eg. instead 2.700 it returns 2.7)
 export const formatNumber = (value: number): string => {
+  if (!value) return "0";
   return parseFloat(value.toFixed(3)).toString();
 };

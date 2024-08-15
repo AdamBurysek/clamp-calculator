@@ -2,8 +2,17 @@ import { ClampGraph } from "../components/Icons";
 
 const HowItWorks = () => {
   return (
-    <div className="flex w-full flex-col items-center">
+    <div className="flex w-full max-w-content flex-col items-center px-4">
       <h1 className="py-4 text-c-grey-nine">How Clamp function Works</h1>
+      <p className="md:px-20">
+        The CSS clamp() function restricts a value within a defined range between a minimum and
+        maximum bound. The function takes three parameters: a <b>minimum value</b>, a
+        <b>preferred value</b>, and a <b>maximum value</b>.
+      </p>
+      {/* clamp: font-size: 16px, viewport: 320px -> font-size: 24px, viewport: 540px */}
+      <p className="py-4 text-[clamp(1rem,0.273rem+3.636vw,1.5rem)] font-bold">
+        clamp(minimum, preferred, maximum)
+      </p>
       <div className="h-auto max-h-[280px] w-full max-w-[544px]">
         <ClampGraph className="h-full w-full" />
       </div>
