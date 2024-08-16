@@ -8,6 +8,7 @@ export default {
     extend: {
       spacing: {
         'content': '1120px',
+        'text-block': '820px',
       },
       colors: {
         'c-background': 'var(--color-background)',
@@ -36,6 +37,7 @@ export default {
         'heading1': 'var(--fs-heading1)',
         'heading2': 'var(--fs-heading2)',
         'heading3': 'var(--fs-heading3)',
+        'subheading': 'var(--fs-subheading)',
       },
       fontFamily: {
         sans: [

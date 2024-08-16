@@ -28,6 +28,8 @@
     --fs-heading2: clamp(1.25rem, 1.0534rem + 0.9829vw, 1.938rem);
     /* font-size: 19px, viewport: 320px -> font-size: 25px, viewport: 1440px */
     --fs-heading3: clamp(1.188rem, 1.0811rem + 0.5343vw, 1.562rem);
+    /* font-size: 18px, viewport: 320px -> font-size: 24px, viewport: 1440px */
+    --fs-subheading: clamp(1.125rem, 1.018rem + 0.536vw, 1.5rem);
   }
 
   @media (prefers-color-scheme: dark) {
