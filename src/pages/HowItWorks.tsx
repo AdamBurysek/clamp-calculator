@@ -1,4 +1,6 @@
 import clampVideo from "../assets/clamp-video.mp4";
+import KevingImage from "../assets/kevin-powell.jpg";
+import UnaImage from "../assets/una-kravets.jpg";
 import { ClampGraph } from "../components/Icons";
 
 const HowItWorks = () => {
@@ -53,12 +55,21 @@ const HowItWorks = () => {
           See Demo on Codepen
         </a>
       </span>
-      <h2 className="pb-2 pt-4 text-c-grey-nine">Disadvantage of using clamp calculator</h2>
+      <h2 className="pb-2 pt-4 text-c-grey-nine">Disadvantage of using clamp</h2>
       <p>
         In my opinion, the main disadvantage is that you can't determine the viewport range just by
-        looking at the clamp function. I decided to address this by adding a comment to the code to
-        provide an explanation."
+        looking at the clamp function. To address this, I decided to add a comment to the code that
+        provides an explanation. You can generate the comment using the calculator.
       </p>
+      <h2 className="pb-2 pt-4 text-c-grey-nine">More about clamp function</h2>
+      <a href="https://www.youtube.com/watch?v=wARbgs5Fmuw&t=8s" target="_blank">
+        <h3 className="text-c-grey-eight">Great video from Kevin Powell</h3>
+        <img src={KevingImage} className="rounded-xl"></img>
+      </a>
+      <a href="https://web.dev/articles/min-max-clamp" target="_blank" className="mt-6">
+        <h3 className="text-c-grey-eight">Cool article by Una Kravets</h3>
+        <img src={UnaImage} className="rounded-xl"></img>
+      </a>
     </div>
   );
 };
