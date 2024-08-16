@@ -1,3 +1,4 @@
+import clampVideo from "../assets/clamp-video.mp4";
 import { ClampGraph } from "../components/Icons";
 
 const HowItWorks = () => {
@@ -39,6 +40,25 @@ const HowItWorks = () => {
           <ClampGraph className="h-full w-full" />
         </div>
       </div>
+      <p className="text-subheading py-4 font-bold">This is how the example works</p>
+      <video autoPlay muted loop className="w-full">
+        <source src={clampVideo} type="video/mp4" />
+      </video>
+      <span className="flex w-full justify-end">
+        <a
+          href="https://codepen.io/adam-buryek-the-selector/pen/yLdpjYX"
+          target="_blank"
+          className="text-sm text-c-grey-seven duration-200 hover:text-c-grey-nine hover:underline"
+        >
+          See Demo on Codepen
+        </a>
+      </span>
+      <h2 className="pb-2 pt-4 text-c-grey-nine">Disadvantage of using clamp calculator</h2>
+      <p>
+        In my opinion, the main disadvantage is that you can't determine the viewport range just by
+        looking at the clamp function. I decided to address this by adding a comment to the code to
+        provide an explanation."
+      </p>
     </div>
   );
 };
