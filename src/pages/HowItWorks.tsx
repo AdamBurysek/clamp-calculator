@@ -42,6 +42,11 @@ const HowItWorks = () => {
           <ClampGraph className="h-full w-full" />
         </div>
       </div>
+      <p className="pt-6">
+        If you enter these values into the calculator with the default rem base, you'll get the
+        following result:
+      </p>
+      <p className="pb-2 font-bold">font-size: clamp(1.5rem, 0.324rem + 4.181vw, 3rem);</p>
       <p className="text-subheading py-4 font-bold">This is how the example works</p>
       <video autoPlay muted loop className="w-full">
         <source src={clampVideo} type="video/mp4" />
@@ -62,11 +67,19 @@ const HowItWorks = () => {
         provides an explanation. You can generate the comment using the calculator.
       </p>
       <h2 className="pb-2 pt-4 text-c-grey-nine">More about clamp function</h2>
-      <a href="https://www.youtube.com/watch?v=wARbgs5Fmuw&t=8s" target="_blank">
+      <a
+        href="https://www.youtube.com/watch?v=wARbgs5Fmuw&t=8s"
+        target="_blank"
+        className="duration-500 hover:contrast-125"
+      >
         <h3 className="text-c-grey-eight">Great video from Kevin Powell</h3>
         <img src={KevingImage} className="rounded-xl"></img>
       </a>
-      <a href="https://web.dev/articles/min-max-clamp" target="_blank" className="mt-6">
+      <a
+        href="https://web.dev/articles/min-max-clamp"
+        target="_blank"
+        className="mt-6 duration-500 hover:contrast-125"
+      >
         <h3 className="text-c-grey-eight">Cool article by Una Kravets</h3>
         <img src={UnaImage} className="rounded-xl"></img>
       </a>
