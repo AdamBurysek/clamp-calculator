@@ -65,7 +65,7 @@ This project is licensed under the MIT License.
 
 - [x] Add tailwind support
 - [x] Make custom target value
-- [ ] Make How it works page
+- [x] Make How it works page
 - [ ] Make About page
 - [ ] Add contact form
 - [ ] Add meta tags
