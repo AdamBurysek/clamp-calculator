@@ -1,5 +1,6 @@
 import AdditionalControls from "../components/AdditionalControls";
 import ClampOutputBox from "../components/ClampOutput/ClampOutputBox";
+import BackgroundGrid from "../components/common/BackgroundGrid";
 import InputControls from "../components/InputControls/InputControls";
 import RemControls from "../components/RemControls";
 
@@ -12,7 +13,8 @@ const Calculator = () => {
         </h1>
       </span>
       <div className="max-s:scale-75">
-        <div className="flex flex-col items-center rounded-2xl bg-c-secondary">
+        <div className="relative flex flex-col items-center overflow-hidden rounded-2xl bg-c-secondary">
+          <BackgroundGrid size={20} className="opacity-30" />
           <h2 className="pt-2">Calculator Settings</h2>
           <RemControls />
           <InputControls />

@@ -145,7 +145,7 @@ const FormInput = ({
         type={type}
         autoComplete={id}
         placeholder={placeholder}
-        className={cn("w-full rounded-md border border-c-grey-one px-3 py-2", {
+        className={cn("bg-c-background-pure w-full rounded-md border border-c-grey-one px-3 py-2", {
           "border-red-500": error,
         })}
         onChange={onChange}
@@ -182,9 +182,12 @@ const FormTextarea = ({
         name={id}
         onChange={onChange}
         placeholder={placeholder}
-        className={cn("h-24 w-full rounded-md border border-c-grey-one px-3 py-2", {
-          "border-red-500": error,
-        })}
+        className={cn(
+          "bg-c-background-pure h-24 w-full rounded-md border border-c-grey-one px-3 py-2",
+          {
+            "border-red-500": error,
+          },
+        )}
         maxLength={1000}
         value={value}
       />
