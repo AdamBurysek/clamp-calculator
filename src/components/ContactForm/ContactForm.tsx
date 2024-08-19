@@ -27,7 +27,7 @@ const ContactForm = () => {
     setFormValues(updatedFormValues);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const newErrors = {
@@ -38,44 +38,26 @@ const ContactForm = () => {
     };
     setErrors(newErrors);
 
-    const hasErrors = Object.values(newErrors).some(Boolean);
+    if (Object.values(newErrors).some(Boolean)) return;
 
     const formApi = import.meta.env.VITE_FORM_API_KEY;
+    if (!formApi) return console.error("Missing information about form endpoint");
 
-    if (!hasErrors && formApi) {
+    try {
       setPending(true);
-
-      const requestBody = JSON.stringify({
-        formValues,
+      const response = await fetch(formApi, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ formValues }),
       });
 
-      console.log(requestBody);
+      if (!response.ok) throw new Error("Something Failed");
 
-      const requestOptions = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: requestBody,
-      };
-
-      Promise.all([fetch(formApi, requestOptions)])
-        .then((responses) => {
-          const hasFailed = responses.some((response) => !response.ok);
-          if (hasFailed) {
-            throw new Error("Something Failed");
-          }
-          setFormValues(initialFormValues);
-        })
-        .catch((error) => {
-          console.error("There is a problem with fetch operation:", error);
-        })
-        .finally(() => {
-          setPending(false);
-        });
-    }
-    if (!formApi) {
-      console.error("Missing information about form endpoint");
+      setFormValues(initialFormValues);
+    } catch (error) {
+      console.error("There is a problem with fetch operation:", error);
+    } finally {
+      setPending(false);
     }
   };
 
