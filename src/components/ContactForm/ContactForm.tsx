@@ -29,6 +29,7 @@ const ContactForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const newErrors = {
       name: formValues.name.trim().length < 2,
       email: !/^\S+@\S+\.\S{2,}$/.test(formValues.email),
@@ -36,6 +37,7 @@ const ContactForm = () => {
       message: formValues.message.trim().length === 0,
     };
     setErrors(newErrors);
+
     const hasErrors = Object.values(newErrors).some(Boolean);
 
     const formApi = import.meta.env.VITE_FORM_API_KEY;
