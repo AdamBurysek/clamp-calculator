@@ -5,6 +5,7 @@
 @layer base {
   :root {
     --color-background: #f5f7f7;
+    --color-background-pure: #ffffff;
     --color-text: #14151c;
     --color-primary: #085996;
     --color-secondary: #8ccbf5;
@@ -35,6 +36,7 @@
   @media (prefers-color-scheme: dark) {
     :root {
       --color-background: #14151c;
+      --color-background-pure: #000000;
       --color-text: #f5f7f7;
       --color-primary: #76baee;
       --color-secondary: #034470;
@@ -56,6 +58,7 @@
   :root [data-theme="dark"] {
     color-scheme: dark;
     --color-background: #14151c;
+    --color-background-pure: #000000;
     --color-text: #f5f7f7;
     --color-primary: #76baee;
     --color-secondary: #034470;
@@ -76,6 +79,7 @@
   :root [data-theme="light"] {
     color-scheme: light;
     --color-background: #f5f7f7;
+    --color-background-pure: #ffffff;
     --color-text: #14151c;
     --color-primary: #085996;
     --color-secondary: #8ccbf5;

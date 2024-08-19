@@ -12,6 +12,7 @@ export default {
       },
       colors: {
         'c-background': 'var(--color-background)',
+        'c-background-pure': 'var(--color-background-pure)',
         'c-text': 'var(--color-text)',
         'c-primary': 'var(--color-primary)',
         'c-secondary': 'var(--color-secondary)',
