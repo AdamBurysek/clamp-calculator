@@ -12,6 +12,7 @@
     --color-purple: #8637ec;
     --color-open-navbar: #cccdd1;
     --color-grey-rgb: 61, 61, 67;
+    --color-grey-zero: #e2e2e440;
     --color-grey-one: #e2e2e4;
     --color-grey-two: #cccdd1;
     --color-grey-three: #b7b8be;
@@ -43,6 +44,7 @@
       --color-purple: #9e72fb;
       --color-open-navbar: #3d3d43;
       --color-grey-rgb: 204, 205, 209;
+      --color-grey-zero: #292a2e40;
       --color-grey-one: #292a2e;
       --color-grey-two: #3d3d43;
       --color-grey-three: #505158;
@@ -65,6 +67,7 @@
     --color-purple: #9e72fb;
     --color-open-navbar: #3d3d43;
     --color-grey-rgb: 204, 205, 209;
+    --color-grey-zero: #292a2e40;
     --color-grey-one: #292a2e;
     --color-grey-two: #3d3d43;
     --color-grey-three: #505158;
@@ -86,6 +89,7 @@
     --color-purple: #8637ec;
     --color-open-navbar: #cccdd1;
     --color-grey-rgb: 61, 61, 67;
+    --color-grey-zero: #e2e2e4b0;
     --color-grey-one: #e2e2e4;
     --color-grey-two: #cccdd1;
     --color-grey-three: #b7b8be;
@@ -138,7 +142,7 @@ body {
 }
 
 #root {
-  @apply flex min-h-screen flex-col justify-between bg-c-background bg-[linear-gradient(to_right,theme('colors.c-background-pure')_1px,transparent_1px),linear-gradient(to_bottom,theme('colors.c-background-pure')_1px,transparent_1px)] bg-[size:72px_72px];
+  @apply flex min-h-screen flex-col justify-between bg-c-background bg-[linear-gradient(to_right,theme('colors.c-grey-zero')_1px,transparent_1px),linear-gradient(to_bottom,theme('colors.c-grey-zero')_1px,transparent_1px)] bg-[size:72px_72px];
 }
 
 *,

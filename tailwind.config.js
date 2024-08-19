@@ -19,6 +19,7 @@ export default {
         'c-purple': 'var(--color-purple)',
         'c-open-navbar': 'var(--color-open-navbar)',
         'c-grey-rgb': 'rgb(var(--color-grey-rgb))',
+        'c-grey-zero': 'var(--color-grey-zero)',
         'c-grey-one': 'var(--color-grey-one)',
         'c-grey-two': 'var(--color-grey-two)',
         'c-grey-three': 'var(--color-grey-three)',
