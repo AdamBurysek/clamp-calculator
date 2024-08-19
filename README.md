@@ -69,4 +69,4 @@ This project is licensed under the MIT License.
 - [ ] Make About page
 - [ ] Add contact form
 - [ ] Add meta tags
-- [ ] Move automatic deployment to github actions
+- [x] Move automatic deployment to github actions –> deploying with netlify
