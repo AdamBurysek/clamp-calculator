@@ -1,4 +1,5 @@
 import { useId } from "react";
+import ContactForm from "../components/ContactForm/ContactForm";
 
 interface GridPatternProps {
   width: number;
@@ -38,14 +39,14 @@ const features = [
 
 function About() {
   return (
-    <div className="flex max-w-content flex-col items-center bg-c-background px-20">
+    <div className="flex max-w-content flex-col items-center bg-c-background px-4 md:px-20">
       <h1 className="py-4 text-c-grey-nine">About the Calculator</h1>
       <p className="pb-8">I aim to improve this calculator by adding some features.</p>
       <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 md:gap-2 lg:grid-cols-3">
         {features.map((feature) => (
           <div
             key={feature.title}
-            className="to-c-background-pure relative overflow-hidden rounded-3xl bg-gradient-to-b from-c-background p-6"
+            className="to-c-background-pure relative overflow-hidden rounded-3xl bg-gradient-to-b from-c-background p-6 shadow-md shadow-c-grey-three"
           >
             <Grid size={20} />
             <p className="relative z-20 text-base font-bold text-c-grey-nine">{feature.title}</p>
@@ -55,6 +56,7 @@ function About() {
           </div>
         ))}
       </div>
+      <ContactForm />
     </div>
   );
 }
