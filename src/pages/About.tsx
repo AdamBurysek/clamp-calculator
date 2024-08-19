@@ -12,11 +12,11 @@ interface GridPatternProps {
 const features = [
   {
     title: "Comments",
-    description: "You can generate a comment that explains the clamp function.",
+    description: "Generate comments to explain the clamp function.",
   },
   {
     title: "Custom Target",
-    description: "You can use custom target values like --fs-heading1, commonly used in CSS.",
+    description: "You can use custom target values like --fs-heading1 in your CSS.",
   },
   {
     title: "Tailwind Support",
@@ -103,10 +103,10 @@ function GridPattern({ width, height, x, y, squares, className }: GridPatternPro
       <rect width="100%" height="100%" strokeWidth={0} fill={`url(#${patternId})`} />
       {squares && (
         <svg x={x} y={y} className="overflow-visible">
-          {squares.map(([x, y]: number[]) => (
+          {squares.map(([x, y]: number[], index: number) => (
             <rect
               strokeWidth="0"
-              key={`${x}-${y}`}
+              key={`${index}`}
               width={width + 1}
               height={height + 1}
               x={x * width}
