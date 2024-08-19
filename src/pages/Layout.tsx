@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { GlobalStateProvider } from "../providers/GlobalStateProvider";
-import Footer from "../components/Footer";
 
 const Layout = () => (
   <GlobalStateProvider>
     <Navbar />
-    <main className="flex justify-center pt-16">
+    <main className="flex justify-center pb-12 pt-16">
       <Outlet />
     </main>
     <Footer />

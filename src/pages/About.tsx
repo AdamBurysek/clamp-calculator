@@ -38,9 +38,9 @@ const features = [
 
 function About() {
   return (
-    <div className="flex max-w-content flex-col items-center px-20">
+    <div className="flex max-w-content flex-col items-center bg-c-background px-20">
       <h1 className="py-4 text-c-grey-nine">About the Calculator</h1>
-      <p className="pb-8">I aim to improve this calculator by adding new features.</p>
+      <p className="pb-8">I aim to improve this calculator by adding some features.</p>
       <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 md:gap-2 lg:grid-cols-3">
         {features.map((feature) => (
           <div

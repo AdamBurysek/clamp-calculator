@@ -2,7 +2,7 @@ import { GithubIcon } from "./Icons";
 
 const Footer = () => {
   return (
-    <footer className="mt-12 flex w-full justify-center bg-c-grey-one">
+    <footer className="flex w-full justify-center bg-c-grey-one">
       <div className="flex h-36 max-w-content flex-col items-center gap-8">
         <a
           className="mt-10 cursor-pointer"

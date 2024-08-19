@@ -5,7 +5,7 @@ import { ClampGraph } from "../components/Icons";
 
 const HowItWorks = () => {
   return (
-    <div className="max-w-text-block flex w-full flex-col items-center px-4">
+    <div className="flex w-full max-w-text-block flex-col items-center bg-c-background px-4">
       <h1 className="py-4 text-c-grey-nine">How Clamp function Works</h1>
       <p>
         The clamp() CSS function clamps a middle value within a range of values between a defined
@@ -13,7 +13,7 @@ const HowItWorks = () => {
         <b>minimum value</b>, a<b>preferred value</b>, and a <b>maximum value</b>.
       </p>
 
-      <p className="text-subheading py-4 font-bold">clamp(minimum, preferred, maximum)</p>
+      <p className="py-4 text-subheading font-bold">clamp(minimum, preferred, maximum)</p>
       <ul className="list-disc px-4 py-4">
         <li>
           The <b>minimum</b> is the smallest value that the function will return.
@@ -47,7 +47,7 @@ const HowItWorks = () => {
         following result:
       </p>
       <p className="pb-2 font-bold">font-size: clamp(1.5rem, 0.324rem + 4.181vw, 3rem);</p>
-      <p className="text-subheading py-4 font-bold">This is how the example works</p>
+      <p className="py-4 text-subheading font-bold">This is how the example works</p>
       <video autoPlay muted loop className="w-full">
         <source src={clampVideo} type="video/mp4" />
       </video>

@@ -138,7 +138,7 @@ body {
 }
 
 #root {
-  @apply flex min-h-screen flex-col justify-between;
+  @apply flex min-h-screen flex-col justify-between bg-c-background bg-[linear-gradient(to_right,theme('colors.c-background-pure')_1px,transparent_1px),linear-gradient(to_bottom,theme('colors.c-background-pure')_1px,transparent_1px)] bg-[size:72px_72px];
 }
 
 *,
