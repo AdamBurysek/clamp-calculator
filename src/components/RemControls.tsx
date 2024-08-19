@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import StepButton from "../components/common/StepButton";
 import { recalculateRem } from "../utils/calculations";
 
-import useHandleInputKeyDown from "../hooks/useHandleInputKeyDown";
 import useGlobalState from "../hooks/useGlobalState";
+import useHandleInputKeyDown from "../hooks/useHandleInputKeyDown";
 
 const RemControls: React.FC = () => {
   const {
@@ -21,6 +21,7 @@ const RemControls: React.FC = () => {
     setMaxViewportValue,
   } = useGlobalState();
 
+  //This is holding the local value until the hanldeBlur event is triggered
   const [localRemBase, setLocalRemBase] = useState<number>(remBase);
 
   const updateValues = (oldRemBase: number, newRemBase: number) => {
