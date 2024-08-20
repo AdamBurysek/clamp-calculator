@@ -109,7 +109,7 @@ const ContactForm = () => {
           <span className="flex w-full justify-center">
             <button
               type="submit"
-              className="rounded-md bg-c-primary px-8 py-2 font-medium text-c-background transition-colors hover:bg-c-secondary"
+              className="rounded-md bg-c-primary px-8 py-2 font-medium text-c-background transition-colors hover:bg-c-secondary hover:text-c-text"
             >
               {pending ? "Submitting..." : "Submit"}
             </button>
