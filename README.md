@@ -68,5 +68,5 @@ This project is licensed under the MIT License.
 - [x] Make How it works page
 - [x] Make About page
 - [x] Add contact form
-- [ ] Add meta tags
+- [x] Add meta tags
 - [x] Move automatic deployment to github actions –> deploying with netlify
