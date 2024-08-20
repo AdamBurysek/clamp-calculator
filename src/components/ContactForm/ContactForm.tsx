@@ -41,7 +41,7 @@ const ContactForm = () => {
     if (Object.values(newErrors).some(Boolean)) return;
 
     const formApi = import.meta.env.VITE_FORM_API_KEY;
-    if (!formApi) return console.error("Missing information about form endpoint");
+    if (!formApi) return alert("Missing information about form endpoint");
 
     try {
       setPending(true);
@@ -55,7 +55,7 @@ const ContactForm = () => {
 
       setFormValues(initialFormValues);
     } catch (error) {
-      console.error("There is a problem with fetch operation:", error);
+      alert(`There is a problem with fetch operation:${error}`);
     } finally {
       setPending(false);
     }
