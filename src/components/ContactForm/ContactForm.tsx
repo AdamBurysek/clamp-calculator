@@ -62,10 +62,10 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="mx-auto mt-8 w-full max-w-xl rounded-lg bg-c-background shadow-md shadow-c-grey-three">
+    <div className="w-full max-w-xl rounded-lg bg-c-background shadow-md shadow-c-grey-three">
       <div className="p-6">
-        <h2 className="mb-2 text-2xl font-bold">Contact</h2>
-        <p className="mb-6 text-c-grey-six">
+        <h2 className="mb-2 text-center font-bold">Contact Form</h2>
+        <p className="mb-6 text-center text-c-grey-six">
           If you have any questions, suggestions or spotted bug, feel free to contact me.
         </p>
         <form className="space-y-4" onSubmit={handleSubmit}>
@@ -106,12 +106,14 @@ const ContactForm = () => {
             value={formValues["message"]}
             error={errors["message"]}
           />
-          <button
-            type="submit"
-            className="rounded-md bg-c-primary px-4 py-2 font-medium text-c-background transition-colors hover:bg-c-secondary"
-          >
-            {pending ? "Submitting..." : "Submit"}
-          </button>
+          <span className="flex w-full justify-center">
+            <button
+              type="submit"
+              className="rounded-md bg-c-primary px-8 py-2 font-medium text-c-background transition-colors hover:bg-c-secondary"
+            >
+              {pending ? "Submitting..." : "Submit"}
+            </button>
+          </span>
         </form>
       </div>
     </div>
@@ -145,7 +147,7 @@ const FormInput = ({
         type={type}
         autoComplete={id}
         placeholder={placeholder}
-        className={cn("bg-c-background-pure w-full rounded-md border border-c-grey-one px-3 py-2", {
+        className={cn("w-full rounded-md border border-c-grey-one bg-c-background-pure px-3 py-2", {
           "border-red-500": error,
         })}
         onChange={onChange}
@@ -183,7 +185,7 @@ const FormTextarea = ({
         onChange={onChange}
         placeholder={placeholder}
         className={cn(
-          "bg-c-background-pure h-24 w-full rounded-md border border-c-grey-one px-3 py-2",
+          "h-24 w-full rounded-md border border-c-grey-one bg-c-background-pure px-3 py-2",
           {
             "border-red-500": error,
           },
