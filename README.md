@@ -66,7 +66,7 @@ This project is licensed under the MIT License.
 - [x] Add tailwind support
 - [x] Make custom target value
 - [x] Make How it works page
-- [ ] Make About page
+- [x] Make About page
 - [x] Add contact form
 - [ ] Add meta tags
 - [x] Move automatic deployment to github actions –> deploying with netlify
