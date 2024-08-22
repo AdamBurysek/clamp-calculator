@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
-import styles from "./ThemeSwitcher.module.css";
+import { cn } from "../../utils/classNames";
 import { getCookie, setCookie } from "../../utils/cookies";
+import styles from "./ThemeSwitcher.module.css";
 
 // TODO: "Make this with tailwind";
 
@@ -86,7 +87,12 @@ const ThemeSwitcher = () => {
   }, [theme]);
 
   return (
-    <div className={styles.themeSwitcher} data-theme={theme}>
+    <div
+      className={cn(
+        "relative mb-[100vh] flex h-14 w-40 items-center justify-center gap-1 rounded-full border-2 border-c-text max-sm:shadow-md",
+      )}
+      data-theme={theme}
+    >
       <button
         aria-label="Theme Mode Light"
         className={styles.button}
