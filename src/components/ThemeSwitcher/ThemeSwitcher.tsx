@@ -1,11 +1,17 @@
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { cn } from "../../utils/classNames";
 import { getCookie, setCookie } from "../../utils/cookies";
 import styles from "./ThemeSwitcher.module.css";
 
 // TODO: "Make this with tailwind";
+
+type Button = {
+  id: string;
+  label: string;
+  image: React.ReactNode;
+};
 
 const Light = () => (
   <svg
@@ -86,42 +92,40 @@ const ThemeSwitcher = () => {
     }
   }, [theme]);
 
+  const buttons: Button[] = useMemo(() => {
+    return [
+      { id: "light", label: "Theme Mode Light", image: <Light /> },
+      { id: "system", label: "Theme Mode System", image: <System /> },
+      { id: "dark", label: "Theme ModeDark", image: <Dark /> },
+    ];
+  }, []);
+
   return (
     <div
       className={cn(
-        "relative mb-[100vh] flex h-14 w-40 items-center justify-center gap-1 rounded-full border-2 border-c-text max-md:shadow-md md:h-8 md:w-24 md:border",
+        "relative mb-[100vh] flex h-[54px] w-[162px] items-center justify-center gap-1 rounded-full border-2 border-c-text max-md:shadow-md md:h-[30px] md:w-[94px] md:border",
         { "justify-end": theme === "dark" },
         { "justify-start": theme === "light" },
       )}
     >
-      <button
-        aria-label="Theme Mode Light"
-        className={styles.button}
-        id="light"
-        onClick={handleButtonClick}
-        type="button"
-      >
-        <Light />
-      </button>
-      <button
-        aria-label="Theme Mode System"
-        className={styles.button}
-        id="system"
-        onClick={handleButtonClick}
-        type="button"
-      >
-        <System />
-      </button>
-      <button
-        aria-label="Theme Mode Dark"
-        className={styles.button}
-        id="dark"
-        onClick={handleButtonClick}
-        type="button"
-      >
-        <Dark />
-      </button>
-      <motion.div className={styles.slider} layout transition={{ duration, type: "spring" }} />
+      {buttons.map((button) => (
+        <button
+          aria-label={button.label}
+          className="flex h-[50px] w-[50px] items-center justify-center rounded-full md:h-[28px] md:w-[28px]"
+          id={button.id}
+          key={button.id}
+          onClick={handleButtonClick}
+          type="button"
+        >
+          {button.image}
+        </button>
+      ))}
+
+      <motion.div
+        className="absolute mx-0.5 h-[46px] w-[46px] rounded-full bg-[rgba(var(--color-grey-rgb),0.3)] md:h-[24px] md:w-[24px]"
+        layout
+        transition={{ duration, type: "spring" }}
+      />
     </div>
   );
 };
