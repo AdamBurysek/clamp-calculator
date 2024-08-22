@@ -68,7 +68,7 @@ const ThemeSwitcher = () => {
   // Fixing problem with floating slider when pages is changed
   const [duration, setDuration] = useState(0);
 
-  const handleThemeButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setDuration(1);
     setTheme(e.currentTarget.id);
     setTimeout(() => setDuration(0), 100);
@@ -89,15 +89,16 @@ const ThemeSwitcher = () => {
   return (
     <div
       className={cn(
-        "relative mb-[100vh] flex h-14 w-40 items-center justify-center gap-1 rounded-full border-2 border-c-text max-sm:shadow-md",
+        "relative mb-[100vh] flex h-14 w-40 items-center justify-center gap-1 rounded-full border-2 border-c-text max-md:shadow-md md:h-8 md:w-24 md:border",
+        { "justify-end": theme === "dark" },
+        { "justify-start": theme === "light" },
       )}
-      data-theme={theme}
     >
       <button
         aria-label="Theme Mode Light"
         className={styles.button}
         id="light"
-        onClick={handleThemeButtonClick}
+        onClick={handleButtonClick}
         type="button"
       >
         <Light />
@@ -106,7 +107,7 @@ const ThemeSwitcher = () => {
         aria-label="Theme Mode System"
         className={styles.button}
         id="system"
-        onClick={handleThemeButtonClick}
+        onClick={handleButtonClick}
         type="button"
       >
         <System />
@@ -115,7 +116,7 @@ const ThemeSwitcher = () => {
         aria-label="Theme Mode Dark"
         className={styles.button}
         id="dark"
-        onClick={handleThemeButtonClick}
+        onClick={handleButtonClick}
         type="button"
       >
         <Dark />
