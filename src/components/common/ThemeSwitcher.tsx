@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { cn } from "../../utils/classNames";
 import { getCookie, setCookie } from "../../utils/cookies";
@@ -66,6 +66,12 @@ const System = () => (
   </svg>
 );
 
+const buttons: Button[] = [
+  { id: "light", label: "Theme Mode Light", image: <Light /> },
+  { id: "system", label: "Theme Mode System", image: <System /> },
+  { id: "dark", label: "Theme ModeDark", image: <Dark /> },
+];
+
 const ThemeSwitcher = () => {
   const [theme, setTheme] = useState<string | null>(null);
   // Fixing problem with floating slider when pages is changed
@@ -89,14 +95,6 @@ const ThemeSwitcher = () => {
       setCookie("theme", theme, 0.5);
     }
   }, [theme]);
-
-  const buttons: Button[] = useMemo(() => {
-    return [
-      { id: "light", label: "Theme Mode Light", image: <Light /> },
-      { id: "system", label: "Theme Mode System", image: <System /> },
-      { id: "dark", label: "Theme ModeDark", image: <Dark /> },
-    ];
-  }, []);
 
   return (
     <div
