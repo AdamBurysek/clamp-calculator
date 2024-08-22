@@ -122,7 +122,7 @@ const ThemeSwitcher = () => {
       ))}
 
       <motion.div
-        className="absolute mx-0.5 h-[46px] w-[46px] rounded-full bg-[rgba(var(--color-grey-rgb),0.3)] md:h-[24px] md:w-[24px]"
+        className="absolute mx-0.5 h-[46px] w-[46px] rounded-full bg-[rgba(var(--color-grey-rgb),0.9)] md:h-[24px] md:w-[24px]"
         layout
         transition={{ duration, type: "spring" }}
       />
