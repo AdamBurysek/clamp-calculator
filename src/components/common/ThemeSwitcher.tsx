@@ -72,6 +72,7 @@ const ThemeSwitcher = () => {
   const [duration, setDuration] = useState(0);
 
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    // Duration is set for short amount of time to prevent slider from floating
     setDuration(1);
     setTheme(e.currentTarget.id);
     setTimeout(() => setDuration(0), 100);
