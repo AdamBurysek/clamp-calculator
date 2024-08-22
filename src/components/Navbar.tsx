@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
-import { ClampCalculatorIcon } from "./Icons";
-import ThemeSwitcher from "./ThemeSwitcher/ThemeSwitcher";
-import HamburgerButton from "./common/HamburgerButton";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { cn } from "../utils/classNames";
+import { ClampCalculatorIcon } from "./Icons";
+import HamburgerButton from "./common/HamburgerButton";
+import ThemeSwitcher from "./common/ThemeSwitcher";
 
 type NavLinks = {
   name: string;
