@@ -3,6 +3,7 @@ import ClampOutputBox from "../components/ClampOutput/ClampOutputBox";
 import BackgroundGrid from "../components/common/BackgroundGrid";
 import InputControls from "../components/InputControls/InputControls";
 import RemControls from "../components/RemControls";
+import Seo from "../components/Seo";
 
 const Calculator = () => {
   return (
@@ -22,6 +23,7 @@ const Calculator = () => {
         </div>
         <ClampOutputBox />
       </div>
+      <Seo />
     </div>
   );
 };
