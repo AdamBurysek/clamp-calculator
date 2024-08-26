@@ -10,7 +10,7 @@ const Seo = () => {
         guide, clamp function in CSS, calculate min-max font sizes, fluid design with CSS clamp, CSS
         dynamic scaling, CSS clamp formula, responsive layout calculator, flexible design with
         clamp, CSS clamp for padding, generate responsive values with clamp, modern CSS design,
-        clamp calculator for web developers.
+        clamp calculator for web developers, clamp() calculator
       </p>
     </div>
   );
