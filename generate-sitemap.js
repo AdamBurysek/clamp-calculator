@@ -9,8 +9,8 @@ const __dirname = dirname(__filename);
 
 const links = [
     { url: '/', changefreq: 'daily', priority: 1.0 },
-    { url: '/how-it-works', changefreq: 'monthly', priority: 0.8 },
-    { url: '/about', changefreq: 'monthly', priority: 0.8 },
+    { url: '/how-it-works', changefreq: 'weekly', priority: 0.8 },
+    { url: '/about', changefreq: 'weekly', priority: 0.8 },
 ];
 
 async function generateSitemap() {
