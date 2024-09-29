@@ -1,7 +1,7 @@
-import clampVideo from "../assets/clamp-video.mp4";
-import KevingImage from "../assets/kevin-powell.jpg";
-import UnaImage from "../assets/una-kravets.jpg";
-import { ClampGraph } from "../components/Icons";
+import clampVideo from '../assets/clamp-video.mp4'
+import KevingImage from '../assets/kevin-powell.jpg'
+import UnaImage from '../assets/una-kravets.jpg'
+import { ClampGraph } from '../components/Icons'
 
 const HowItWorks = () => {
   return (
@@ -9,7 +9,7 @@ const HowItWorks = () => {
       <h1 className="py-4 text-c-grey-nine">How Clamp function Works</h1>
       <p>
         The clamp() CSS function clamps a middle value within a range of values between a defined
-        minimum bound and a maximum bound. The function takes three parameters: a{" "}
+        minimum bound and a maximum bound. The function takes three parameters: a{' '}
         <b>minimum value</b>, a<b>preferred value</b>, and a <b>maximum value</b>.
       </p>
 
@@ -84,7 +84,7 @@ const HowItWorks = () => {
         <img src={UnaImage} className="rounded-xl"></img>
       </a>
     </div>
-  );
-};
+  )
+}
 
-export default HowItWorks;
+export default HowItWorks

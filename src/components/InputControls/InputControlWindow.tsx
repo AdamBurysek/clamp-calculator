@@ -1,27 +1,27 @@
-import useHandleInputKeyDown from "../../hooks/useHandleInputKeyDown";
-import ToggleUnitButton from "../common/ToggleUnitButton";
+import useHandleInputKeyDown from '../../hooks/useHandleInputKeyDown'
+import ToggleUnitButton from '../common/ToggleUnitButton'
 
 const InputForm = ({ type, min, max, isUnitpx, value, setValue, ariaLabel }: InputFormProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value === "" ? "" : parseFloat(e.target.value);
-    setValue!(value as number);
-  };
+    const value = e.target.value === '' ? '' : parseFloat(e.target.value)
+    setValue!(value as number)
+  }
 
   const handleBlur = () => {
     if (value === null || value! < min) {
-      setValue!(min);
+      setValue!(min)
     } else if (value! > max) {
-      setValue!(max);
+      setValue!(max)
     } else if (!value) {
-      setValue!(0);
+      setValue!(0)
     }
-  };
+  }
 
-  const handleInputKeyDown = useHandleInputKeyDown();
+  const handleInputKeyDown = useHandleInputKeyDown()
 
   return (
     <div className="flex gap-2">
-      <p className="text-xl font-bold text-c-text">{type === "min" ? "MIN" : "MAX"}</p>
+      <p className="text-xl font-bold text-c-text">{type === 'min' ? 'MIN' : 'MAX'}</p>
       <span className="flex items-center gap-2 rounded-md bg-c-primary px-2 text-c-background">
         <input
           type="number"
@@ -35,11 +35,11 @@ const InputForm = ({ type, min, max, isUnitpx, value, setValue, ariaLabel }: Inp
           min={min}
           max={max}
         />
-        <p className="font-bold text-c-background">{isUnitpx ? "px" : "rem"}</p>
+        <p className="font-bold text-c-background">{isUnitpx ? 'px' : 'rem'}</p>
       </span>
     </div>
-  );
-};
+  )
+}
 
 const InputControlWindow = ({
   header,
@@ -77,7 +77,7 @@ const InputControlWindow = ({
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default InputControlWindow;
+export default InputControlWindow

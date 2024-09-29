@@ -1,7 +1,7 @@
-import { Outlet } from "react-router-dom";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import { GlobalStateProvider } from "../providers/GlobalStateProvider";
+import { Outlet } from 'react-router-dom'
+import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
+import { GlobalStateProvider } from '../providers/GlobalStateProvider'
 
 const Layout = () => (
   <GlobalStateProvider>
@@ -11,6 +11,6 @@ const Layout = () => (
     </main>
     <Footer />
   </GlobalStateProvider>
-);
+)
 
-export default Layout;
+export default Layout

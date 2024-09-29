@@ -1,8 +1,8 @@
-import useGlobalState from "../hooks/useGlobalState";
-import CustomInput from "./common/CustomInput";
+import useGlobalState from '../hooks/useGlobalState'
+import CustomInput from './common/CustomInput'
 
-import OptionInput from "./common/OptionInput";
-import ToggleOption from "./common/ToggleOption";
+import OptionInput from './common/OptionInput'
+import ToggleOption from './common/ToggleOption'
 
 const AdditionalControls = () => {
   const {
@@ -16,17 +16,17 @@ const AdditionalControls = () => {
     setUseTailwind,
     customTargetValue,
     setCustomTargetValue,
-  } = useGlobalState();
+  } = useGlobalState()
 
   const targetOptions = [
-    { label: "none", value: "" },
-    { label: "Font size", value: "font-size:" },
-    { label: "Width", value: "width:" },
-    { label: "Padding left", value: "padding-left:" },
-    { label: "Padding right", value: "padding-right:" },
-    { label: "Margin left", value: "margin-left:" },
-    { label: "Margin right", value: "margin-right:" },
-  ];
+    { label: 'none', value: '' },
+    { label: 'Font size', value: 'font-size:' },
+    { label: 'Width', value: 'width:' },
+    { label: 'Padding left', value: 'padding-left:' },
+    { label: 'Padding right', value: 'padding-right:' },
+    { label: 'Margin left', value: 'margin-left:' },
+    { label: 'Margin right', value: 'margin-right:' },
+  ]
 
   return (
     <div className="gap max-m: flex flex-col">
@@ -63,7 +63,7 @@ const AdditionalControls = () => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AdditionalControls;
+export default AdditionalControls

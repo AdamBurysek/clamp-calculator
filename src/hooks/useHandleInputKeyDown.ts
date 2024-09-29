@@ -1,13 +1,13 @@
-import { useCallback } from "react";
+import { useCallback } from 'react'
 
 const useHandleInputKeyDown = () => {
   const handleInputKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" || e.key === "Escape") {
-      (e.target as HTMLInputElement).blur();
+    if (e.key === 'Enter' || e.key === 'Escape') {
+      ;(e.target as HTMLInputElement).blur()
     }
-  }, []);
+  }, [])
 
-  return handleInputKeyDown;
-};
+  return handleInputKeyDown
+}
 
-export default useHandleInputKeyDown;
+export default useHandleInputKeyDown

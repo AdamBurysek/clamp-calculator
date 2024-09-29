@@ -20,7 +20,7 @@ const Seo = () => {
         function with comments
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default Seo;
+export default Seo

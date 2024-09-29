@@ -1,26 +1,26 @@
-import useGlobalState from "../../hooks/useGlobalState";
-import OutputBox from "./OutputBox";
+import useGlobalState from '../../hooks/useGlobalState'
+import OutputBox from './OutputBox'
 
 const ClampOutputBox = () => {
   const { clampValue, targetValue, customTargetValue, addComment, commentValue, useTailwind } =
-    useGlobalState();
+    useGlobalState()
 
   const tailwindNames = [
-    { name: "font-size:", value: "text-" },
-    { name: "width:", value: "w-" },
-    { name: "padding-left:", value: "pl-" },
-    { name: "padding-right:", value: "pr-" },
-    { name: "margin-left:", value: "ml-" },
-    { name: "margin-right:", value: "mr-" },
-  ];
+    { name: 'font-size:', value: 'text-' },
+    { name: 'width:', value: 'w-' },
+    { name: 'padding-left:', value: 'pl-' },
+    { name: 'padding-right:', value: 'pr-' },
+    { name: 'margin-left:', value: 'ml-' },
+    { name: 'margin-right:', value: 'mr-' },
+  ]
 
   const getTailwindValue = (name: string) => {
-    const tailwindName = tailwindNames.find((item) => item.name === name);
+    const tailwindName = tailwindNames.find((item) => item.name === name)
     if (tailwindName) {
-      return tailwindName.value;
+      return tailwindName.value
     }
-    return "";
-  };
+    return ''
+  }
 
   return (
     <>
@@ -30,13 +30,13 @@ const ClampOutputBox = () => {
             clampValue={clampValue}
             targetValue={customTargetValue ? customTargetValue : getTailwindValue(targetValue)}
             addComment={false}
-            commentValue={""}
+            commentValue={''}
             useTailwind={useTailwind}
           />
           {addComment && (
             <OutputBox
-              clampValue={""}
-              targetValue={""}
+              clampValue={''}
+              targetValue={''}
               addComment={true}
               commentValue={commentValue}
               useTailwind={useTailwind}
@@ -53,7 +53,7 @@ const ClampOutputBox = () => {
         />
       )}
     </>
-  );
-};
+  )
+}
 
-export default ClampOutputBox;
+export default ClampOutputBox

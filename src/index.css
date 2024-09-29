@@ -57,7 +57,7 @@
       --color-grey-ten: #e2e2e4;
     }
   }
-  :root [data-theme="dark"] {
+  :root [data-theme='dark'] {
     color-scheme: dark;
     --color-background: #14151c;
     --color-background-pure: #000000;
@@ -79,7 +79,7 @@
     --color-grey-nine: #cccdd1;
     --color-grey-ten: #e2e2e4;
   }
-  :root [data-theme="light"] {
+  :root [data-theme='light'] {
     color-scheme: light;
     --color-background: #f5f7f7;
     --color-background-pure: #ffffff;
@@ -159,13 +159,13 @@ body {
 
 /* Disable arrows on number input
 Chrome, Safari, Edge, Opera */
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* Firefox */
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }

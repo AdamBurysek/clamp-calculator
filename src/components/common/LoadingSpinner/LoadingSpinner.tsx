@@ -1,4 +1,4 @@
-import "./LoadingSpinner.css";
+import './LoadingSpinner.css'
 
 const LoadingSpinner = () => {
   return (
@@ -15,7 +15,7 @@ const LoadingSpinner = () => {
         ></circle>
       </svg>
     </div>
-  );
-};
+  )
+}
 
-export default LoadingSpinner;
+export default LoadingSpinner

@@ -1,32 +1,32 @@
-import BackgroundGrid from "../components/common/BackgroundGrid";
-import ContactForm from "../components/ContactForm/ContactForm";
+import BackgroundGrid from '../components/common/BackgroundGrid'
+import ContactForm from '../components/ContactForm/ContactForm'
 
 const features = [
   {
-    title: "Comments",
-    description: "Generate comments to explain the clamp function.",
+    title: 'Comments',
+    description: 'Generate comments to explain the clamp function.',
   },
   {
-    title: "Custom Target",
-    description: "You can use custom target values like --fs-heading1 in your CSS.",
+    title: 'Custom Target',
+    description: 'You can use custom target values like --fs-heading1 in your CSS.',
   },
   {
-    title: "Tailwind Support",
-    description: "Tailwind support is included.",
+    title: 'Tailwind Support',
+    description: 'Tailwind support is included.',
   },
   {
-    title: "Pixels Output",
-    description: "Unlike many other calculators, this one allows you to output results in pixels.",
+    title: 'Pixels Output',
+    description: 'Unlike many other calculators, this one allows you to output results in pixels.',
   },
   {
-    title: "Dark Mode",
-    description: "The calculator is available in both light and dark modes.",
+    title: 'Dark Mode',
+    description: 'The calculator is available in both light and dark modes.',
   },
   {
-    title: "Open Source",
-    description: "The source code is available on GitHub.",
+    title: 'Open Source',
+    description: 'The source code is available on GitHub.',
   },
-];
+]
 
 function About() {
   return (
@@ -63,7 +63,7 @@ function About() {
       </p>
       <ContactForm />
     </div>
-  );
+  )
 }
 
-export default About;
+export default About

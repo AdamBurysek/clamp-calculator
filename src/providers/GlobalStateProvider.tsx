@@ -1,97 +1,97 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { ReactNode, useEffect, useState } from "react";
-import { convertUnits } from "../utils/calculations";
-import { booleanToString, getCookie, setCookie, stringToBoolean } from "../utils/cookies";
-import { generateComment } from "../utils/comments";
-import { generateClamp } from "../utils/clamps";
-import { GlobalStateContext } from "./GlobalStateContext";
+import { ReactNode, useEffect, useState } from 'react'
+import { convertUnits } from '../utils/calculations'
+import { booleanToString, getCookie, setCookie, stringToBoolean } from '../utils/cookies'
+import { generateComment } from '../utils/comments'
+import { generateClamp } from '../utils/clamps'
+import { GlobalStateContext } from './GlobalStateContext'
 
 export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   // Fix issue with recalulations on initial load
-  const [initialLoad, setInitialLoad] = useState<boolean>(true);
+  const [initialLoad, setInitialLoad] = useState<boolean>(true)
 
-  const initialRemBase = parseInt(getCookie("remBase") || "16", 10);
-  const initialTargetUnits = stringToBoolean(getCookie("targetUnitsPx"));
-  const initialViewportUnits = stringToBoolean(getCookie("viewportUnitsPx"));
-  const initialMinTargetValue = parseFloat(getCookie("minTargetValue") || "16");
-  const initialMaxTargetValue = parseFloat(getCookie("maxTargetValue") || "24");
-  const initialMinViewportValue = parseFloat(getCookie("minViewportValue") || "400");
-  const initialMaxViewportValue = parseFloat(getCookie("maxViewportValue") || "1024");
-  const initialOutputInPx = stringToBoolean(getCookie("outputInPx"), false);
-  const initialAddComment = stringToBoolean(getCookie("addComment"), false);
-  const initialTargetValue = getCookie("targetValue") || "";
-  const initialUseTailwind = stringToBoolean(getCookie("useTailwind"), false);
+  const initialRemBase = parseInt(getCookie('remBase') || '16', 10)
+  const initialTargetUnits = stringToBoolean(getCookie('targetUnitsPx'))
+  const initialViewportUnits = stringToBoolean(getCookie('viewportUnitsPx'))
+  const initialMinTargetValue = parseFloat(getCookie('minTargetValue') || '16')
+  const initialMaxTargetValue = parseFloat(getCookie('maxTargetValue') || '24')
+  const initialMinViewportValue = parseFloat(getCookie('minViewportValue') || '400')
+  const initialMaxViewportValue = parseFloat(getCookie('maxViewportValue') || '1024')
+  const initialOutputInPx = stringToBoolean(getCookie('outputInPx'), false)
+  const initialAddComment = stringToBoolean(getCookie('addComment'), false)
+  const initialTargetValue = getCookie('targetValue') || ''
+  const initialUseTailwind = stringToBoolean(getCookie('useTailwind'), false)
 
-  const [remBase, setRemBase] = useState<number>(initialRemBase);
-  const [isTargetUnitsPx, setIsTargetUnitsPx] = useState<boolean>(initialTargetUnits);
-  const [isViewportUnitsPx, setIsViewportUnitsPx] = useState<boolean>(initialViewportUnits);
+  const [remBase, setRemBase] = useState<number>(initialRemBase)
+  const [isTargetUnitsPx, setIsTargetUnitsPx] = useState<boolean>(initialTargetUnits)
+  const [isViewportUnitsPx, setIsViewportUnitsPx] = useState<boolean>(initialViewportUnits)
 
-  const [minTargetValue, setMinTargetValue] = useState<number>(initialMinTargetValue);
-  const [maxTargetValue, setMaxTargetValue] = useState<number>(initialMaxTargetValue);
-  const [minViewportValue, setMinViewportValue] = useState<number>(initialMinViewportValue);
-  const [maxViewportValue, setMaxViewportValue] = useState<number>(initialMaxViewportValue);
+  const [minTargetValue, setMinTargetValue] = useState<number>(initialMinTargetValue)
+  const [maxTargetValue, setMaxTargetValue] = useState<number>(initialMaxTargetValue)
+  const [minViewportValue, setMinViewportValue] = useState<number>(initialMinViewportValue)
+  const [maxViewportValue, setMaxViewportValue] = useState<number>(initialMaxViewportValue)
 
-  const [outputInPx, setOutputInPx] = useState<boolean>(initialOutputInPx);
-  const [addComment, setAddComment] = useState<boolean>(initialAddComment);
-  const [useTailwind, setUseTailwind] = useState<boolean>(initialUseTailwind);
-  const [targetValue, setTargetValue] = useState<string>(initialTargetValue);
-  const [customTargetValue, setCustomTargetValue] = useState<string>("");
-  const [clampValue, setClampValue] = useState<string>("");
-  const [commentValue, setCommentValue] = useState<string>("");
-
-  useEffect(() => {
-    setInitialLoad(false);
-  }, []);
+  const [outputInPx, setOutputInPx] = useState<boolean>(initialOutputInPx)
+  const [addComment, setAddComment] = useState<boolean>(initialAddComment)
+  const [useTailwind, setUseTailwind] = useState<boolean>(initialUseTailwind)
+  const [targetValue, setTargetValue] = useState<string>(initialTargetValue)
+  const [customTargetValue, setCustomTargetValue] = useState<string>('')
+  const [clampValue, setClampValue] = useState<string>('')
+  const [commentValue, setCommentValue] = useState<string>('')
 
   useEffect(() => {
-    setCookie("remBase", remBase.toString(), 30);
-  }, [remBase]);
+    setInitialLoad(false)
+  }, [])
 
   useEffect(() => {
-    setCookie("targetUnitsPx", booleanToString(isTargetUnitsPx), 30);
-    if (initialLoad) return;
-    setMinTargetValue(convertUnits(minTargetValue, isTargetUnitsPx, remBase));
-    setMaxTargetValue(convertUnits(maxTargetValue, isTargetUnitsPx, remBase));
-  }, [isTargetUnitsPx]);
+    setCookie('remBase', remBase.toString(), 30)
+  }, [remBase])
 
   useEffect(() => {
-    setCookie("viewportUnitsPx", booleanToString(isViewportUnitsPx), 30);
-    if (initialLoad) return;
-    setMinViewportValue(convertUnits(minViewportValue, isViewportUnitsPx, remBase));
-    setMaxViewportValue(convertUnits(maxViewportValue, isViewportUnitsPx, remBase));
-  }, [isViewportUnitsPx]);
+    setCookie('targetUnitsPx', booleanToString(isTargetUnitsPx), 30)
+    if (initialLoad) return
+    setMinTargetValue(convertUnits(minTargetValue, isTargetUnitsPx, remBase))
+    setMaxTargetValue(convertUnits(maxTargetValue, isTargetUnitsPx, remBase))
+  }, [isTargetUnitsPx])
 
   useEffect(() => {
-    setCookie("minTargetValue", minTargetValue.toString(), 30);
-  }, [minTargetValue]);
+    setCookie('viewportUnitsPx', booleanToString(isViewportUnitsPx), 30)
+    if (initialLoad) return
+    setMinViewportValue(convertUnits(minViewportValue, isViewportUnitsPx, remBase))
+    setMaxViewportValue(convertUnits(maxViewportValue, isViewportUnitsPx, remBase))
+  }, [isViewportUnitsPx])
 
   useEffect(() => {
-    setCookie("maxTargetValue", maxTargetValue.toString(), 30);
-  }, [maxTargetValue]);
+    setCookie('minTargetValue', minTargetValue.toString(), 30)
+  }, [minTargetValue])
 
   useEffect(() => {
-    setCookie("minViewportValue", minViewportValue.toString(), 30);
-  }, [minViewportValue]);
+    setCookie('maxTargetValue', maxTargetValue.toString(), 30)
+  }, [maxTargetValue])
 
   useEffect(() => {
-    setCookie("maxViewportValue", maxViewportValue.toString(), 30);
-  }, [maxViewportValue]);
+    setCookie('minViewportValue', minViewportValue.toString(), 30)
+  }, [minViewportValue])
 
   useEffect(() => {
-    setCookie("outputInPx", booleanToString(outputInPx), 30);
-  }, [outputInPx]);
+    setCookie('maxViewportValue', maxViewportValue.toString(), 30)
+  }, [maxViewportValue])
 
   useEffect(() => {
-    setCookie("addComment", booleanToString(addComment), 30);
-  }, [addComment]);
+    setCookie('outputInPx', booleanToString(outputInPx), 30)
+  }, [outputInPx])
 
   useEffect(() => {
-    setCookie("targetValue", targetValue, 30);
-  }, [targetValue]);
+    setCookie('addComment', booleanToString(addComment), 30)
+  }, [addComment])
 
   useEffect(() => {
-    setCookie("useTailwind", booleanToString(useTailwind), 30);
-  }, [useTailwind]);
+    setCookie('targetValue', targetValue, 30)
+  }, [targetValue])
+
+  useEffect(() => {
+    setCookie('useTailwind', booleanToString(useTailwind), 30)
+  }, [useTailwind])
 
   useEffect(() => {
     setClampValue(
@@ -104,9 +104,9 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         isViewportUnitsPx,
         remBase,
         outputInPx,
-        useTailwind,
-      ),
-    );
+        useTailwind
+      )
+    )
     setCommentValue(
       generateComment(
         minTargetValue,
@@ -118,9 +118,9 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         remBase,
         targetValue,
         customTargetValue,
-        useTailwind,
-      ),
-    );
+        useTailwind
+      )
+    )
   }, [
     minTargetValue,
     maxTargetValue,
@@ -133,7 +133,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     targetValue,
     customTargetValue,
     useTailwind,
-  ]);
+  ])
 
   return (
     <GlobalStateContext.Provider
@@ -170,5 +170,5 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     >
       {children}
     </GlobalStateContext.Provider>
-  );
-};
+  )
+}

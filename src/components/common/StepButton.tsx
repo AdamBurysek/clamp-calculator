@@ -1,6 +1,6 @@
 interface Props {
-  type: "increment" | "decrement";
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  type: 'increment' | 'decrement'
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 const StepButton = ({ type, onClick }: Props) => {
@@ -10,9 +10,9 @@ const StepButton = ({ type, onClick }: Props) => {
       onClick={onClick}
       data-type={type}
     >
-      {type === "increment" ? "+" : "-"}
+      {type === 'increment' ? '+' : '-'}
     </button>
-  );
-};
+  )
+}
 
-export default StepButton;
+export default StepButton

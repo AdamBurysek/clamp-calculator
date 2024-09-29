@@ -7,7 +7,7 @@ export const ClampCalculatorIcon = () => (
       fill="var(--color-text)"
     />
   </svg>
-);
+)
 
 export const CheckIcon = () => (
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,7 +18,7 @@ export const CheckIcon = () => (
       fill="var(--color-background)"
     />
   </svg>
-);
+)
 
 export const GithubIcon = () => (
   <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +29,7 @@ export const GithubIcon = () => (
       fill="var(--color-text)"
     />
   </svg>
-);
+)
 
 export const ClampGraph = ({ className }: { className?: string }) => (
   <svg
@@ -86,4 +86,4 @@ export const ClampGraph = ({ className }: { className?: string }) => (
     <path d="M366 123.5H441" stroke="var(--color-text)" strokeWidth="3" />
     <path d="M176.543 183.572L366.5 123.5" stroke="var(--color-text)" strokeWidth="3" />
   </svg>
-);
+)

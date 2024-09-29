@@ -1,4 +1,4 @@
-import { createContext } from "react";
-import { GlobalStateProps } from "./GlobalStateTypes";
+import { createContext } from 'react'
+import { GlobalStateProps } from './GlobalStateTypes'
 
-export const GlobalStateContext = createContext<GlobalStateProps | undefined>(undefined);
+export const GlobalStateContext = createContext<GlobalStateProps | undefined>(undefined)

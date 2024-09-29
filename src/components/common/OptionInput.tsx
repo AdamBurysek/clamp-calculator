@@ -1,15 +1,15 @@
 interface Props {
-  label: string;
-  name: string;
-  options: { label: string; value: string }[];
-  setValue: (value: string) => void;
-  value: string;
+  label: string
+  name: string
+  options: { label: string; value: string }[]
+  setValue: (value: string) => void
+  value: string
 }
 
 const OptionInput = ({ label, name, options, setValue, value }: Props) => {
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setValue(e.target.value);
-  };
+    setValue(e.target.value)
+  }
   return (
     <div className="my-2 flex gap-2">
       <label htmlFor={name}>{label}</label>
@@ -27,7 +27,7 @@ const OptionInput = ({ label, name, options, setValue, value }: Props) => {
         ))}
       </select>
     </div>
-  );
-};
+  )
+}
 
-export default OptionInput;
+export default OptionInput

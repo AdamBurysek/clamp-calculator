@@ -1,14 +1,14 @@
-import useHandleInputKeyDown from "../../hooks/useHandleInputKeyDown";
+import useHandleInputKeyDown from '../../hooks/useHandleInputKeyDown'
 
 interface Props {
-  label: string;
-  name: string;
-  value: string;
-  setValue: (value: string) => void;
+  label: string
+  name: string
+  value: string
+  setValue: (value: string) => void
 }
 
 const CustomInput = ({ label, name, value, setValue }: Props) => {
-  const handleKeyDown = useHandleInputKeyDown();
+  const handleKeyDown = useHandleInputKeyDown()
 
   return (
     <div className="flex gap-2">
@@ -23,7 +23,7 @@ const CustomInput = ({ label, name, value, setValue }: Props) => {
         onKeyDown={handleKeyDown}
       />
     </div>
-  );
-};
+  )
+}
 
-export default CustomInput;
+export default CustomInput

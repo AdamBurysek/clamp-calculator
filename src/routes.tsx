@@ -1,12 +1,12 @@
-import About from "./pages/About.tsx";
-import Calculator from "./pages/Calculator.tsx";
-import HowItWorks from "./pages/HowItWorks.tsx";
-import Layout from "./pages/Layout.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import About from './pages/About.tsx'
+import Calculator from './pages/Calculator.tsx'
+import HowItWorks from './pages/HowItWorks.tsx'
+import Layout from './pages/Layout.tsx'
+import NotFound from './pages/NotFound.tsx'
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     element: <Layout />,
     errorElement: <NotFound />,
     children: [
@@ -15,15 +15,15 @@ const routes = [
         element: <Calculator />,
       },
       {
-        path: "/how-it-works",
+        path: '/how-it-works',
         element: <HowItWorks />,
       },
       {
-        path: "/about",
+        path: '/about',
         element: <About />,
       },
     ],
   },
-];
+]
 
-export default routes;
+export default routes

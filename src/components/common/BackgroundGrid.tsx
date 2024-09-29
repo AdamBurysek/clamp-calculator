@@ -1,19 +1,19 @@
-import { useId } from "react";
-import { cn } from "../../utils/classNames";
+import { useId } from 'react'
+import { cn } from '../../utils/classNames'
 
 interface BackgroundGridProps {
-  pattern?: number[][];
-  size?: number;
-  className?: string;
+  pattern?: number[][]
+  size?: number
+  className?: string
 }
 
 interface GridPatternProps {
-  width: number;
-  height: number;
-  x: string;
-  y: string;
-  squares: number[][];
-  className?: string;
+  width: number
+  height: number
+  x: string
+  y: string
+  squares: number[][]
+  className?: string
 }
 
 const BackgroundGrid = ({ pattern, size, className }: BackgroundGridProps) => {
@@ -23,12 +23,12 @@ const BackgroundGrid = ({ pattern, size, className }: BackgroundGridProps) => {
     [Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
     [Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
     [Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
-  ];
+  ]
   return (
     <div
       className={cn(
-        "pointer-events-none absolute left-1/2 top-0 -ml-20 -mt-2 h-full w-full [mask-image:linear-gradient(white,transparent)]",
-        className,
+        'pointer-events-none absolute left-1/2 top-0 -ml-20 -mt-2 h-full w-full [mask-image:linear-gradient(white,transparent)]',
+        className
       )}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-c-secondary to-c-grey-one opacity-100 [mask-image:radial-gradient(farthest-side_at_top,white,transparent)]">
@@ -42,11 +42,11 @@ const BackgroundGrid = ({ pattern, size, className }: BackgroundGridProps) => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
 function GridPattern({ width, height, x, y, squares, className }: GridPatternProps) {
-  const patternId = useId();
+  const patternId = useId()
 
   return (
     <svg aria-hidden="true" className={className}>
@@ -78,7 +78,7 @@ function GridPattern({ width, height, x, y, squares, className }: GridPatternPro
         </svg>
       )}
     </svg>
-  );
+  )
 }
 
-export default BackgroundGrid;
+export default BackgroundGrid

@@ -1,4 +1,4 @@
-import { GithubIcon } from "./Icons";
+import { GithubIcon } from './Icons'
 
 const Footer = () => {
   return (
@@ -13,7 +13,7 @@ const Footer = () => {
           <GithubIcon />
         </a>
         <p>
-          Made with ❤️ by{" "}
+          Made with ❤️ by{' '}
           <a
             className="cursor-pointer font-semibold"
             href="https://code.adamplanet.cz"
@@ -25,7 +25,7 @@ const Footer = () => {
         </p>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

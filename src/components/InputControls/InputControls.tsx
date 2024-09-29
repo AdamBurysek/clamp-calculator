@@ -1,5 +1,5 @@
-import useGlobalState from "../../hooks/useGlobalState";
-import InputControlViewport from "./InputControlWindow";
+import useGlobalState from '../../hooks/useGlobalState'
+import InputControlViewport from './InputControlWindow'
 
 const InputControls = () => {
   const {
@@ -15,7 +15,7 @@ const InputControls = () => {
     setMinViewportValue,
     maxViewportValue,
     setMaxViewportValue,
-  } = useGlobalState();
+  } = useGlobalState()
 
   return (
     <div className="flex gap-8 p-4 max-m:flex-col">
@@ -38,7 +38,7 @@ const InputControls = () => {
         setMaxValue={setMaxViewportValue}
       />
     </div>
-  );
-};
+  )
+}
 
-export default InputControls;
+export default InputControls

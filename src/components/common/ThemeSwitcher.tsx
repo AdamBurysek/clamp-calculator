@@ -1,14 +1,14 @@
-import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import { motion } from 'framer-motion'
+import React, { useEffect, useState } from 'react'
 
-import { cn } from "../../utils/classNames";
-import { getCookie, setCookie } from "../../utils/cookies";
+import { cn } from '../../utils/classNames'
+import { getCookie, setCookie } from '../../utils/cookies'
 
 type Button = {
-  id: string;
-  label: string;
-  image: React.ReactNode;
-};
+  id: string
+  label: string
+  image: React.ReactNode
+}
 
 const Light = () => (
   <svg
@@ -27,7 +27,7 @@ const Light = () => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
 const Dark = () => (
   <svg
@@ -44,7 +44,7 @@ const Dark = () => (
       d="M8.59375 6.50049C8.82029 6.50049 9.04311 6.48371 9.26098 6.45129C8.65728 8.2244 6.97726 9.5 5 9.5C2.51472 9.5 0.5 7.48528 0.5 5C0.5 2.74132 2.16407 0.871309 4.3331 0.549078C4.1779 1.00475 4.09375 1.49309 4.09375 2.00049C4.09375 4.48577 6.10847 6.50049 8.59375 6.50049Z"
     />
   </svg>
-);
+)
 
 const System = () => (
   <svg
@@ -64,44 +64,44 @@ const System = () => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
 const buttons: Button[] = [
-  { id: "light", label: "Theme Mode Light", image: <Light /> },
-  { id: "system", label: "Theme Mode System", image: <System /> },
-  { id: "dark", label: "Theme ModeDark", image: <Dark /> },
-];
+  { id: 'light', label: 'Theme Mode Light', image: <Light /> },
+  { id: 'system', label: 'Theme Mode System', image: <System /> },
+  { id: 'dark', label: 'Theme ModeDark', image: <Dark /> },
+]
 
 const ThemeSwitcher = () => {
-  const [theme, setTheme] = useState<string | null>(null);
+  const [theme, setTheme] = useState<string | null>(null)
   // Fixing problem with floating slider when pages is changed
-  const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useState(0)
 
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     // Duration is set for short amount of time to prevent slider from floating
-    setDuration(1);
-    setTheme(e.currentTarget.id);
-    setTimeout(() => setDuration(0), 100);
-  };
+    setDuration(1)
+    setTheme(e.currentTarget.id)
+    setTimeout(() => setDuration(0), 100)
+  }
 
   useEffect(() => {
-    const initialTheme = getCookie("theme") || "system";
-    setTheme(initialTheme);
-  }, []);
+    const initialTheme = getCookie('theme') || 'system'
+    setTheme(initialTheme)
+  }, [])
 
   useEffect(() => {
     if (theme) {
-      document.body.dataset.theme = theme;
-      setCookie("theme", theme, 0.5);
+      document.body.dataset.theme = theme
+      setCookie('theme', theme, 0.5)
     }
-  }, [theme]);
+  }, [theme])
 
   return (
     <div
       className={cn(
-        "relative mb-[100vh] flex h-[54px] w-[162px] items-center justify-center gap-1 rounded-full border-2 border-c-text max-md:shadow-md md:h-[30px] md:w-[94px] md:border",
-        { "justify-end": theme === "dark" },
-        { "justify-start": theme === "light" },
+        'relative mb-[100vh] flex h-[54px] w-[162px] items-center justify-center gap-1 rounded-full border-2 border-c-text max-md:shadow-md md:h-[30px] md:w-[94px] md:border',
+        { 'justify-end': theme === 'dark' },
+        { 'justify-start': theme === 'light' }
       )}
     >
       {buttons.map((button) => (
@@ -119,10 +119,10 @@ const ThemeSwitcher = () => {
       <motion.div
         className="absolute mx-0.5 h-[46px] w-[46px] rounded-full bg-[rgba(var(--color-grey-rgb),0.3)] md:h-[24px] md:w-[24px]"
         layout
-        transition={{ duration, type: "spring" }}
+        transition={{ duration, type: 'spring' }}
       />
     </div>
-  );
-};
+  )
+}
 
-export default ThemeSwitcher;
+export default ThemeSwitcher

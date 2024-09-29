@@ -1,9 +1,9 @@
-import AdditionalControls from "../components/AdditionalControls";
-import ClampOutputBox from "../components/ClampOutput/ClampOutputBox";
-import BackgroundGrid from "../components/common/BackgroundGrid";
-import InputControls from "../components/InputControls/InputControls";
-import RemControls from "../components/RemControls";
-import Seo from "../components/Seo";
+import AdditionalControls from '../components/AdditionalControls'
+import ClampOutputBox from '../components/ClampOutput/ClampOutputBox'
+import BackgroundGrid from '../components/common/BackgroundGrid'
+import InputControls from '../components/InputControls/InputControls'
+import RemControls from '../components/RemControls'
+import Seo from '../components/Seo'
 
 const Calculator = () => {
   return (
@@ -25,7 +25,7 @@ const Calculator = () => {
       </div>
       <Seo />
     </div>
-  );
-};
+  )
+}
 
-export default Calculator;
+export default Calculator

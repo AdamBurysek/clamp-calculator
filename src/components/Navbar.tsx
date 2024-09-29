@@ -1,35 +1,35 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { cn } from "../utils/classNames";
-import { ClampCalculatorIcon } from "./Icons";
-import HamburgerButton from "./common/HamburgerButton";
-import ThemeSwitcher from "./common/ThemeSwitcher";
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { cn } from '../utils/classNames'
+import { ClampCalculatorIcon } from './Icons'
+import HamburgerButton from './common/HamburgerButton'
+import ThemeSwitcher from './common/ThemeSwitcher'
 
 type NavLinks = {
-  name: string;
-  target: string;
-};
+  name: string
+  target: string
+}
 
 const navLinks: NavLinks[] = [
-  { name: "Calculator", target: "/" },
-  { name: "How it Works", target: "how-it-works" },
-  { name: "About", target: "about" },
-];
+  { name: 'Calculator', target: '/' },
+  { name: 'How it Works', target: 'how-it-works' },
+  { name: 'About', target: 'about' },
+]
 
 const Navbar = () => {
-  const [menuOpened, setMenuOpened] = useState(false);
+  const [menuOpened, setMenuOpened] = useState(false)
 
   const handleHamburgerClick = () => {
-    setMenuOpened(!menuOpened);
-  };
+    setMenuOpened(!menuOpened)
+  }
 
   return (
     <header
       className={cn(
-        "fixed z-50 flex h-screen max-h-16 w-full justify-center bg-c-grey-one transition-[max-height] duration-1000",
+        'fixed z-50 flex h-screen max-h-16 w-full justify-center bg-c-grey-one transition-[max-height] duration-1000',
         {
-          "max-h-screen bg-c-grey-two md:max-h-16 md:bg-c-grey-one": menuOpened,
-        },
+          'max-h-screen bg-c-grey-two md:max-h-16 md:bg-c-grey-one': menuOpened,
+        }
       )}
     >
       <nav className="flex w-full max-w-content justify-between overflow-hidden px-8 pt-4 max-md:flex-col max-md:items-center">
@@ -54,7 +54,7 @@ const Navbar = () => {
       </nav>
       <HamburgerButton onClick={handleHamburgerClick} menuOpened={menuOpened} />
     </header>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
