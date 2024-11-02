@@ -1,6 +1,4 @@
 import clampVideo from '../assets/clamp-video.mp4'
-import KevingImage from '../assets/kevin-powell.jpg'
-import UnaImage from '../assets/una-kravets.jpg'
 import { ClampGraph } from '../components/Icons'
 
 const HowItWorks = () => {
@@ -66,7 +64,7 @@ const HowItWorks = () => {
         looking at the clamp function. To address this, I decided to add a comment to the code that
         provides an explanation. You can generate the comment using the calculator.
       </p>
-      <h2 className="pb-2 pt-4 text-c-grey-nine">More about clamp function</h2>
+      {/* <h2 className="pb-2 pt-4 text-c-grey-nine">More about clamp function</h2>
       <a
         href="https://www.youtube.com/watch?v=wARbgs5Fmuw&t=8s"
         target="_blank"
@@ -82,7 +80,7 @@ const HowItWorks = () => {
       >
         <h3 className="text-c-grey-eight">Cool article by Una Kravets</h3>
         <img src={UnaImage} className="rounded-xl"></img>
-      </a>
+      </a> */}
     </div>
   )
 }

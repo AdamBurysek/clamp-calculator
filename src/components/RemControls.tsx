@@ -70,7 +70,7 @@ const RemControls: React.FC = () => {
   return (
     <div className="my-4 flex gap-4">
       <StepButton type="decrement" onClick={handleButtonClick} />
-      <div className="rounded-2xl bg-c-primary shadow-sm shadow-c-grey-one">
+      <div className="rounded-2xl bg-c-primary">
         <p className="px-6 pt-2 text-xl font-bold text-c-background">
           1 rem =
           <input
