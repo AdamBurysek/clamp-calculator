@@ -8,6 +8,8 @@ const ClampOutputBox = () => {
   const tailwindNames = [
     { name: 'font-size:', value: 'text-' },
     { name: 'width:', value: 'w-' },
+    { name: 'min-width:', value: 'min-w-' },
+    { name: 'max-width:', value: 'max-w-' },
     { name: 'padding-left:', value: 'pl-' },
     { name: 'padding-right:', value: 'pr-' },
     { name: 'margin-left:', value: 'ml-' },

@@ -3,6 +3,7 @@
 const Seo = () => {
   return (
     <div className="hidden">
+      <p>This clamp() calculator simplifies creating CSS value that adapt dynamically to viewport size changes.</p>
       <p>
         CSS Clamp Calculator, CSS dynamic values, clamp function calculator, CSS responsive design
         tool, calculate clamp values, CSS utility calculator, CSS clamp value generator, web design

@@ -22,6 +22,8 @@ const AdditionalControls = () => {
     { label: 'none', value: '' },
     { label: 'Font size', value: 'font-size:' },
     { label: 'Width', value: 'width:' },
+    { label: 'Min width', value: 'min-width:' },
+    { label: 'Max width', value: 'max-width:' },
     { label: 'Padding left', value: 'padding-left:' },
     { label: 'Padding right', value: 'padding-right:' },
     { label: 'Margin left', value: 'margin-left:' },
