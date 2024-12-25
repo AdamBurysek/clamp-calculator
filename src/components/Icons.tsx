@@ -1,3 +1,5 @@
+import { cn } from "../utils/classNames"
+
 export const ClampCalculatorIcon = () => (
   <svg width="169" height="26" viewBox="0 0 169 26" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
@@ -86,4 +88,11 @@ export const ClampGraph = ({ className }: { className?: string }) => (
     <path d="M366 123.5H441" stroke="var(--color-text)" strokeWidth="3" />
     <path d="M176.543 183.572L366.5 123.5" stroke="var(--color-text)" strokeWidth="3" />
   </svg>
+)
+
+export const Arrow = ({ direction = 'bottom' }: { direction?: 'top' | 'bottom' }) => (
+  <svg className={cn('duration-300', direction === 'top' ? "rotate-180" : "")} width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9 1C9 0.447715 8.55228 0 8 0C7.44772 0 7 0.447715 7 1L9 1ZM7.29289 17.7071C7.68342 18.0976 8.31658 18.0976 8.70711 17.7071L15.0711 11.3431C15.4616 10.9526 15.4616 10.3195 15.0711 9.92893C14.6805 9.53841 14.0474 9.53841 13.6569 9.92893L8 15.5858L2.34315 9.92893C1.95262 9.53841 1.31946 9.53841 0.928932 9.92893C0.538408 10.3195 0.538408 10.9526 0.928932 11.3431L7.29289 17.7071ZM7 1L7 17H9V1L7 1Z" fill="var(--color-background)" />
+  </svg>
+
 )
