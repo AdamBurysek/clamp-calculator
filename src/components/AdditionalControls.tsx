@@ -4,7 +4,7 @@ import CustomInput from './common/CustomInput'
 import OptionInput from './common/OptionInput'
 import ToggleOption from './common/ToggleOption'
 import { Arrow } from './Icons'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 
 const AdditionalControls = () => {
   const {
