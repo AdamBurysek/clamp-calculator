@@ -60,13 +60,3 @@ $ npm run upload
 ## License
 
 This project is licensed under the MIT License.
-
-## Todo
-
-- [x] Add tailwind support
-- [x] Make custom target value
-- [x] Make How it works page
-- [x] Make About page
-- [x] Add contact form
-- [x] Add meta tags
-- [x] Move automatic deployment to github actions –> deploying with netlify
