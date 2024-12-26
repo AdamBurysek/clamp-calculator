@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="flex w-full justify-center bg-c-grey-one">
       <div className="flex h-36 max-w-content flex-col items-center gap-8">
         <a
-          className="mt-10 cursor-pointer"
+          className="mt-10 cursor-pointer duration-300 hover:scale-105"
           href="https://github.com/AdamBurysek/clamp-calculator"
           target="_blank"
           aria-label="Clamp Calculator Github Repository"
