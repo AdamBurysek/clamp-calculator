@@ -1,7 +1,5 @@
 # React + TypeScript + Vite
 
-## Work in progress
-
 ## Installation
 
 To run this application locally, follow these steps:
