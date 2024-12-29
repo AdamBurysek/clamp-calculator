@@ -47,13 +47,6 @@ To open the test ui, run the following command:
 $ npm run test:ui
 ```
 
-### Upload
-
-My personal deployment pipeline.
-
-```bash
-$ npm run upload
-```
 
 ## License
 
