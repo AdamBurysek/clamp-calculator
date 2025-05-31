@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { ReactNode, useEffect, useState } from 'react'
+import { ReactNode, useEffect, useLayoutEffect, useState } from 'react'
 import { convertUnits } from '../utils/calculations'
 import { booleanToString, getCookie, setCookie, stringToBoolean } from '../utils/cookies'
 import { generateComment } from '../utils/comments'
@@ -21,6 +21,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const initialAddComment = stringToBoolean(getCookie('addComment'), false)
   const initialTargetValue = getCookie('targetValue') || ''
   const initialUseTailwind = stringToBoolean(getCookie('useTailwind'), false)
+  const initialIsAdvancedSettingsOpen = stringToBoolean(getCookie('isAdvancedSettingsOpen'), true)
 
   const [remBase, setRemBase] = useState<number>(initialRemBase)
   const [isTargetUnitsPx, setIsTargetUnitsPx] = useState<boolean>(initialTargetUnits)
@@ -38,6 +39,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const [customTargetValue, setCustomTargetValue] = useState<string>('')
   const [clampValue, setClampValue] = useState<string>('')
   const [commentValue, setCommentValue] = useState<string>('')
+
+  const [isAdvancedSettingsOpen, setIsAdvancedSettingsOpen] = useState<boolean>(initialIsAdvancedSettingsOpen)
 
   useEffect(() => {
     setInitialLoad(false)
@@ -92,6 +95,10 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     setCookie('useTailwind', booleanToString(useTailwind), 30)
   }, [useTailwind])
+
+  useLayoutEffect(() => {
+    setCookie('isAdvancedSettingsOpen', booleanToString(isAdvancedSettingsOpen), 30)
+  }, [isAdvancedSettingsOpen])
 
   useEffect(() => {
     setClampValue(
@@ -166,6 +173,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         setUseTailwind,
         customTargetValue,
         setCustomTargetValue,
+        isAdvancedSettingsOpen,
+        setIsAdvancedSettingsOpen,
       }}
     >
       {children}

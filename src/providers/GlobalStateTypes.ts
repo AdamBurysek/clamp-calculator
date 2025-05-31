@@ -27,4 +27,6 @@ export interface GlobalStateProps {
   setUseTailwind: React.Dispatch<React.SetStateAction<boolean>>
   customTargetValue: string
   setCustomTargetValue: React.Dispatch<React.SetStateAction<string>>
+  isAdvancedSettingsOpen: boolean 
+  setIsAdvancedSettingsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }

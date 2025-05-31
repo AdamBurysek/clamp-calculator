@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useGlobalState from '../hooks/useGlobalState'
 import CustomInput from './common/CustomInput'
 import OptionInput from './common/OptionInput'
@@ -18,9 +18,9 @@ const AdditionalControls = () => {
     setUseTailwind,
     customTargetValue,
     setCustomTargetValue,
+    isAdvancedSettingsOpen,
+    setIsAdvancedSettingsOpen,
   } = useGlobalState()
-
-  const [isOpen, setIsOpen] = useState(false)
 
   const targetOptions = [
     { label: 'none', value: '' },
@@ -34,18 +34,29 @@ const AdditionalControls = () => {
     { label: 'Margin right', value: 'margin-right:' },
   ]
 
+  const [transitionDuration, setTransitionDuration] = useState({slow: 0, medium: 0, fast: 0, instant: 0})
+
+  useEffect(() => {
+    setTransitionDuration({
+      slow: 0.3,
+      medium: 0.2,
+      fast: 0.1,
+      instant: 0,
+    })
+  }, []);
+
   return (
     <div className='flex flex-col items-center'>
       <motion.div
         className="gap max-m: flex flex-col overflow-hidden"
         initial={{ height: 0, opacity: 0 }}
         animate={{
-          height: isOpen ? "auto" : 0,
-          opacity: isOpen ? 1 : 0,
+          height: isAdvancedSettingsOpen ? "auto" : 0,
+          opacity: isAdvancedSettingsOpen ? 1 : 0,
         }}
         transition={{
-          height: { duration: 0.3 },
-          opacity: { duration: isOpen ? 0.3 : 0.1, delay: isOpen ? 0.3 : 0 },
+          height: { duration: transitionDuration.slow },
+          opacity: { duration: isAdvancedSettingsOpen ? transitionDuration.slow : transitionDuration.fast, delay: isAdvancedSettingsOpen ? transitionDuration.slow : 0 },
         }}
       >
         <div className="flex items-center justify-center gap-4 max-m:flex-col max-m:items-start max-m:pb-3">
@@ -83,20 +94,20 @@ const AdditionalControls = () => {
       </motion.div>
       <button
         className='group flex flex-col items-center'
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsAdvancedSettingsOpen(!isAdvancedSettingsOpen)}
       >
         <motion.p
           initial={{ opacity: 1, height: "auto" }}
-          animate={{ opacity: isOpen ? 0 : 1, height: !isOpen ? "auto" : 0 }}
+          animate={{ opacity: isAdvancedSettingsOpen ? 0 : 1, height: !isAdvancedSettingsOpen ? "auto" : 0 }}
           transition={{
-            height: { duration: 0.2 },
-            opacity: { duration: 0.2, delay: isOpen ? 0 : 0.2 },
+            height: { duration: transitionDuration.medium },
+            opacity: { duration: transitionDuration.medium, delay: isAdvancedSettingsOpen ? 0 : transitionDuration.medium },
           }}
         >
           Advanced Settings
         </motion.p>
         <span className='bg-c-primary w-8 h-8 rounded-full flex items-center justify-center m-2 duration-300 group-hover:scale-105'>
-          <Arrow direction={isOpen ? 'top' : 'bottom'} />
+          <Arrow direction={isAdvancedSettingsOpen ? 'top' : 'bottom'} />
         </span>
       </button>
     </div>
