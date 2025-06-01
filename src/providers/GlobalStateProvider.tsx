@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { ReactNode, useEffect, useLayoutEffect, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import { convertUnits } from '../utils/calculations'
 import { booleanToString, getCookie, setCookie, stringToBoolean } from '../utils/cookies'
 import { generateComment } from '../utils/comments'
@@ -96,7 +96,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     setCookie('useTailwind', booleanToString(useTailwind), 30)
   }, [useTailwind])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setCookie('isAdvancedSettingsOpen', booleanToString(isAdvancedSettingsOpen), 30)
   }, [isAdvancedSettingsOpen])
 
