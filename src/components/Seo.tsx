@@ -7,7 +7,7 @@ const Seo = () => {
       <br/>
       <br/>
       <br/>
-      <p>
+      {/* <p>
         CSS Clamp Calculator, CSS dynamic values, clamp function calculator, CSS responsive design
         tool, calculate clamp values, CSS utility calculator, CSS clamp value generator, web design
         clamp calculator, CSS scaling values, responsive typography with clamp, CSS clamp function
@@ -22,7 +22,7 @@ const Seo = () => {
         modern web design with Tailwind CSS and clamp, Tailwind CSS clamp padding, Tailwind CSS
         clamp calculator, Clamp calculator with comments, clamp function explanation, CSS clamp
         function with comments
-      </p>
+      </p> */}
     </div>
   )
 }
