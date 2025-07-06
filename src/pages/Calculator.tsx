@@ -1,16 +1,16 @@
-import AdditionalControls from '../components/AdditionalControls'
-import ClampOutputBox from '../components/ClampOutput/ClampOutputBox'
-import BackgroundGrid from '../components/common/BackgroundGrid'
-import InputControls from '../components/InputControls/InputControls'
-import RemControls from '../components/RemControls'
-import Seo from '../components/Seo'
+import AdditionalControls from "../components/AdditionalControls";
+import ClampOutputBox from "../components/ClampOutput/ClampOutputBox";
+import BackgroundGrid from "../components/common/BackgroundGrid";
+import InputControls from "../components/InputControls/InputControls";
+import RemControls from "../components/RemControls";
+import Seo from "../components/Seo";
 
 const Calculator = () => {
   return (
     <div className="flex w-full max-w-content flex-col items-center">
       <span className="bg-c-background">
         <h1 className="inline-block bg-gradient-to-r from-c-grey-nine from-20% via-c-primary via-85% to-c-grey-nine to-50% bg-clip-text py-4 text-transparent">
-          CSS Clamp Calculation Tool
+          CSS Clamp Calculator
         </h1>
       </span>
       <div className="max-s:scale-75">
@@ -25,7 +25,7 @@ const Calculator = () => {
       </div>
       <Seo />
     </div>
-  )
-}
+  );
+};
 
-export default Calculator
+export default Calculator;
