@@ -9,7 +9,7 @@ const Calculator = () => {
   return (
     <div className="flex w-full max-w-content flex-col items-center">
       <span className="bg-c-background">
-        <h1 className="inline-block bg-gradient-to-r from-c-grey-nine from-20% via-c-primary via-85% to-c-grey-nine to-50% bg-clip-text py-4 text-transparent">
+        <h1 className="inline-block bg-gradient-to-r from-c-grey-nine to-c-primary bg-clip-text py-4 text-transparent">
           CSS Clamp Calculator
         </h1>
       </span>
